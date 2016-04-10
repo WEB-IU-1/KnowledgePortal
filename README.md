@@ -7,9 +7,8 @@
   1. Download and install last version of node.js from: http://nodejs.org/
   2. Go to the frontend folder and run cmd. Write command: npm install
   3. Write next command to cmd.exe: npm install -g bower . Afterwards, you need to install dependencies (write command to cmd.exe): bower install .
-  4. For using grunt you need to install grunt globally. Put this command to cmd.exe: npm install -g grunt-cli
-  5. For building project you need to run grunt task in cmd.exe: grunt build.
-  6. If you have any others questions you can ask me: bloodlanser@gmail.com.
+  4. For using grunt you need to install gulp globally. Put this command to cmd.exe: npm install -g gulp
+  5. If you have any others questions you can ask me: bloodlanser@gmail.com.
 
 
 ## e2e tests:
