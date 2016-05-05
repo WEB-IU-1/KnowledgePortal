@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('KnowledgePortal', ['ngAnimate', 'ui.router', 'ui.bootstrap', 'toastr']);
+    .module('KnowledgePortal', ['ngAnimate', 'ui.router', 'toastr', 'kendo.directives']);
 
 })();

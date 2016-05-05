@@ -18,6 +18,30 @@
     </p>
   </div>
 
+  <div>
+    <kendo-grid options="main.mainGridOptions">
+      <div k-detail-template>
+        <kendo-tabstrip>
+          <ul>
+            <li class="k-state-active">Orders</li>
+            <li>Contact information</li>
+          </ul>
+          <div>
+            <div kendo-grid k-options="main.detailGridOptions(dataItem)"></div>
+          </div>
+          <div>
+            <ul>
+              <li>Country: <input ng-model="dataItem.Country" /></li>
+              <li>City: <input ng-model="dataItem.City" /></li>
+              <li>Address: {{dataItem.Address}}</li>
+              <li>Home phone: {{dataItem.HomePhone}}</li>
+            </ul>
+          </div>
+        </kendo-tabstrip>
+      </div>
+    </kendo-grid>
+  </div>
+
   <div class="row">
     <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
       <div class="thumbnail">
