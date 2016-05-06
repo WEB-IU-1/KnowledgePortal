@@ -13,6 +13,12 @@
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main'
+      })
+      .state('scheduleCourse', {
+        url: '/schedule',
+        templateUrl: 'app/schedule/schedule.html',
+        controller: 'ScheduleCourseController',
+        controllerAs: 'scheduleCourse'
       });
 
     $urlRouterProvider.otherwise('/');

@@ -1,0 +1,11 @@
+<div class="container">
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+  <h1>Расписание</h1>
+  <div kendo-scheduler k-options="scheduleCourse.schedulerOptions">
+    <span k-event-template class='custom-event'>{{scheduleCourse.dataItem.title}}</span>
+    <div k-all-day-event-template class='custom-all-day-event'>{{scheduleCourse.dataItem.title}}</div>
+  </div>
+
+</div>
