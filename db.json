@@ -1,1 +1,88 @@
-[{"EmployeeId":1,"FirstName":"Daryl","LastName":"Sweeney","ReportsTo":null,"Address":"P.O. Box 427, 5676 Arcu. Rd.","City":"Castelvecchio Calvisio","Country":"Antigua and Barbuda","Phone":"(555) 924-9726","Extension":8253,"Position":"CEO","BirthDate":"\/Date(-409111200000)\/","HireDate":"\/Date(1328644800000)\/"},{"EmployeeId":2,"FirstName":"Guy","LastName":"Wooten","ReportsTo":1,"Address":"Ap #348-1754 Lacus Avenue","City":"Acoz","Country":"Saint Martin","Phone":"(438) 738-4935","Extension":1155,"Position":"Chief Technical Officer","BirthDate":"\/Date(-358484400000)\/","HireDate":"\/Date(1267646400000)\/"},{"EmployeeId":3,"FirstName":"Priscilla","LastName":"Frank","ReportsTo":1,"Address":"1569 Cras Road","City":"Wells","Country":"Russian Federation","Phone":"(278) 927-2684","Extension":4183,"Position":"Chief Product Officer","BirthDate":"\/Date(38966400000)\/","HireDate":"\/Date(1417305600000)\/"},{"EmployeeId":4,"FirstName":"Ursula","LastName":"Holmes","ReportsTo":3,"Address":"221-4534 Vitae, Ave","City":"Sarre","Country":"Nigeria","Phone":"(302) 760-2034","Extension":2226,"Position":"EVP, Product Strategy","BirthDate":"\/Date(524102400000)\/","HireDate":"\/Date(1307318400000)\/"},{"EmployeeId":5,"FirstName":"Anika","LastName":"Vega","ReportsTo":1,"Address":"199-1773 Ultricies Street","City":"Pavone del Mella","Country":"Tanzania","Phone":"(910) 714-1802","Extension":6353,"Position":"Chief Process Officer","BirthDate":"\/Date(558662400000)\/","HireDate":"\/Date(1267056000000)\/"},{"EmployeeId":6,"FirstName":"Moses","LastName":"Duncan","ReportsTo":64,"Address":"421-8259 Semper St.","City":"Bressoux","Country":"Dominican Republic","Phone":"(421) 611-4814","Extension":669,"Position":"Software Developer","BirthDate":"\/Date(493516800000)\/","HireDate":"\/Date(1274659200000)\/"},{"EmployeeId":7,"FirstName":"Nevada","LastName":"Hart","ReportsTo":1,"Address":"Ap #885-8987 Dui. Rd.","City":"Bendigo","Country":"Saudi Arabia","Phone":"(254) 220-1576","Extension":6649,"Position":"Chief Financial Officer","BirthDate":"\/Date(-259632000000)\/","HireDate":"\/Date(1439769600000)\/"}]
+[{
+  "category_id":1,
+  "name":"Искусство",
+  "parent_id":null,
+  "created_date":"2016-04-23T18:25:43.511Z",
+  "updated_date":"2016-04-23T18:25:43.511Z",
+  "active": true
+},
+  {
+    "category_id":2,
+    "name":"Живопись",
+    "parent_id":1,
+    "created_date":"2016-04-23T18:25:43.511Z",
+    "updated_date":"2016-04-23T18:25:43.511Z",
+    "active": true
+  },
+  {
+    "category_id":3,
+    "name":"Архитектура",
+    "parent_id":1,
+    "created_date":"2016-04-23T18:25:43.511Z",
+    "updated_date":"2016-04-23T18:25:43.511Z",
+    "active": true
+  },
+  {
+    "category_id":4,
+    "name":"История искусства",
+    "parent_id":1,
+    "created_date":"2016-04-23T18:25:43.511Z",
+    "updated_date":"2016-04-23T18:25:43.511Z",
+    "active": true
+  },
+  {
+    "category_id":5,
+    "name":"Кулинария",
+    "parent_id":null,
+    "created_date":"2016-04-23T18:25:43.511Z",
+    "updated_date":"2016-04-23T18:25:43.511Z",
+    "active": true
+  },
+  {
+    "category_id":6,
+    "name":"Общее",
+    "parent_id":5,
+    "created_date":"2016-04-23T18:25:43.511Z",
+    "updated_date":"2016-04-23T18:25:43.511Z",
+    "active": true
+  },
+  {
+    "category_id":7,
+    "name":"Выпечка",
+    "parent_id":5,
+    "created_date":"2016-04-23T18:25:43.511Z",
+    "updated_date":"2016-04-23T18:25:43.511Z",
+    "active": true
+  },
+  {
+    "category_id":8,
+    "name":"Десерты",
+    "parent_id":5,
+    "created_date":"2016-05-2T18:25:43.511Z",
+    "updated_date":"2016-05-2T18:25:43.511Z",
+    "active": true
+  },
+  {
+    "category_id":9,
+    "name":"Вино",
+    "parent_id":5,
+    "created_date":"2016-04-23T18:25:43.511Z",
+    "updated_date":"2016-04-23T18:25:43.511Z",
+    "active": true
+  },
+  {
+    "category_id":10,
+    "name":"Йога",
+    "parent_id":null,
+    "created_date":"2012-04-23T18:25:43.511Z",
+    "updated_date":"2016-04-23T18:25:43.511Z",
+    "active": true
+  },
+  {
+    "category_id":11,
+    "name":"Танцы",
+    "parent_id":null,
+    "created_date":"2015-10-21T13:28:06.419Z",
+    "updated_date":"2016-04-23T18:25:43.511Z",
+    "active": true
+  }]

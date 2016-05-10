@@ -41,18 +41,15 @@
         },
         schema: {
           model: {
-            id: "EmployeeId",
-            parentId: "ReportsTo",
+            id: "category_id",
+            parentId: "parent_id",
             fields: {
-              EmployeeId: { type: "number", editable: false, nullable: false },
-              ReportsTo: { nullable: true, type: "number" },
-              FirstName: { validation: { required: true } },
-              LastName: { validation: { required: true } },
-              HireDate: { type: "date" },
-              Phone: { type: "string" },
-              BirthDate: { type: "date" },
-              Extension: { type: "number", validation: { min: 0, required: true } },
-              Position: { type: "string" }
+              category_id: { type: "number", editable: false, nullable: false },
+              parent_id: { nullable: true, type: "number" },
+              name: { type: "string", validation: { required: true } },
+              created_date: { type: "date" },
+              updated_date: { type: "date" },
+              active: {type:"boolean"}
             }
           }
         }
@@ -60,11 +57,13 @@
       sortable: true,
       editable: true,
       columns: [
-        { field: "FirstName", title: "First Name", width: "150px" },
-        { field: "LastName", title: "Last Name", width: "150px" },
-        { field: "Position" },
-        { title: "Location",
-          template: "{{ dataItem.City }}, {{ dataItem.Country }}"
+        { field: "category_id", title: "Id", width: "40px" },
+        { field: "name", title: "Category name", width: "150px" },
+        { field: "created_date",title: "Created date"},
+        { field:"updated_date",title: "Updated date"},
+        { field:"active",title:"Active",
+          template: "<input type='checkbox' data-bind='checked: checked' />",
+          width: "100px"
         },
         { command: ["edit"] }
       ]
