@@ -9,25 +9,28 @@
   function CategoryController() {
     var vm = this;
 
-    var crudServiceBaseUrl = "//demos.telerik.com/kendo-ui/service";
+    var crudServiceBaseUrl = "//localhost:25000/api";
 
     vm.treelistOptions = {
       dataSource: {
         transport: {
           read:  {
-            url: crudServiceBaseUrl + "/EmployeeDirectory/All",
+            url: crudServiceBaseUrl + "/db",
             dataType: "jsonp"
           },
+          ///EmployeeDirectory/Update
           update: {
-            url: crudServiceBaseUrl + "/EmployeeDirectory/Update",
+            url: crudServiceBaseUrl + "/db",
             dataType: "jsonp"
           },
+          ////EmployeeDirectory/Destroy
           destroy: {
-            url: crudServiceBaseUrl + "/EmployeeDirectory/Destroy",
+            url: crudServiceBaseUrl + "/db",
             dataType: "jsonp"
           },
+          ////EmployeeDirectory/Create
           create: {
-            url: crudServiceBaseUrl + "/EmployeeDirectory/Create",
+            url: crudServiceBaseUrl + "/db",
             dataType: "jsonp"
           },
           parameterMap: function(options, operation) {
