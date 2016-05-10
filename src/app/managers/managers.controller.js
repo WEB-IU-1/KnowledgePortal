@@ -10,8 +10,8 @@
     var vm = this;
     // hardcode much
     vm.sampleData =  [
-      {surname:"Yes", name:"Jane", partner:"James No", phone:"+7978xxxxx", email:"aa@gmail.com", activity: "true"},
-      {surname:"Yes", name:"Jane", partner:"James No", phone:"+7978xxxxx", email:"aa@gmail.com", activity: "true"}
+      {managerID: 1, surname:"Yes", name:"Jane", partner:"James No", phone:"+7978xxxxx", email:"aa@gmail.com", activity: "true"},
+      {managerID: 2, surname:"Yes", name:"Jane", partner:"James No", phone:"+7978xxxxx", email:"aa@gmail.com", activity: "true"}
     ];
     vm.sampleDataNextID = vm.sampleData.length + 1;
 
@@ -34,7 +34,7 @@
         },
         create: function(e){
           e.data.ManagerID = vm.sampleDataNextID++;
-          vm.sampleData.push(data);
+          vm.sampleData.push(e.data);
           e.success(e.data);
         },
         update: function(e){
@@ -54,12 +54,13 @@
         model: {
           id: "ManagerID",
           fields: {
-            ManagerID: {editable: false, nullable: true},
-            Surname: {validation: {required: true}},
-            Name: {validation: {required: true}},
-            Partner: {},
-            Phone: {type: "number"},
-            Email: { validation: {required: true}}
+            managerID: {editable: false, nullable: true},
+            surname: {validation: {required: true}},
+            name: {validation: {required: true}},
+            partner: {},
+            phone: {type: "phone"},
+            email: { validation: {required: true}},
+            activity: {type: "boolean"},
           }
         }
       }
@@ -71,24 +72,19 @@
       { field: "phone", title: "Мобильный телефон" },
       { field: "email", title: "Почта" },
       { command: [
-        {text: "Редактировать", click: vm.editManager},
-        {text: "Удалить", click: vm.deleteManager},
-        {text: "Установить права", click: vm.setRightsManager}],
+        { name: "edit", text: "Редактировать" },
+        { name: "destroy", text: "Удалить" },
+        { text: "Установить права", click: vm.setRightsManager}],
         title: "Действия"},
-      {template: '<input type="checkbox" #= activity ? \'checked="checked"\' : "" # class="chkbx" />',
+        { template: '<input type="checkbox" #= activity ? \'checked="checked"\' : "" # class="chkbx" />',
         title: "Активность"}
     ];
     vm.gridOptions = {
       dataSource: vm.gridData,
+      toolbar: [{name: "create", text: "Добавить менеджера"}],
       columns: vm.gridColumns,
       pageable: true,
-      editable: inline
-    };
-    vm.editManager = function(e){
-      e.preventDefault();
-    };
-    vm.deleteManager = function(e){
-      e.preventDefault();
+      editable: "popup"
     };
     vm.setRightsManager = function(e){
       e.preventDefault();
