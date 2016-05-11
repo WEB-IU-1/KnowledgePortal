@@ -9,7 +9,7 @@
   function UsersController($timeout, webDevTec, toastr, userData) {
 
     var uc = this;
-    if (!localStorage.getItem("users")){
+    if (localStorage.getItem("users") == undefined){
       localStorage.setItem("users", angular.toJson(userData.data));
     }
 
@@ -30,18 +30,7 @@
          },
          update: function(options){
            var localData = angular.fromJson(localStorage["users"]);
-           for(var i=0; i<localData.length; i++){
-            if(localData[i].Id == options.data.id){
-               localData[i].LastName = options.LastName;
-               localData[i].FirstName = options.FirstName;
-               localData[i].Gender = options.Gender;
-               localData[i].Address = options.Address;
-               localData[i].Phone = options.Phone;
-               localData[i].BirthDate = options.BirthDate;
-               localData[i].Email = options.Email;
-               localData[i].RegistrationDate = options.RegistrationDate;
-             }
-           }
+           localData[getIndexById(localData, options.data.Id)] = options.data;
            localStorage["users"] = angular.toJson(localData);
            options.success(options.data);
          },
@@ -57,8 +46,7 @@
            options.success(localData);
          }
        },
-       //data: uc.data,
-       batch: true,
+       batch:false,
         schema: {
           model: {
             id: "Id",
@@ -122,6 +110,17 @@
       }
       ]
     };
+  }
+  function getIndexById(data, id) {
+    var idx,
+      l = data.length;
+
+    for (var j; j < l; j++) {
+      if (data[j].Id == id) {
+        return j;
+      }
+    }
+    return null;
   }
 })();
 
