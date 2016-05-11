@@ -7,15 +7,13 @@
 
   /** @ngInject */
   function UsersController($timeout, webDevTec, toastr, userData) {
-
     var uc = this;
     if (localStorage.getItem("users") == undefined){
       localStorage.setItem("users", angular.toJson(userData.data));
     }
-
     uc.mainGridOptions = {
-      toolbar: ["create", "save", "cancel"],
-     dataSource: new kendo.data.DataSource({
+      toolbar: ["create"],
+      dataSource: new kendo.data.DataSource({
        transport: {
          create: function(options){
            var localData = angular.fromJson(localStorage["users"]);
@@ -37,7 +35,7 @@
          destroy: function(options){
            var localData = angular.fromJson(localStorage["users"]);
            for(var i=0; i<localData.length; i++){
-             if(localData[i].Id === options.data.Id){
+             if(localData[i].Id == options.data.Id){
                localData.splice(i,1);
                break;
              }
@@ -51,7 +49,7 @@
           model: {
             id: "Id",
             fields: {
-              id: {editable: false},
+
               LastName: {type: "string" },
               FirstName: {type: "string" },
               Gender: {type: "string" },
@@ -72,9 +70,6 @@
       sortable: true,
       pageable: true,
       columns: [{
-        field: "Id",
-        title: "ID"
-      },{
         field: "LastName",
         title: "Last Name",
         width: "120px"
