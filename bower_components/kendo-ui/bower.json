@@ -11,9 +11,9 @@
   "main": [
     "js/kendo.all.js",
     "styles/kendo.dataviz.css",
-    "styles/kendo.dataviz.office365.min.css",
+    "styles/kendo.dataviz.material.min.css",
     "styles/kendo.common.css",
-    "styles/kendo.office365.min.css"
+    "styles/kendo.material.min.css"
   ],
   "moduleType": [
     "amd",
