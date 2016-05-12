@@ -1,11 +1,15 @@
-var mongoose    = require('mongoose');
-var config      = require('./config');
+var mongoose    = require('mongoose'),
+    log         = require('./log')(module),
+    config      = require('./config');
 
 var db = mongoose.connection;
 
-db.on('error', console.error);
+db.on('error', function (err) {
+    log.error('connection error:', err.message);
+});
+
 db.once('open',function(){
-   console.log('connection is opened')
+    log.info("Connected to DB!");
 });
 
 mongoose.connect(config.get('mongoose:uri'), config.get('mongoose:options'));
