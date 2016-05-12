@@ -1,116 +1,51 @@
 var express = require('express'),
-    wines   = require('./routes/wines'),
+    bodyParser = require('body-parser'),
     config  = require('./lib/config'),
-    log     = require('./lib/log')(module);
-    ArticleModel = require('./lib/mongoose').ArticleModel;
-var app = express();
+    mongoose = require('./lib/mongoose');
+    //log     = require('./lib/log')(module);
 
-app.get('/wines', wines.findAll);
+    var app     = express(),
+        router  = express.Router();
 
-app.get('/wines/:id', wines.findById);
+//connect models
+var Category    = require('./models/category');
 
-app.get('/api/articles', function(req, res) {
-    return ArticleModel.find(function (err, articles) {
-        if (!err) {
-            return res.send(articles);
-        } else {
-            res.statusCode = 500;
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.send({ error: 'Server error' });
-        }
-    });
+
+//operations
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+
+//routes
+
+router.use(function(req,res,next){
+    console.log('routing is fine...');
+    next();
 });
 
-app.post('/api/articles', function(req, res) {
-    var article = new ArticleModel({
-        title: req.body.title,
-        author: req.body.author,
-        description: req.body.description,
-        images: req.body.images
-    });
-
-    article.save(function (err) {
-        if (!err) {
-            log.info("article created");
-            return res.send({ status: 'OK', article:article });
-        } else {
-            console.log(err);
-            if(err.name == 'ValidationError') {
-                res.statusCode = 400;
-                res.send({ error: 'Validation error' });
-            } else {
-                res.statusCode = 500;
-                res.send({ error: 'Server error' });
-            }
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
-        }
-    });
+// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
+router.get('/',function(req,res){
+    res.json({message:"looks fine"});
 });
 
-app.get('/api/articles/:id', function(req, res) {
-    return ArticleModel.findById(req.params.id, function (err, article) {
-        if(!article) {
-            res.statusCode = 404;
-            return res.send({ error: 'Not found' });
-        }
-        if (!err) {
-            return res.send({ status: 'OK', article:article });
-        } else {
-            res.statusCode = 500;
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.send({ error: 'Server error' });
-        }
-    });
-});
 
-app.put('/api/articles/:id', function (req, res){
-    return ArticleModel.findById(req.params.id, function (err, article) {
-        if(!article) {
-            res.statusCode = 404;
-            return res.send({ error: 'Not found' });
-        }
+//app.use('/bears',require('./routes/bearRoute'));
 
-        article.title = req.body.title;
-        article.description = req.body.description;
-        article.author = req.body.author;
-        article.images = req.body.images;
-        return article.save(function (err) {
-            if (!err) {
-                log.info("article updated");
-                return res.send({ status: 'OK', article:article });
-            } else {
-                if(err.name == 'ValidationError') {
-                    res.statusCode = 400;
-                    res.send({ error: 'Validation error' });
-                } else {
-                    res.statusCode = 500;
-                    res.send({ error: 'Server error' });
-                }
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
-            }
-        });
-    });
-});
+///
 
-app.delete('/api/articles/:id', function (req, res){
-    return ArticleModel.findById(req.params.id, function (err, article) {
-        if(!article) {
-            res.statusCode = 404;
-            return res.send({ error: 'Not found' });
-        }
-        return article.remove(function (err) {
-            if (!err) {
-                log.info("article removed");
-                return res.send({ status: 'OK' });
-            } else {
-                res.statusCode = 500;
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
-                return res.send({ error: 'Server error' });
-            }
-        });
-    });
-});
 
+// all of our routes will be prefixed with /api
+app.use('/api', router);
+
+//Start server
 app.listen(config.get('port'), function(){
-    log.info('Express server listening on port ' + config.get('port'));
+    console.log('Express server listening on port ' + config.get('port'));
 });
+
+router = require('./router')(app);
+
+// Error Handling
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+});
+
+module.exports = app;

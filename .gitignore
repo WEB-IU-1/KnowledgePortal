@@ -3,11 +3,10 @@
 /ServerSide/node_modules/
 /bower_components/*
 !/bower_components/kendo-ui
-/ClientSide/bower_components/*
-!/ClientSide/bower_components/kendo-ui
+/ClientSide/bower_components/
 ClientSide/coverage/
 ClientSide/.sass-cache/
 ClientSide/.idea/
-.idea/
+/.idea/
 /ClientSide/.tmp/
 /ClientSide/dist/

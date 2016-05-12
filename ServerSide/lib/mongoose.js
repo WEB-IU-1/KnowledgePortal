@@ -1,7 +1,8 @@
-var path        = require('path');
 var mongoose    = require('mongoose');
 var config      = require('./config');
 
 mongoose.connect(config.get('mongoose:uri'), config.get('mongoose:options'));
+
+var db = mongoose.connection;
 
 module.exports = mongoose;
