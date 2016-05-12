@@ -9,7 +9,7 @@
   function UsersController($timeout, webDevTec, toastr, userData) {
     var uc = this;
     if (localStorage.getItem("users") == undefined){
-      localStorage.setItem("users", angular.toJson(userData.data));
+      localStorage.setItem("users", angular.toJson(userData));
     }
     uc.mainGridOptions = {
       toolbar: ["create"],
@@ -19,7 +19,7 @@
            var localData = angular.fromJson(localStorage["users"]);
            options.data.Id = localData[localData.length-1].Id + 1;
            localData.push(options.data);
-           localStorage["users"] = angular.toJson(localData);
+           localStorage.setItem("users", angular.toJson(localData));
            options.success(options.data);
          },
          read: function(options){
@@ -28,8 +28,8 @@
          },
          update: function(options){
            var localData = angular.fromJson(localStorage["users"]);
-           localData[getIndexById(localData, options.data.Id)] = options.data;
-           localStorage["users"] = angular.toJson(localData);
+           localData[localData.indexOf(localData.filter(function(item) { return item.Id === options.data.Id})[0])] = options.data;
+           localStorage.setItem("users", angular.toJson(localData));
            options.success(options.data);
          },
          destroy: function(options){
@@ -40,7 +40,7 @@
                break;
              }
            }
-           localStorage["users"] = angular.toJson(localData);
+           localStorage.setItem("users", angular.toJson(localData));
            options.success(localData);
          }
        },
@@ -105,17 +105,6 @@
       }
       ]
     };
-  }
-  function getIndexById(data, id) {
-    var idx,
-      l = data.length;
-
-    for (var j; j < l; j++) {
-      if (data[j].Id == id) {
-        return j;
-      }
-    }
-    return null;
   }
 })();
 

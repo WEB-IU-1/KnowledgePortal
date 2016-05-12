@@ -21,8 +21,8 @@
         controllerAs: 'users',
         resolve:{
           userData: function($http){
-            return $http({url:"./app/users/users.json", type:"GET"}).then(function(data){
-              return(angular.fromJson(data));
+            return $http({url:"./app/users/users.json", type:"GET"}).then(function(response){
+              return response.data;
             })
           }
         }
