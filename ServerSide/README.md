@@ -17,7 +17,7 @@ Dont use!!!
   5. For easy using create in C:/ create directory data/db/ Here will be store your DataBase.(for now)
     * Here you can optionally change the Database path, but this will entail a lot of relative paths settings. I do not recommend it.
   6. For using mongoDB in terminal and cmd create a variable, or just add to PATH this: C:\Program Files\MongoDB\Server\3.2\bin
-  ![alt tag]http://goo.gl/Tj19CB)
+  ![alt tag](http://goo.gl/Tj19CB)
   7. Now you can run the mongoDB server. Run terminal and write: `mongod`
      Its must run data base server.
   ![alt tag](http://goo.gl/42FrAs)
