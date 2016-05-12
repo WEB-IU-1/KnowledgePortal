@@ -1,4 +1,4 @@
-var mongoose    = require('lib/mongoose'),
+var mongoose    = require('../lib/mongoose'),
     Schema = mongoose.Schema;
 
 var categorySchema = new Schema({
@@ -24,7 +24,8 @@ var categorySchema = new Schema({
         default: true
     },
     parent_id:{
-        type: String
+        type: String,
+        default:''
     }
 });
 
