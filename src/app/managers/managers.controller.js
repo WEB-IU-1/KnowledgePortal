@@ -80,7 +80,7 @@
         title: "Действия"},
       { template: "<input type='checkbox' data-type='number' data-bind='checked: Status' #= (Status !=0) ? checked='checked' : '' # class='chkbx' />",
         title: "Активность"},
-      {field: "Role", title: "Роль", editor: vm.roleDropDownEditor, template: "#=Role.RoleName#"}
+      {field: "Role", title: "Роль", editor: roleDropDownEditor, template: "#=Role.RoleName#"}
     ];
     vm.gridOptions = {
       dataSource: vm.gridData,
@@ -89,7 +89,8 @@
       pageable: true,
       editable: "popup"
     };
-    vm.roleDropDownEditor = function(container, options){
+
+    function roleDropDownEditor(container, options){
       $('<input required data-bind="value:' + options.field + '"/>')
         .appendTo(container)
         .kendoDropDownList({
