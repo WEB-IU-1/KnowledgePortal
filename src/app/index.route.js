@@ -18,8 +18,20 @@
         url: '/managers',
         templateUrl: 'app/managers/managers.html',
         controller: 'ManagersController',
-        controllerAs: 'managers'
-      });
+        controllerAs: 'managers',
+        resolve: {
+          managersData: function ($http) {
+            return $http({url: "./app/managers/managers.json", type: "GET"}).then(function (data) {
+              return (angular.fromJson(data));
+            })
+          },
+          rolesData: function($http) {
+            return $http({url: "./app/managers/roles.json", type: "GET"}).then(function (data) {
+              return (angular.fromJson(data));
+            })
+          }
+        }
+        });
 
     $urlRouterProvider.otherwise('/');
   }

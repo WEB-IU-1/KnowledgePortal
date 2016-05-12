@@ -1,0 +1,197 @@
+[
+  {
+    "Id": "1",
+    "FirstName": "Monroe",
+    "LastName": "Greene",
+    "PartnerID": "5733568f0fefbdc659622884",
+    "Phone": "+7 (953) 516-3117",
+    "Email": "monroegreene@comvoy.com",
+    "Status": 0,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "2",
+    "FirstName": "Michael",
+    "LastName": "Mayer",
+    "PartnerID": "5733568fd22bc9827e494189",
+    "Phone": "+7 (989) 520-2017",
+    "Email": "michaelmayer@comvoy.com",
+    "Status": 2,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "3",
+    "FirstName": "Grant",
+    "LastName": "Patton",
+    "PartnerID": "5733568fa8b52cceb3c5e157",
+    "Phone": "+7 (888) 511-3132",
+    "Email": "grantpatton@comvoy.com",
+    "Status": 1,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "4",
+    "FirstName": "Nadine",
+    "LastName": "Padilla",
+    "PartnerID": "5733568f9cef0c943db09223",
+    "Phone": "+7 (876) 533-2842",
+    "Email": "nadinepadilla@comvoy.com",
+    "Status": 2,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "5",
+    "FirstName": "Alana",
+    "LastName": "Watson",
+    "PartnerID": "5733568f65ecf0e584608f40",
+    "Phone": "+7 (903) 404-3310",
+    "Email": "alanawatson@comvoy.com",
+    "Status": 1,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "6",
+    "FirstName": "Trina",
+    "LastName": "Burns",
+    "PartnerID": "5733568f9142bd9428ecd165",
+    "Phone": "+7 (824) 498-2344",
+    "Email": "trinaburns@comvoy.com",
+    "Status": 0,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "7",
+    "FirstName": "Blackburn",
+    "LastName": "Nash",
+    "PartnerID": "5733568fe32d44bf81567346",
+    "Phone": "+7 (937) 595-2493",
+    "Email": "blackburnnash@comvoy.com",
+    "Status": 2,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "8",
+    "FirstName": "Boyer",
+    "LastName": "Blair",
+    "PartnerID": "5733568f349b4a35f470326f",
+    "Phone": "+7 (825) 573-2965",
+    "Email": "boyerblair@comvoy.com",
+    "Status": 2,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "9",
+    "FirstName": "Peggy",
+    "LastName": "Clemons",
+    "PartnerID": "5733568f2c1bfab3bd410c3d",
+    "Phone": "+7 (813) 496-2751",
+    "Email": "peggyclemons@comvoy.com",
+    "Status": 2,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "10",
+    "FirstName": "Dorsey",
+    "LastName": "Tucker",
+    "PartnerID": "5733568ff6faf83c8f435a64",
+    "Phone": "+7 (970) 528-3060",
+    "Email": "dorseytucker@comvoy.com",
+    "Status": 0,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "11",
+    "FirstName": "Pennington",
+    "LastName": "Berry",
+    "PartnerID": "5733568f9b336c71e1a76e39",
+    "Phone": "+7 (927) 545-3677",
+    "Email": "penningtonberry@comvoy.com",
+    "Status": 2,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "12",
+    "FirstName": "Keller",
+    "LastName": "Hurst",
+    "PartnerID": "5733568f43cff383520a052c",
+    "Phone": "+7 (884) 589-3311",
+    "Email": "kellerhurst@comvoy.com",
+    "Status": 0,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "13",
+    "FirstName": "Le",
+    "LastName": "Beck",
+    "PartnerID": "5733568f2641b3c1b546341d",
+    "Phone": "+7 (852) 598-2568",
+    "Email": "lebeck@comvoy.com",
+    "Status": 1,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "14",
+    "FirstName": "Kristen",
+    "LastName": "Dudley",
+    "PartnerID": "5733568f76bd0420827c4ff8",
+    "Phone": "+7 (952) 554-3255",
+    "Email": "kristendudley@comvoy.com",
+    "Status": 1,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  },
+  {
+    "Id": "15",
+    "FirstName": "Jeannie",
+    "LastName": "Hogan",
+    "PartnerID": "5733568f768a058d891f5f6f",
+    "Phone": "+7 (918) 570-3470",
+    "Email": "jeanniehogan@comvoy.com",
+    "Status": 2,
+    "Role": {
+      "RoleId": 1,
+      "RoleName": "Менеджер"
+    }
+  }
+]
