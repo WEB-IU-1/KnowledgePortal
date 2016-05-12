@@ -2,18 +2,14 @@ var mongoose    = require('lib/mongoose'),
     Schema = mongoose.Schema;
 
 var categorySchema = new Schema({
-    id:{
-        type: String,
-        unique: true,
-        required:true
-    },
     name:{
         type: String,
         unique: true,
         required: true
     },
     description:{
-        type: String
+        type: String,
+        default: ''
     },
     created_date:{
         type: Date,
@@ -24,7 +20,8 @@ var categorySchema = new Schema({
         default: Date.now
     },
     active:{
-        type:Boolean
+        type:Boolean,
+        default: true
     },
     parent_id:{
         type: String

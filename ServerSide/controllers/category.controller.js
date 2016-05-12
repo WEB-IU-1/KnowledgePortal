@@ -25,6 +25,8 @@ exports.create = function(req,res){
 
         res.json({message:'category added'})
     });
+    mongoose.disconnect(callback);
+    console.log("#Connection closed.");
 };
 
 
