@@ -26,18 +26,45 @@ exports.read = function(req, res) {
 };
 
 exports.update = function(req,res){
-    res.send("update is not implemented now");
+    return Category.findById(req.params.id, function (err, category) {
+        if(!category) {
+            res.statusCode = 404;
+            return res.send({ error: 'Not found' });
+        }
+
+        category.name = req.body.name;
+        category.description = req.body.description;
+        category.updated_date = req.body.updated_date; //some how need stay it deafault
+        category.active = req.body.active;
+        category.parent_id = req.body.parent_id;
+
+        return category.save(function (err) {
+            if (!err) {
+                log.info("category updated");
+                return res.send({ status: 'OK', article:category });
+            } else {
+                if(err.name == 'ValidationError') {
+                    res.statusCode = 400;
+                    res.send({ error: 'Validation error' });
+                } else {
+                    res.statusCode = 500;
+                    res.send({ error: 'Server error' });
+                }
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+            }
+        });
+    });
 };
 
 exports.create = function(req,res){
-  new Category({
+  var category = new Category({
       id: req.body.id,
       name: req.body.name,
       description: req.body.description,
       active: req.body.active,
       parent_id: req.body.parent_id
-  })
-      .save(function(err){
+  });
+    category.save(function(err){
         if(!err){
             log.info("article created");
             return res.send({ status: 'OK', article:category });
@@ -58,14 +85,14 @@ exports.create = function(req,res){
 };
 
 exports.destroy = function(req,res){
-    return Category.findById(req.params.id, function (err, article) {
-        if(!article) {
+    return Category.findById(req.params.id, function (err, category) {
+        if(!category) {
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
         }
-        return article.remove(function (err) {
+        return category.remove(function (err) {
             if (!err) {
-                log.info("article removed");
+                log.info("category removed");
                 return res.send({ status: 'OK' });
             } else {
                 res.statusCode = 500;
@@ -77,7 +104,7 @@ exports.destroy = function(req,res){
 };
 
 exports.readById = function(req,res){
-    Category.findById(req.params.id, function(err,category){
+    return Category.findById(req.params.id, function(err,category){
             if(!category) {
                 res.statusCode = 404;
                 return res.send({ error: 'Not found' });
