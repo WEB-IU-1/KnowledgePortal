@@ -1,0 +1,16 @@
+{
+  "port" : 1337,
+  "mongoose": {
+    "uri": "mongodb://localhost/knowledgePortal",
+    "options":{
+      "server":{
+        "socketOptions":{
+          "keepAlive":0
+        }
+      }
+    }
+  },
+  "security":{
+
+  }
+}
