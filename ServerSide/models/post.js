@@ -9,6 +9,8 @@ var postSchema = new Schema({
     date: {type: Date, default: Date.now},
     author: {type: String, default: 'Anon'},
     post: String
+},{
+    versionKey: false   //If you don't need version_key
 });
 
 module.exports = mongoose.model('Post', postSchema);

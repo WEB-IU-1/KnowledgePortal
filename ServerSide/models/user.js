@@ -22,6 +22,8 @@ var schema = new Schema({
         type: Date,
         default: Date.now
     }
+},{
+    versionKey: false   //If you don't need version_key
 });
 
 schema.methods.encryptPassword=function(password){
