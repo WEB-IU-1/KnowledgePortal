@@ -5,10 +5,13 @@
     .controller('ManagersController', ManagersController);
 
   /** @ngInject */
-  function ManagersController($timeout, webDevTec, toastr, managersData) {
+  function ManagersController($timeout, webDevTec, toastr, managersData, rolesData) {
     var vm = this;
     if (!localStorage.getItem("managers")){
       localStorage.setItem("managers", angular.toJson(managersData.data));
+    }
+    if (!localStorage.getItem("roles")){
+      localStorage.setItem("roles", angular.toJson(rolesData.data));
     }
     vm.gridData = new kendo.data.DataSource({
       transport: {
@@ -30,7 +33,12 @@
         },
         destroy: function(e){
           var managers = angular.fromJson(localStorage["managers"]);
-          managers.splice(getIndexById(managers, e.data.Id), 1)
+          for(var i=0; i<managers.length; i++){
+            if(managers[i].Id == options.data.Id){
+              managers.splice(i,1);
+              break;
+            }
+          }
           localStorage.setItem("managers", angular.toJson(managers));
           e.success();
         }
@@ -46,7 +54,7 @@
             Id: {editable: false, nullable: true},
             LastName: {validation: {required: true}},
             FirstName: {validation: {required: true}},
-            PartnerId: {},
+            PartnerLink: {},
             Phone: {type: "Phone"},
             Email: { validation: {required: true}},
             Status: {},
@@ -58,7 +66,8 @@
     vm.gridColumns = [
       { field: "LastName", title: "Фамилия" },
       { field: "FirstName", title: "Имя" },
-      { field: "PartnerId", title: "Партнер" },
+      { field: "PartnerLink", title: "Партнер",
+        template:"<a href=${PartnerLink}>Партнер</a>"},
       { field: "Phone", title: "Мобильный телефон" },
       { field: "Email", title: "Почта" },
       { command: [
@@ -67,7 +76,7 @@
         title: "Действия"},
       { template: "<input type='checkbox' data-type='number' data-bind='checked: Status' #= (Status !=0) ? checked='checked' : '' # class='chkbx' />",
         title: "Активность"},
-      {field: "Role", title: "Роль", editor: roleDropDownEditor, template: "#=Role.RoleName#"}
+      { field: "Role", title: "Роль", editor: roleDropDownEditor, template: "#=Role.RoleName#" }
     ];
     vm.gridOptions = {
       dataSource: vm.gridData,
@@ -78,27 +87,18 @@
     };
 
     function roleDropDownEditor(container, options){
-      $('<input required data-bind="value:' + options.field + '"/>')
+      $('<input data-text-field="RoleName" data-value-field="RoleId" required data-bind="value:' + options.field + '"/>')
         .appendTo(container)
         .kendoDropDownList({
           autoBind: false,
-          dataTextField: "RoleName",
-          dataValueField: "RoleID",
-          dataSource: [
-            {
-              "RoleId": 0,
-              "RoleName": "Пользователь"
-            },
-            {
-              "RoleId": 1,
-              "RoleName": "Менеджер"
-            },
-            {
-              "RoleId": 2,
-              "RoleName": "Администратор"
+          dataSource:{
+            type: "json",
+            transport: {
+              read: function(e){
+                e.success(angular.fromJson(localStorage["roles"]));
+              }
             }
-          ]
-        });
-    };
-  }
+          }}
+        )}
+      }
 })();
