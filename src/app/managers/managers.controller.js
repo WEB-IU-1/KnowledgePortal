@@ -7,37 +7,24 @@
   /** @ngInject */
   function ManagersController($timeout, webDevTec, toastr, managersData) {
     var vm = this;
-    function getIndexById(data, id) {
-      var idx,
-        l = data.length;
-
-      for (var j; j < l; j++) {
-        if (data[j].Id == id) {
-          return j;
-        }
-      }
-      return null;
-    }
     if (!localStorage.getItem("managers")){
-      window.alert("ale");
       localStorage.setItem("managers", angular.toJson(managersData.data));
     }
     vm.gridData = new kendo.data.DataSource({
       transport: {
         read: function(e){
-          console.log(localStorage["managers"]);
           e.success(angular.fromJson(localStorage["managers"]));
         },
         create: function(e){
           var managers = angular.fromJson(localStorage["managers"]);
-          e.data.Id = managers[managers.length - 1].Id + 1;
+          e.data.Id = managers[managers.length-1].Id + 1;
           managers.push(e.data);
           localStorage.setItem("managers", angular.toJson(managers));
           e.success(e.data);
         },
         update: function(e){
           var managers = angular.fromJson(localStorage["managers"]);
-          managers[getIndexById(managers, e.data.id)] = e.data;
+          managers[managers.indexOf(managers.filter(function(item) { return item.Id === e.data.Id})[0])] = e.data;
           localStorage.setItem("managers", angular.toJson(managers));
           e.success();
         },
@@ -107,7 +94,7 @@
               "RoleName": "Менеджер"
             },
             {
-              "RoleId": 1,
+              "RoleId": 2,
               "RoleName": "Администратор"
             }
           ]
