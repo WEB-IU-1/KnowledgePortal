@@ -4,7 +4,7 @@ var router = express.Router();
 var api = require('controllers/product.controller');
 
 
-router.get('/all', api.read);                   //gets all
+router.get('/', api.read);                   //gets all
 
 router.put('/:id', api.update);              //edit one by id
 

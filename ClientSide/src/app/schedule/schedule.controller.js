@@ -31,7 +31,7 @@
         batch: true,
         transport: {
           read: {
-            url: "http://localhost:1337/api/product/all",
+            url: "http://localhost:1337/api/product/",
             dataType: "json"
           },
           update: {
