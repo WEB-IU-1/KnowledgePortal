@@ -32,19 +32,19 @@
         transport: {
           read: {
             url: "http://localhost:1337/api/product/all",
-            dataType: "jsonp"
+            dataType: "json"
           },
           update: {
             url: "http://localhost:1337/api/product/",
-            dataType: "jsonp"
+            dataType: "json"
           },
           create: {
             url: "http://localhost:1337/api/product/",
-            dataType: "jsonp"
+            dataType: "json"
           },
           destroy: {
             url: "http://localhost:1337/api/product/",
-            dataType: "jsonp"
+            dataType: "json"
           },
           parameterMap: function (options, operation) {
             if (operation !== "read" && options.models) {

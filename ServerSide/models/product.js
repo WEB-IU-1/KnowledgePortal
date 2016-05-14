@@ -56,6 +56,8 @@ var productSchema = new Schema({
             type: String,
             default:''
         }
+}, {
+    versionKey: false   //If you don't need version_key
 });
 
 module.exports = mongoose.model('Product',productSchema);
