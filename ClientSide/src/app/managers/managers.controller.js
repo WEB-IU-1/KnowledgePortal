@@ -5,7 +5,7 @@
     .controller('ManagersController', ManagersController);
 
   /** @ngInject */
-  function ManagersController($timeout, webDevTec, toastr, managersData, rolesData) {
+  function ManagersController($timeout, webDevTec, toastr, rolesData) {
     var vm = this;
     if (!localStorage.getItem("roles")){
       localStorage.setItem("roles", angular.toJson(rolesData.data));
@@ -15,23 +15,19 @@
       transport: {
         read: {
           url: "http://localhost:1337/api/manager/",
-          dataType: "json",
-          type: "GET"
+          dataType: "json"
         },
         create: {
           url: "http://localhost:1337/api/manager/",
-          dataType: "json",
-          type: "POST"
+          dataType: "json"
         },
         update: {
           url: "http://localhost:1337/api/manager/",
-          dataType: "json",
-          type: 'PUT'
+          dataType: "json"
         },
         destroy: {
           url: "http://localhost:1337/api/manager/",
-          dataType: "json",
-          type: "DELETE"
+          dataType: "json"
         },
         parameterMap: function(options, operation){
           if (operation !== "read" && options.models) {
