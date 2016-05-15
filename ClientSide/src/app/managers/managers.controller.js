@@ -7,40 +7,36 @@
   /** @ngInject */
   function ManagersController($timeout, webDevTec, toastr, managersData, rolesData) {
     var vm = this;
-    if (!localStorage.getItem("managers")){
-      localStorage.setItem("managers", angular.toJson(managersData.data));
-    }
     if (!localStorage.getItem("roles")){
       localStorage.setItem("roles", angular.toJson(rolesData.data));
     }
     vm.gridData = new kendo.data.DataSource({
+      batch: true,
       transport: {
-        read: function(e){
-          e.success(angular.fromJson(localStorage["managers"]));
+        read: {
+          url: "http://localhost:1337/api/manager/",
+          dataType: "json",
+          type: "GET"
         },
-        create: function(e){
-          var managers = angular.fromJson(localStorage["managers"]);
-          e.data.Id = managers[managers.length-1].Id + 1;
-          managers.push(e.data);
-          localStorage.setItem("managers", angular.toJson(managers));
-          e.success(e.data);
+        create: {
+          url: "http://localhost:1337/api/manager/",
+          dataType: "json",
+          type: "POST"
         },
-        update: function(e){
-          var managers = angular.fromJson(localStorage["managers"]);
-          managers[managers.indexOf(managers.filter(function(item) { return item.Id === e.data.Id})[0])] = e.data;
-          localStorage.setItem("managers", angular.toJson(managers));
-          e.success();
+        update: {
+          url: "http://localhost:1337/api/manager/",
+          dataType: "json",
+          type: 'PUT'
         },
-        destroy: function(e){
-          var managers = angular.fromJson(localStorage["managers"]);
-          for(var i=0; i<managers.length; i++){
-            if(managers[i].Id == options.data.Id){
-              managers.splice(i,1);
-              break;
-            }
+        destroy: {
+          url: "http://localhost:1337/api/manager/",
+          dataType: "json",
+          type: "DELETE"
+        },
+        parameterMap: function(options, operation){
+          if (operation !== "read" && options.models) {
+            return {models: kendo.stringify(options.models)};
           }
-          localStorage.setItem("managers", angular.toJson(managers));
-          e.success();
         }
       },
       error: function (e) {
@@ -49,9 +45,9 @@
       pageSize: 6,
       schema: {
         model: {
-          id: "Id",
+          id: "_id",
           fields: {
-            Id: {editable: false, nullable: true},
+            id: {editable: false, nullable: true},
             LastName: {validation: {required: true}},
             FirstName: {validation: {required: true}},
             PartnerLink: {},
