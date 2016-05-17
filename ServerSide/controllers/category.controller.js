@@ -26,7 +26,7 @@ exports.read = function(req, res) {
 };
 
 exports.update = function(req,res){
-    return Category.findById(req.params.id, function (err, category) {
+    return Category.findById(req.body._id, function (err, category) {
         if(!category) {
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
