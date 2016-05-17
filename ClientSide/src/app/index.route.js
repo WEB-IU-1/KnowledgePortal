@@ -19,6 +19,12 @@
         templateUrl: 'app/schedule/schedule.html',
         controller: 'ScheduleCourseController',
         controllerAs: 'scheduleCourse'
+      })
+      .state('category',{
+        url: "/category",
+        templateUrl: 'app/category/category.html',
+        controller: 'CategoryController',
+        controllerAs: 'category'
       });
 
     $urlRouterProvider.otherwise('/');
