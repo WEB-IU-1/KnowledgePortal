@@ -6,7 +6,7 @@ var api = require('controllers/category.controller');
 
 router.get('/', api.read);                   //gets all
 
-router.put('/:id', api.update);              //edit one by id
+router.put('/', api.update);              //edit one by id
 
 router.post('/', api.create);                //create new one
 

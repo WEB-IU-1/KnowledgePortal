@@ -6,55 +6,28 @@
     .controller('CategoryController', CategoryController);
 
   /** @ngInject */
-  function CategoryController() {
+  function CategoryController(DataSource) {
     var vm = this;
 
     var crudServiceBaseUrl = "//localhost:1337/api/category/";
 
     vm.treelistOptions = {
-      dataSource: {
-        transport: {
-          read:  {
-            url: crudServiceBaseUrl,
-            dataType: "json"
-          },
-          update: {
-            url: crudServiceBaseUrl,
-            dataType: "json"
-          },
-          destroy: {
-            url: crudServiceBaseUrl,
-            dataType: "json"
-          },
-          create: {
-            url: crudServiceBaseUrl,
-            dataType: "json"
-          },
-          parameterMap: function(options, operation) {
-            if (operation !== "read" && options.models) {
-              return {models: kendo.stringify(options.models)};
-            }
-          }
-        },
-        schema: {
-          model: {
-            id: "_id",
-            parentId: "parent_id",
-            fields: {
-              name: {field: "name", type: "string", validation: { required: true } }
-            }
-          }
-        }
-      },
-      sortable: true,
+      dataSource: DataSource.getDataSource(crudServiceBaseUrl),
+      toolbar:["create"],
       editable: true,
+      sortable: true,
+      height:540,
       columns: [
-        { field: "name", title: "Category name", width: "150px" },
-
-        { command: [
-          { name: "edit" },
-          { name: "createChild" },
-          { name: "destroy" }]
+        { field: "name",expandable: true, title: "Category name", width: "150px" },
+        { title: "Edit", command: [
+          {
+            name: "destroy",
+            text: " ",
+            template:
+              '<button data-command="destroy" class="k-button k-button-icontext k-grid-delete">' +
+              '<span class="k-icon k-delete"></span>Delete</button>'
+          }
+          ]
         }
       ]
     };
