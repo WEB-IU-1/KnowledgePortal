@@ -20,24 +20,24 @@
       pageable: true,
       columns: [{
         field: "LastName",
-        title: "Last Name",
+        title: "Фамилия",
         width: "120px"
       },{
         field: "FirstName",
-        title: "First Name"
+        title: "Имя"
       },{
         field: "Gender",
-        title: "Gender",
+        title: "Пол",
         width: "120px"
       },{
         field: "Address",
-        title: "Address"
+        title: "Адрес"
       },{
         field: "Phone",
-        title: "Phone"
+        title: "Телефон"
       },{
         field: "BirthDate",
-        title: "Date of birth",
+        title: "Дата рождения",
         filterable: {
           ui: "datetimepicker"
         }
@@ -46,7 +46,7 @@
         title: "Email"
       },{
         field: "RegistrationDate",
-        title: "RegistrationDate",
+        title: "Дата регистрации",
         filterable: {
           ui: "datetimepicker"
         }
