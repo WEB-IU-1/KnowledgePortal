@@ -26,6 +26,22 @@
           expanded: true
         }
       },
+      '//localhost:1337/api/customer':{
+        model : {
+          id: "_id",
+          fields: {
+            _id:{type: "string", nullable: false, editable: false},
+            LastName: {type: "string" , validation: {required: true}},
+            FirstName: {type: "string" , validation: {required: true}},
+            Gender: {type: "string" , validation: {required: true}},
+            Address: {type: "string" , validation: {required: true}},
+            BirthDate:{type: "date", validation: {required: true}},
+            Phone:{type:"string", validation: {required: true}},
+            Email:{ type: "string" , validation: {required: true}},
+            RegistrationDate:{type:"date", validation: {required: true}}
+          }
+        }
+      },
       '//localhost:1337/api/other':{
         model: {
           id: "_id",

@@ -24,7 +24,7 @@ Dont use!!!
   8. Download Robomongo for manage database. https://goo.gl/of0sh5
   9. Run Robomongo and create connection like this
   ![alt tag](http://goo.gl/GdETOc)
-  10. At lust chose ServerSide workspace directory. Write cd ServerSide  or cd s and press Tab.
+  10. At last chose ServerSide workspace directory. Write cd ServerSide or cd s and press Tab.
   11. In terminal put this: `nodemon app.js`
   You must see something like 
   ![alt tag](http://goo.gl/Wdrs9O)

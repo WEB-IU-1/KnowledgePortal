@@ -24,14 +24,8 @@
         url: '/users',
         templateUrl: 'app/users/users.html',
         controller: 'UsersController',
-        controllerAs: 'users',
-        resolve:{
-          userData: function($http){
-            return $http({url:"./app/users/users.json", type:"GET"}).then(function(response){
-              return response.data;
-            })
-          }
-        }
+        controllerAs: 'users'
+
       });
 
     $urlRouterProvider.otherwise('/');
