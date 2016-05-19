@@ -82,10 +82,10 @@ exports.create = function(req,res){
     });
     customer.save(function(err){
         if(!err){
-            log.info("article created");
+            log.info("entity created");
             return res.send({ status: 'OK', article:customer });
         }
-        else{
+        else {
             log.error(err);
             if(err.name == 'ValidationError') {
                 res.statusCode = 400;

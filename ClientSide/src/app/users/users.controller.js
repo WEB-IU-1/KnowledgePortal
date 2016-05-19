@@ -8,7 +8,7 @@
   /** @ngInject */
   function UsersController(DataSource) {
     var uc = this;
-    var crudServiceBaseUrl = "//localhost:1337/api/customer/";
+    var crudServiceBaseUrl = "//localhost:1337/api/customer";
     uc.mainGridOptions = {
       toolbar: ["create"],
       dataSource: DataSource.getDataSource(crudServiceBaseUrl),
