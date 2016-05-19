@@ -26,7 +26,7 @@ exports.read = function(req, res) {
 };
 
 exports.update = function(req,res){
-    return Product.findById(req.params.id, function (err, product) {
+    return Product.findById(req.body._id, function (err, product) {
         if(!product) {
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
@@ -37,6 +37,8 @@ exports.update = function(req,res){
         product.updated_date = req.body.updated_date; //some how need stay it default
         product.active = req.body.active;
         product.product_types = req.body.product_types;
+        product.start=req.body.start;
+        product.end=req.body.end;
         product.parent_id = req.body.parent_id;
         product.teacher = req.body.teacher;
         product.seats_count = req.body.seats_count;
@@ -67,6 +69,8 @@ exports.create = function(req,res){
       description: req.body.description,
       updated_date: req.body.updated_date,
       active: req.body.active,
+      start:req.body.start,
+      end:req.body.end,
       types: req.body.types,
       parent_id: req.body.parent_id,
       teacher: req.body.teacher,

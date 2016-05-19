@@ -28,7 +28,7 @@
       },
       '//localhost:1337/api/product/':{
         model: {
-          id: "_id",
+          id: "taskId",
           fields: {
             taskId: {from: "_id", type: "string"},
             title: {from: "name", defaultValue: "No title", validation: {required: true}},
