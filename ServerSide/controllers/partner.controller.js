@@ -1,19 +1,19 @@
-/* The category API controller
+/* The partner API controller
  Exports 4 methods:
  * read - Returns a list of Categories
  * update - Edits one by id
  * destroy - Delete one by id
- * create - Creates a new Category
+ * create - Creates a new Partner
  *
  * additional methods:
  * readById
  * readByName
 */
 var log         = require('lib/log')(module);//add module for server login
-var Category    = require('models/partner');//add model
+var Partner    = require('models/partner');//add model
 
 exports.read = function(req, res) {
-    Category.find(function(err, threads) {
+    Partner.find(function(err, threads) {
         if(!err){
             res.send(threads);
         }
@@ -26,22 +26,22 @@ exports.read = function(req, res) {
 };
 
 exports.update = function(req,res){
-    return Category.findById(req.params.id, function (err, category) {
-        if(!category) {
+    return Partner.findById(req.body._id, function (err, partner) {
+        if(!partner) {
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
         }
 
-        category.name = req.body.name;
-        category.description = req.body.description;
-        category.updated_date = req.body.updated_date; //some how need stay it deafault
-        category.active = req.body.active;
-        category.parent_id = req.body.parent_id;
+        partner.name = req.body.name;
+        partner.description = req.body.description;
+        partner.updated_date = req.body.updated_date; //some how need stay it deafault
+        partner.active = req.body.active;
+        partner.parent_id = req.body.parent_id;
 
-        return category.save(function (err) {
+        return partner.save(function (err) {
             if (!err) {
-                log.info("category updated");
-                return res.send({ status: 'OK', article:category });
+                log.info("partner updated");
+                return res.send({ status: 'OK', article:partner });
             } else {
                 if(err.name == 'ValidationError') {
                     res.statusCode = 400;
@@ -57,17 +57,24 @@ exports.update = function(req,res){
 };
 
 exports.create = function(req,res){
-  var category = new Category({
-      id: req.body.id,
+  var partner = new Partner({
       name: req.body.name,
-      description: req.body.description,
-      active: req.body.active,
-      parent_id: req.body.parent_id
+      full_name: req.body.full_name,
+      logo: req.body.logo,
+      credentials: req.body.credentials,
+      address: req.body.address,
+      phone: req.body.phone,
+      email: req.body.email,
+      contact_people: req.body.contact_people,
+      categories: req.body.categories,
+      teachers: req.body.teachers,
+      offices_addresses: req.body.offices_addresses,
+      comment: req.body.comment
   });
-    category.save(function(err){
+    partner.save(function(err){
         if(!err){
             log.info("article created");
-            return res.send({ status: 'OK', article:category });
+            return res.send({ status: 'OK', article:partner });
         }
           else{
             log.error(err);
@@ -85,14 +92,14 @@ exports.create = function(req,res){
 };
 
 exports.destroy = function(req,res){
-    return Category.findById(req.params.id, function (err, category) {
-        if(!category) {
+    return Partner.findById(req.params.id, function (err, partner) {
+        if(!partner) {
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
         }
-        return category.remove(function (err) {
+        return partner.remove(function (err) {
             if (!err) {
-                log.info("category removed");
+                log.info("partner removed");
                 return res.send({ status: 'OK' });
             } else {
                 res.statusCode = 500;
@@ -104,13 +111,13 @@ exports.destroy = function(req,res){
 };
 
 exports.readById = function(req,res){
-    return Category.findById(req.params.id, function(err,category){
-            if(!category) {
+    return Partner.findById(req.params.id, function(err,partner){
+            if(!partner) {
                 res.statusCode = 404;
                 return res.send({ error: 'Not found' });
             }
             if (!err) {
-                return res.send({ status: 'OK', article:category });
+                return res.send({ status: 'OK', article:partner });
             } else {
                 res.statusCode = 500;
                 log.error('Internal error(%d): %s',res.statusCode,err.message);

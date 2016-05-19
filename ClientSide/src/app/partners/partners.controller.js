@@ -13,7 +13,7 @@
       dataSource: {
         transport: {
             read: {
-              url: "http://localhost:1337/api/partner/all",
+              url: "http://localhost:1337/api/partner/",
               dataType: "json"
             },
             update: {
@@ -21,7 +21,7 @@
               dataType: "json"
             },
             create: {
-              url: "http://localhost:1337/api/partner/",
+              url: "http://localhost:1337/api/partner",
               type: "post",
               dataType: "json"
             },
@@ -30,20 +30,26 @@
               dataType: "json"
             }
         },
-        //schema: {
-        //  model: {
-        //    id: "ID",
-        //    fields: {
-        //      ID: { editable: true, nullable: true },
-        //      name: { validation: { required: true } },
-        //      full_name: { validation: { required: true, min: 1} },
-        //      logo: {},
-        //      credentials: {validation: { required: true }},
-        //      Discontinued: { type: "boolean" },
-        //      UnitsInStock: { type: "number", validation: { min: 0, required: true } }
-        //    }
-        //  }
-        //}
+        schema: {
+          model: {
+            id: "_id",
+            fields: {
+              _id: { editable: false, nullable: true, hidden: true },
+              name: { validation: { required: true } },
+              full_name: { validation: { required: true, min: 1}, hidden: true },
+              logo: {},
+              credentials: { hidden: true, validation: { required: true }},
+              address: { hidden: true, validation: { required: true }},
+              phone: { validation: { required: true }},
+              email: { validation: { required: true }},
+              contact_people: { hidden: true },
+              categories: { hidden: true },
+              teachers: { hidden: true },
+              offices_addresses: { hidden: true },
+              comment: { }
+            }
+          }
+        }
       },
       toolbar: ["create"],
       sortable: true,
@@ -52,27 +58,23 @@
         this.expandRow(this.tbody.find("tr.k-master-row").first());
       },
       columns: [{
-        field: "ID",
-        title: "ID",
-        hidden: true
+        field: "_id",
+        title: "ID"
       },{
         field: "name",
         title: "Название компании"
       },{
         field: "full_name",
-        title: "Полное название компании",
-        hidden: true
+        title: "Полное название компании"
       },{
         field: "logo",
         title: "Лого"
       },{
         field: "credentials",
-        title: "Реквизиты",
-        hidden: true
+        title: "Реквизиты"
       },{
         field: "address",
-        title: "Адрес",
-        hidden: true
+        title: "Адрес"
       },{
         field: "phone",
         title: "Телефон"
@@ -81,20 +83,16 @@
         title: "Email"
       },{
         field: "contact_people",
-        title: "Контактные лица",
-        hidden: true
+        title: "Контактные лица"
       },{
         field: "categories",
-        title: "Направления",
-        hidden: true
+        title: "Направления"
       },{
         field: "teachers",
-        title: "Преподаватели",
-        hidden: true
+        title: "Преподаватели"
       },{
         field: "offices_addresses",
-        title: "Список адресов филиалов",
-        hidden: true
+        title: "Список адресов филиалов"
       },{
         field: "comment",
         title: "Комментарий"
