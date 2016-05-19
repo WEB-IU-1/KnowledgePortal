@@ -1,0 +1,17 @@
+[
+  {
+    "ID": 1,
+    "name": "first",
+    "full_name": "first partner",
+    "logo": "url",
+    "credentials": "creds",
+    "address": "addr",
+    "phone": "+7...",
+    "email": "email@domain.com",
+    "contact_people": "Ivan, Petr",
+    "categories": "fisrt, second, third",
+    "teachers": "t1, t2",
+    "offices_addresses": "adr0, adr1",
+    "comment": "****"
+  }
+]

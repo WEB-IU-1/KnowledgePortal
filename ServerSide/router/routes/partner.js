@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var api = require('controllers/category.controller');
+var api = require('controllers/partner.controller');
 
 
 router.get('/all', api.read);                   //gets all

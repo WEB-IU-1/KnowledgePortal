@@ -14,11 +14,11 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
-      .state('category',{
-        url: "/category",
-        templateUrl: 'app/category/category.html',
-        controller: 'CategoryController',
-        controllerAs: 'category'
+      .state('partners', {
+        url: '/partners',
+        templateUrl: 'app/partners/partners.html',
+        controller: 'PartnersController',
+        controllerAs: 'partners'
       });
 
     $urlRouterProvider.otherwise('/');
