@@ -10,7 +10,7 @@
     var uc = this;
     var crudServiceBaseUrl = "//localhost:1337/api/customer";
     uc.mainGridOptions = {
-      toolbar: ["create"],
+      toolbar: [{name:"create", text:"Добавить"}],
       dataSource: DataSource.getDataSource(crudServiceBaseUrl),
       editable: "popup",
       filterable: {
@@ -51,7 +51,7 @@
           ui: "datetimepicker"
         }
       },{
-        command: ["edit", "destroy"],
+        command: [{name:"edit", text:"Редактировать"}, {name: "destroy", text: "Удалить"}],
         title: "&nbsp;",
         width: "250px"
       }
