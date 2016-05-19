@@ -25,7 +25,7 @@ var categorySchema = new Schema({
     },
     parent_id:{
         type: String,
-        default:''
+        default:null
     }
 });
 

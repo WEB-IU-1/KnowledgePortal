@@ -13,15 +13,18 @@ var express         = require('express'),
 var app = express();
 
 app.use(morgan('dev'));     // log every request to the console
-app.use(bodyParser());      // pull information from html in POST
+
 app.use(methodOverride());  // simulate DELETE and PUT
+
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods","GET, POST, OPTIONS, PUT, DELETE" );
     next();
 });
-app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
 
 
 app.listen(config.get('port'), function(){
