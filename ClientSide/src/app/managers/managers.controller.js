@@ -5,56 +5,12 @@
     .controller('ManagersController', ManagersController);
 
   /** @ngInject */
-  function ManagersController($timeout, webDevTec, toastr, rolesData) {
+  function ManagersController(rolesData, DataSource) {
     var vm = this;
     if (!localStorage.getItem("roles")){
       localStorage.setItem("roles", angular.toJson(rolesData.data));
     }
-    vm.gridData = new kendo.data.DataSource({
-      batch: true,
-      transport: {
-        read: {
-          url: "http://localhost:1337/api/manager/",
-          dataType: "json"
-        },
-        create: {
-          url: "http://localhost:1337/api/manager/",
-          dataType: "json"
-        },
-        update: {
-          url: "http://localhost:1337/api/manager/",
-          dataType: "json"
-        },
-        destroy: {
-          url: "http://localhost:1337/api/manager/",
-          dataType: "json"
-        },
-        parameterMap: function(options, operation){
-          if (operation !== "read" && options.models) {
-            return {models: kendo.stringify(options.models)};
-          }
-        }
-      },
-      error: function (e) {
-        alert("Status: " + e.status + "; Error message: " + e.errorThrown);
-      },
-      pageSize: 6,
-      schema: {
-        model: {
-          id: "_id",
-          fields: {
-            id: {editable: false, nullable: true},
-            LastName: {validation: {required: true}},
-            FirstName: {validation: {required: true}},
-            PartnerLink: {},
-            Phone: {type: "Phone"},
-            Email: { validation: {required: true}},
-            Status: {},
-            Role: {defaultValue: { RoleId: 1, RoleName: "Менеджер"}}
-          }
-        }
-      }
-    });
+    var crudServiceBaseUrl = "//localhost:1337/api/manager/";
     vm.gridColumns = [
       { field: "LastName", title: "Фамилия" },
       { field: "FirstName", title: "Имя" },
@@ -71,7 +27,7 @@
       { field: "Role", title: "Роль", editor: roleDropDownEditor, template: "#=Role.RoleName#" }
     ];
     vm.gridOptions = {
-      dataSource: vm.gridData,
+      dataSource: DataSource.getDataSource(crudServiceBaseUrl),
       toolbar: [{name: "create", text: "Добавить менеджера"}],
       columns: vm.gridColumns,
       pageable: true,

@@ -34,6 +34,21 @@
           },
           expanded: true
         }
+      },
+      '//localhost:1337/api/manager/':{
+        model: {
+          id: "_id",
+          fields: {
+            id: {editable: false, nullable: true},
+            LastName: {validation: {required: true}},
+            FirstName: {validation: {required: true}},
+            PartnerLink: {},
+            Phone: {type: "Phone"},
+            Email: { validation: {required: true}},
+            Status: {},
+            Role: {defaultValue: { RoleId: 1, RoleName: "Менеджер"}}
+          }
+        }
       }
     };
 
@@ -45,7 +60,7 @@
         type: "json",
         transport: {
           create: function (e) {
-            return $http.post(url).then(function (response) {
+            return $http.post(url, e.data).then(function (response) {
                 e.success(response.data.article);
               },
               function () {

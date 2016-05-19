@@ -13,7 +13,9 @@ var Manager    = require('models/manager');//add model
 exports.read = function(req, res) {
     Manager.find(function(err, threads) {
         if(!err){
-            res.send(threads);
+            res.send(threads.filter(function(value){
+                return (value.Role.RoleId == 1 || value.Role.RoleId == 2)
+            }));
         }
         else {
             res.statusCode = 500;
@@ -24,7 +26,7 @@ exports.read = function(req, res) {
 };
 
 exports.update = function(req,res){
-    return Manager.findById(req.params.id, function (err, manager) {
+    return Manager.findById(req.body._id, function (err, manager) {
         if(!manager) {
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
@@ -57,6 +59,7 @@ exports.update = function(req,res){
     });
 };
 exports.create = function(req,res){
+    console.log(req.body.FirstName);
     var manager = new Manager({
         FirstName: req.body.FirstName,
         LastName: req.body.LastName,
@@ -105,21 +108,4 @@ exports.destroy = function(req,res){
             }
         });
     });
-};
-
-exports.readById = function(req,res){
-    return Manager.findById(req.params.id, function(err,manager){
-            if(!manager) {
-                res.statusCode = 404;
-                return res.send({ error: 'Not found' });
-            }
-            if (!err) {
-                return res.send({ status: 'OK', article:manager });
-            } else {
-                res.statusCode = 500;
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
-                return res.send({ error: 'Server error' });
-            }
-        }
-    );
 };
