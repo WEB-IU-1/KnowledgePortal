@@ -14,11 +14,11 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
-      .state('scheduleCourse', {
-        url: '/schedule',
-        templateUrl: 'app/schedule/schedule.html',
-        controller: 'ScheduleCourseController',
-        controllerAs: 'scheduleCourse'
+      .state('schedulerCourse', {
+        url: '/scheduler',
+        templateUrl: 'app/scheduler/scheduler.html',
+        controller: 'SchedulerCourseController',
+        controllerAs: 'scheduler'
       })
       .state('category',{
         url: "/category",

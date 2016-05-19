@@ -26,6 +26,19 @@
           expanded: true
         }
       },
+      '//localhost:1337/api/product/':{
+        model: {
+          id: "_id",
+          fields: {
+            taskId: {from: "_id", type: "string"},
+            title: {from: "name", defaultValue: "No title", validation: {required: true}},
+            start: {type: "date", from: "start"},
+            end: {type: "date", from: "end"},
+            active: {from: "active", defaultValue: true},
+            isAllDay: {type: "boolean", from: "IsAllDay"}
+          }
+        }
+      },
       '//localhost:1337/api/other':{
         model: {
           id: "_id",
@@ -40,7 +53,7 @@
     return service;
 
     function getDataSource(url) {
-      return new kendo.data.DataSource({
+      return {
         batch: false,
         type: "json",
         transport: {
@@ -77,7 +90,7 @@
             )}
         },
         schema: models[url]
-      });
+      };
     }
   }
 })();
