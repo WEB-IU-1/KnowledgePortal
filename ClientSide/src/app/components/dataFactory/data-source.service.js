@@ -31,14 +31,83 @@
           id: "_id",
           fields: {
             _id:{type: "string", nullable: false, editable: false},
-            LastName: {type: "string" , validation: {required: true}},
-            FirstName: {type: "string" , validation: {required: true}},
+            LastName: {
+              type: "string" ,
+              validation: {
+                required: true,
+
+              lastNameValidator: function(input) {
+                if (input.is("[name='LastName']") && input.val() != "") {
+                  input.attr("data-lastNameValidator-msg", "Фамилия состоит только из букв");
+                  return /^([A-Za-zА-Яа-я]+)$/.test(input.val())
+                }
+                return true;
+                }
+              }
+            },
+            FirstName: {
+              type: "string" ,
+              validation:
+               {
+                required: true,
+                 firstNameValidator: function(input) {
+                   if (input.is("[name='FirstName']") && input.val() != "") {
+                     input.attr("data-firstNameValidator-msg", "Имя состоит только из букв");
+                     return /^([A-Za-zА-Яа-я]+)$/.test(input.val())
+                   }
+                   return true;
+                 }
+               }
+            },
             Gender: {type: "string" , validation: {required: true}},
             Address: {type: "string" , validation: {required: true}},
-            BirthDate:{type: "date", validation: {required: true}},
-            Phone:{type:"string", validation: {required: true}},
-            Email:{ type: "string" , validation: {required: true}},
-            RegistrationDate:{type:"date", validation: {required: true}}
+            BirthDate:
+            {
+              type: "date",
+              validation:
+              {
+                required: true,
+                ageValidator: function(input) {
+                  if (input.is("[name='BirthDate']") && input.val() != "") {
+                    input.attr("data-ageValidator-msg", "Пользователь должен быть совершеннолетним");
+                    return isAdult(new Date(input.val()))
+                  }
+                  return true;
+                }
+              }
+            },
+            Phone:
+            {
+              type:"string",
+              validation:
+              {
+                required: true,
+                phoneValidator: function(input) {
+                  if (input.is("[name='Phone']") && input.val() != "") {
+                    input.attr("data-phoneValidator-msg", "Введите телефон в правильном формате");
+                    return /^(?:\+?\d{2}[ -]?\d{3}[ -]?\d{5,8}|\d{4})$/.test(input.val());
+                  }
+                  return true;
+                }
+              }
+            },
+            Email: {
+              type: "string" ,
+              validation:
+              {
+                required: true,
+                emailValidator: function(input) {
+                  if (input.is("[name='Email']") && input.val() != "") {
+                    input.attr("data-emailValidator-msg", "Введите email в формате name@smth.de");
+                    return /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i
+                      .test(input.val());
+                  }
+                  return true;
+                }
+              }
+            },
+            RegistrationDate: {type:"date", validation: {required: true}, editable: false},
+            UpdatedDate: {type:"date", validation: {required: true}, editable: false}
           }
         }
       },
@@ -94,6 +163,17 @@
         },
         schema: models[url]
       });
+    }
+
+    function isAdult(dateString) {
+      var today = new Date();
+      var birthDate = new Date(dateString);
+      var age = today.getFullYear() - birthDate.getFullYear();
+      var m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      return age >= 18;
     }
   }
 })();

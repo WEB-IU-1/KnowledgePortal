@@ -28,7 +28,9 @@
       },{
         field: "Gender",
         title: "Пол",
-        width: "120px"
+        width: "120px",
+        editor: GenderDropDownEditor,
+        template: "#=Gender#"
       },{
         field: "Address",
         title: "Адрес"
@@ -40,7 +42,8 @@
         title: "Дата рождения",
         filterable: {
           ui: "datetimepicker"
-        }
+        },
+        template:'#= kendo.toString(BirthDate, "dd/MM/yyyy") #'
       },{
         field: "Email",
         title: "Email"
@@ -49,7 +52,17 @@
         title: "Дата регистрации",
         filterable: {
           ui: "datetimepicker"
-        }
+        },
+        template:'#= kendo.toString(RegistrationDate, "dd/MM/yyyy") #'
+
+      },{
+        field: "UpdatedDate",
+        title: "Дата обновления",
+        filterable: {
+          ui: "datetimepicker"
+        },
+        template:'#= kendo.toString(RegistrationDate, "HH:MM dd/MM/yyyy") #'
+
       },{
         command: [{name:"edit", text:"Редактировать"}, {name: "destroy", text: "Удалить"}],
         title: "&nbsp;",
@@ -57,6 +70,18 @@
       }
       ]
     };
+
+    function GenderDropDownEditor(container, options) {
+      $('<input required data-text-field="Gender" data-value-field="Gender" data-bind="value:' + options.field + '"/>')
+        .appendTo(container)
+        .kendoDropDownList({
+          autoBind: false,
+          dataSource: [
+            {Gender:"Мужской"},
+            {Gender:"Женский"}
+            ]
+          });
+        }
   }
 })();
 
