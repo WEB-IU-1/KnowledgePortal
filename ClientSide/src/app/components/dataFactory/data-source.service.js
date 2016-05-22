@@ -107,7 +107,7 @@
               }
             },
             RegistrationDate: {type:"date", validation: {required: true}, editable: false},
-            UpdatedDate: {type:"date", validation: {required: true}, editable: false}
+            UpdatedDate: {type:"date", validation: {required: true}, editable:false}
           }
         }
       },
@@ -164,7 +164,6 @@
         schema: models[url]
       });
     }
-
     function isAdult(dateString) {
       var today = new Date();
       var birthDate = new Date(dateString);
@@ -173,7 +172,7 @@
       if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
       }
-      return age >= 18;
-    }
+		  return age >= 18;
+	}
   }
 })();
