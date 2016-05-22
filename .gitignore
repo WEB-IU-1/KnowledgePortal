@@ -2,6 +2,7 @@
 /bower_components/
 .idea/*
 /ClientSide/bower_components/
+!/ClientSide/bower_components/kendo-ui/*
 /ClientSide/node_modules/
 /ClientSide/.tmp/
 /ClientSide/dist/
