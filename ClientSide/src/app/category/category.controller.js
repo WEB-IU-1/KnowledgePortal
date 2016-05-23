@@ -18,16 +18,21 @@
       sortable: true,
       height:540,
       columns: [
-        { field: "name",expandable: true, title: "Category name", width: "150px" },
-        { title: "Edit", command: [
-          {
-            name: "destroy",
-            text: " ",
-            template:
-              '<button data-command="destroy" class="k-button k-button-icontext k-grid-delete">' +
-              '<span class="k-icon k-delete"></span>Delete</button>'
+        { field: "name",expandable: true, title: "Название категории", width: "150px" },
+        { field:"description",title:"Описание"},
+        { field:"created_date",title:"Создано", format:"{0:d MMM yyyy}"},
+        { field:"updated_date",title:"Обновлено", format:"{0:d MMMM yyyy, hh:mm}"},
+        { title:"Активно",
+          template:
+          '<input type="checkbox" #= active ? \'checked="checked"\' : "" # class="chkbx" />',
+          width: 60,
+          attributes: {
+            style: "text-align: center;"
+          }},
+        { title: "Редактирование", command: [ "edit", "destroy" ], width: 190,
+          attributes: {
+            style: "text-align: center;"
           }
-          ]
         }
       ]
     };
