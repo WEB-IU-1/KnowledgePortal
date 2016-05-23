@@ -25,6 +25,13 @@
         templateUrl: 'app/category/category.html',
         controller: 'CategoryController',
         controllerAs: 'category'
+      })
+      .state('users', {
+        url: '/users',
+        templateUrl: 'app/users/users.html',
+        controller: 'UsersController',
+        controllerAs: 'users'
+
       });
 
     $urlRouterProvider.otherwise('/');
