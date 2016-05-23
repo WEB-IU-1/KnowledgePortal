@@ -35,7 +35,7 @@
             start: {type: "date", from: "start"},
             end: {type: "date", from: "end"},
             active: {from: "active", defaultValue: true},
-            isAllDay: {type: "boolean", from: "IsAllDay"}
+            isAllDay: {type: "boolean", from: "isAllDay"}
           }
         }
       },
