@@ -14,7 +14,9 @@
     vm.treelistOptions = {
       dataSource: DataSource.getDataSource(crudServiceBaseUrl),
       toolbar:["create"],
-      editable: true,
+      editable: {
+        move: true
+      },
       sortable: true,
       height:540,
       columns: [
