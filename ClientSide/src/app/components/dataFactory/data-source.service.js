@@ -115,19 +115,6 @@
           }
         }
       },
-      '//localhost:1337/api/product/':{
-        model: {
-          id: "taskId",
-          fields: {
-            taskId: {from: "_id", type: "string"},
-            title: {from: "name", defaultValue: "No title", validation: {required: true}},
-            start: {type: "date", from: "start"},
-            end: {type: "date", from: "end"},
-            active: {from: "active", defaultValue: true},
-            isAllDay: {type: "boolean", from: "isAllDay"}
-          }
-        }
-      },
       '//localhost:1337/api/other':{
         model: {
           id: "_id",
@@ -145,7 +132,6 @@
       return {
         batch: false,
         type: "json",
-        //autoSync: true,
         transport: {
           create: function (e) {
             return $http.post(url,e.data).then(function (response) {
@@ -180,7 +166,7 @@
             )}
         },
         schema: models[url]
-      };
+      });
     }
     function isAdult(dateString) {
       var today = new Date();

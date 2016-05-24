@@ -45,8 +45,10 @@ exports.update = function(req,res){
         customer.BirthDate = req.body.BirthDate;
         customer.Email = req.body.Email;
         customer.RegistrationDate = req.body.RegistrationDate;
-        customer.UpdatedDate = Date.now();
+        customer.UpdatedDate = new Date()
         customer.UserToken = req.body.UserToken;
+
+
 
         return customer.save(function (err) {
             if (!err) {
@@ -76,8 +78,7 @@ exports.create = function(req,res){
         Phone : req.body.Phone,
         BirthDate : req.body.BirthDate,
         Email : req.body.Email,
-        RegistrationDate : Date.now(),
-        UpdatedDate : Date.now(),
+
         UserToken : req.body.UserToken
     });
     customer.save(function(err){
