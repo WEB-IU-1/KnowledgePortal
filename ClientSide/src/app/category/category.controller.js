@@ -11,12 +11,18 @@
 
     var crudServiceBaseUrl = "//localhost:1337/api/category/";
 
+    function onDragEnd(e) {
+      var _reqData = {_id:e.source._id,name: e.source.name,parent_id:e.source.parent_id}
+      console.log("_reqData=",_reqData);
+      DataSource.getDataSource(crudServiceBaseUrl).transport.update(_reqData);
+    }
+
     vm.treelistOptions = {
       dataSource: DataSource.getDataSource(crudServiceBaseUrl),
+      dragAndDrop:true,
+      editable: {move:true},
+      dragend: onDragEnd,
       toolbar:["create"],
-      editable: {
-        move: true
-      },
       sortable: true,
       height:540,
       columns: [
