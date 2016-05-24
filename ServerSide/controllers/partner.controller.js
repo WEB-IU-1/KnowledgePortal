@@ -31,12 +31,18 @@ exports.update = function(req,res){
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
         }
-
         partner.name = req.body.name;
-        partner.description = req.body.description;
-        partner.updated_date = req.body.updated_date; //some how need stay it deafault
-        partner.active = req.body.active;
-        partner.parent_id = req.body.parent_id;
+        partner.full_name = req.body.full_name;
+        partner.logo = req.body.logo;
+        partner.credentials = req.body.credentials;
+        partner.address = req.body.address;
+        partner.phone = req.body.phone;
+        partner.email = req.body.email;
+        partner.contact_people = req.body.contact_people;
+        partner.categories = req.body.categories;
+        partner.teachers = req.body.teachers;
+        partner.offices_addresses = req.body.offices_addresses;
+        partner.comment = req.body.comment;
 
         return partner.save(function (err) {
             if (!err) {
@@ -58,6 +64,7 @@ exports.update = function(req,res){
 
 exports.create = function(req,res){
   var partner = new Partner({
+      id: req.body.id,
       name: req.body.name,
       full_name: req.body.full_name,
       logo: req.body.logo,

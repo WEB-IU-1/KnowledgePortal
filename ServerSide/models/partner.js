@@ -2,11 +2,6 @@ var mongoose    = require('../lib/mongoose'),
     Schema = mongoose.Schema;
 
 var partnerSchema = new Schema({
-    _id:{
-        type: String,
-        unique: true,
-        required: false, default: ''
-    },
     name: {
         type: String,
         unique: true,

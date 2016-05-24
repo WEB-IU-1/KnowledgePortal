@@ -35,11 +35,11 @@
           expanded: true
         }
       },
-      '//localhost:1337/api/partner':{
+      '//localhost:1337/api/partner/':{
         model: {
           id: "_id",
           fields: {
-            _id: { type: "string", editable: false, nullable: true },
+            _id: {type: "string", nullable: false, editable: false},
             name: { validation: { required: true } },
             full_name: { validation: { required: true, min: 1} },
             logo: {},

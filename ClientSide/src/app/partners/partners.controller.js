@@ -6,61 +6,42 @@
     .controller('PartnersController', PartnersController);
 
   /** @ngInject */
-  function PartnersController() {
+  function PartnersController(DataSource) {
     var vm = this;
+    var crudServiceBaseUrl = "//localhost:1337/api/partner/";
 
     vm.mainGridOptions = {
-      dataSource: {
-        transport: {
-            read: {
-              url: "http://localhost:1337/api/partner/",
-              dataType: "json"
-            },
-            update: {
-              url: "http://localhost:1337/api/partner/",
-              dataType: "json"
-            },
-            create: {
-              url: "http://localhost:1337/api/partner",
-              type: "post",
-              dataType: "json"
-            },
-            destroy: {
-              url: "http://localhost:1337/api/partner/",
-              dataType: "json"
-            }
-        },
-        schema: {
-          model: {
-            id: "_id",
-            fields: {
-              _id: { editable: false, nullable: true, hidden: true },
-              name: { validation: { required: true } },
-              full_name: { validation: { required: true, min: 1}, hidden: true },
-              logo: {},
-              credentials: { hidden: true, validation: { required: true }},
-              address: { hidden: true, validation: { required: true }},
-              phone: { validation: { required: true }},
-              email: { validation: { required: true }},
-              contact_people: { hidden: true },
-              categories: { hidden: true },
-              teachers: { hidden: true },
-              offices_addresses: { hidden: true },
-              comment: { }
-            }
-          }
-        }
-      },
+      dataSource: DataSource.getDataSource(crudServiceBaseUrl),
+      //dataSource: {
+        //schema: {
+        //  model: {
+        //    id: "_id",
+        //    fields: {
+        //      _id: { editable: true, nullable: false, hidden: true },
+        //      name: { validation: { required: true } },
+        //      full_name: { validation: { required: true, min: 1}, hidden: true },
+        //      logo: {},
+        //      credentials: { hidden: true, validation: { required: true }},
+        //      address: { hidden: true, validation: { required: true }},
+        //      phone: { validation: { required: true }},
+        //      email: { validation: { required: true }},
+        //      contact_people: { hidden: true },
+        //      categories: { hidden: true },
+        //      teachers: { hidden: true },
+        //      offices_addresses: { hidden: true },
+        //      comment: { }
+        //    }
+        //  }
+        //}
+      //},
       toolbar: ["create"],
       sortable: true,
       pageable: true,
       dataBound: function() {
         this.expandRow(this.tbody.find("tr.k-master-row").first());
       },
-      columns: [{
-        field: "_id",
-        title: "ID"
-      },{
+      columns: [
+        {
         field: "name",
         title: "Название компании"
       },{
