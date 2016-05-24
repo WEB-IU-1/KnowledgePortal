@@ -166,7 +166,7 @@
             )}
         },
         schema: models[url]
-      });
+      }
     }
     function isAdult(dateString) {
       var today = new Date();
