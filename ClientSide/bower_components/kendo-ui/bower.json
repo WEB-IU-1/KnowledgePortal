@@ -9,10 +9,11 @@
   ],
   "description": "Everything you need to build sites and apps with HTML5 & JavaScript",
   "main": [
-    "js/kendo.all.js",
-    "styles/kendo.dataviz.css",
-    "styles/kendo.dataviz.material.min.css",
+    "js/kendo.all.min.js",
+    "js/messages/kendo.messages.ru-RU.min.js",
     "styles/kendo.common.css",
+    "styles/kendo.dataviz.min.css",
+    "styles/kendo.dataviz.material.min.css",
     "styles/kendo.material.min.css"
   ],
   "moduleType": [
