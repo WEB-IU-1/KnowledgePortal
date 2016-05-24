@@ -14,6 +14,12 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
+      .state('schedulerCourse', {
+        url: '/scheduler',
+        templateUrl: 'app/scheduler/scheduler.html',
+        controller: 'SchedulerCourseController',
+        controllerAs: 'scheduler'
+      })
       .state('category',{
         url: "/category",
         templateUrl: 'app/category/category.html',
