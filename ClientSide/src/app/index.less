@@ -27,6 +27,70 @@
   }
 }
 
+// added css
+.site-logo {
+  margin-top: -10px;
+  width: 40px;
+  height: 40px;
+}
+
+.dd {
+  position: relative;
+}
+
+.dd-menu {
+  position: absolute;
+  top: 100%;
+  z-index: 1000;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  list-style: none;
+  text-align: left;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.15);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  background-clip: padding-box;
+  >li>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    color: lighten(#000, 20%);
+    white-space: nowrap;
+  }
+}
+
+.dd-right {
+  right: 0;
+  left: auto;
+}
+
+.dd-left {
+  left: 0;
+  right: auto;
+}
+
+.dd-menu>li>a {
+  &:hover, &:focus {
+    text-decoration: none;
+    color: lighten(#000, 15%);
+    background-color: #f5f5f5;
+  }
+}
+
+.dd-menu > .active > a {
+  &:hover,
+  &:focus {
+    color: #fff;
+    text-decoration: none;
+    outline: 0;
+    background-color: darken(#428bca, 6.5%);
+  }
+}
+//end of added css
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your less files automatically

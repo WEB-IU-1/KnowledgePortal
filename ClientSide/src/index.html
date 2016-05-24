@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app="KnowledgePortal">
   <head>
+    <base href="/">
     <meta charset="utf-8">
     <title>KnowledgePortal</title>
     <meta name="description" content="">
@@ -23,6 +24,47 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <header ng-controller="IndexController as ic">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+              <img class="site-logo" src="assets/images/angular.png">
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Направления</a></li>
+              <li><a href="#">Мероприятия</a></li>
+              <li><a href="#">Партнеры</a></li>
+              <li><a href="/users">Пользователи</a></li>
+              <li><a href="#">Менеджеры</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Поиск...">
+                </div>
+                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+              </form>
+              <li class="dd">
+                <a href="#" ng-click="ic.showDropdown();">Выйти <span class="caret"></span></a>
+                <ul class="dd-menu dd-right" ng-show="ic.dropdown">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </header>
 
     <div ui-view></div>
 
