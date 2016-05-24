@@ -45,7 +45,7 @@ exports.update = function(req,res){
         customer.BirthDate = req.body.BirthDate;
         customer.Email = req.body.Email;
         customer.RegistrationDate = req.body.RegistrationDate;
-        customer.UpdatedDate = new Date();
+        customer.UpdatedDate = new Date()
         customer.UserToken = req.body.UserToken;
 
 
