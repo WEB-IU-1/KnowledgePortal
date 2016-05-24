@@ -17,8 +17,7 @@ var productSchema = new Schema({
             default: Date.now
         },
         description:{
-            type: String,
-            default: ''
+            type: String
         },
         created_date:{
             type: Date,
@@ -32,29 +31,31 @@ var productSchema = new Schema({
             type:Boolean,
             default: true
         },
-        product_types:{
-            type: mongoose.Schema.Types.Mixed,
-            default: {}
+        type:{
+            type: Number,
+            default: 1
         },
-        parent_id:{
-            type: String,
-            default:''
+        recurrenceId:{
+            type: String
+        },
+        recurrenceRule:{
+            type: String
+        },
+        recurrenceException:{
+            type: String
         },
         teacher:{
-            type: String,
-            default:''
+            type: Number
         },
         seats_count:{
             type: Number,
             default:0
         },
         assigned_user_id:{
-            type: String,
-            default:''
+            type: String
         },
         location:{
-            type: String,
-            default:''
+            type: String
         }
 }, {
     versionKey: false   //If you don't need version_key

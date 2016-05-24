@@ -10,9 +10,18 @@
 
   function SchedulerCourseController(DataSource) {
     var vm = this;
-    var dataTypes = [
+    var dataActive = [
       {text: "Активная", value: true, key: "#aabbcc"},
       {text: "Не активная", value: false, key: "green"}
+    ];
+
+    var dataTypes = [
+      {text: "Курс", value: 1, key: "#aabbcc"},
+      {text: "Лекция", value: 2, key: "green"}
+    ];
+    var dataTeacher = [
+      {text: "Иванов Иван Иванович", value: 1},
+      {text: "Петров Пётр Петрович", value: 2}
     ];
     var crudServiceBaseUrl = "//localhost:1337/api/product/";
     var eventTemplate = "<div><img src= #: image #/> #: title #</div>";
@@ -112,7 +121,17 @@
         {
           field: "active",
           title:"Статус активности",
+          dataSource: dataActive
+        },
+        {
+          field: "type",
+          title:"Тип",
           dataSource: dataTypes
+        },
+        {
+          field: "teacher",
+          title:"Преподаватель",
+          dataSource: dataTeacher
         }
       ]
     };

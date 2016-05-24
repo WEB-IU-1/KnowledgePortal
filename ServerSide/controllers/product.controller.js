@@ -34,12 +34,15 @@ exports.update = function(req,res){
 
         product.name = req.body.name;
         product.description = req.body.description;
-        product.updated_date = req.body.updated_date; //some how need stay it default
+        product.created_date= req.body.created_date;
+        product.updated_date = Date.now;
         product.active = req.body.active;
-        product.product_types = req.body.product_types;
+        product.type = req.body.type;
         product.start=req.body.start;
         product.end=req.body.end;
-        product.parent_id = req.body.parent_id;
+        product.recurrenceId = req.body.recurrenceId;
+        product.recurrenceRule = req.body.recurrenceRule;
+        product.recurrenceException = req.body.recurrenceException;
         product.teacher = req.body.teacher;
         product.seats_count = req.body.seats_count;
         product.assigned_user_id = req.body.assigned_user_id;
@@ -67,12 +70,15 @@ exports.create = function(req,res){
   var product = new Product({
       name: req.body.name,
       description: req.body.description,
+      created_date: req.body.created_date,
       updated_date: req.body.updated_date,
       active: req.body.active,
       start:req.body.start,
       end:req.body.end,
-      types: req.body.types,
-      parent_id: req.body.parent_id,
+      type: req.body.type,
+      recurrenceId: req.body.recurrenceId,
+      recurrenceRule: req.body.recurrenceRule,
+      recurrenceException: req.body.recurrenceException,
       teacher: req.body.teacher,
       seats_count: req.body.seats_count,
       assigned_user_id: req.body.assigned_user_id,

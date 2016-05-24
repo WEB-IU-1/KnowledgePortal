@@ -34,8 +34,13 @@
             title: {from: "name", defaultValue: "No title", validation: {required: true}},
             start: {type: "date", from: "start"},
             end: {type: "date", from: "end"},
+            isAllDay: {type: "boolean", from: "isAllDay"},
+            recurrenceId: { from: "recurrenceId" },
+            recurrenceRule: { from: "recurrenceRule" },
+            recurrenceException: { from: "recurrenceException" },
             active: {from: "active", defaultValue: true},
-            isAllDay: {type: "boolean", from: "isAllDay"}
+            type: {from: "type", defaultValue: 1},
+            teacher: {from: "teacher", defaultValue: true},
           }
         }
       },
