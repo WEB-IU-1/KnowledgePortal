@@ -145,6 +145,7 @@
       return {
         batch: false,
         type: "json",
+        //autoSync: true,
         transport: {
           create: function (e) {
             return $http.post(url,e.data).then(function (response) {
