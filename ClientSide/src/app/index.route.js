@@ -32,7 +32,13 @@
         controller: 'UsersController',
         controllerAs: 'users'
 
-      });
+      })
+      .state('managers', {
+        url: '/managers',
+        templateUrl: 'app/managers/managers.html',
+        controller: 'ManagersController',
+        controllerAs: 'managers'
+        });
 
     $urlRouterProvider.otherwise('/');
   }

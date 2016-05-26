@@ -39,7 +39,6 @@
               type: "string" ,
               validation: {
                 required: true,
-
               lastNameValidator: function(input) {
                 if (input.is("[name='LastName']") && input.val() != "") {
                   input.attr("data-lastNameValidator-msg", "Фамилия состоит только из букв");
@@ -112,6 +111,41 @@
             },
             RegistrationDate: {type:"date", validation: {required: true}, editable: false},
             UpdatedDate: {type:"date", validation: {required: true}, editable:false}
+          }
+        }
+      },
+      '//localhost:1337/api/user/':{
+        model: {
+          id: "_id",
+          fields: {
+            id: {editable: false, nullable: true},
+            LastName: {validation: {required: true}},
+            FirstName: {validation: {required: true}},
+            PartnerLink: {defaultValue:"#"},
+            Phone: {defaultValue:"+7", validation: {
+              required: true,
+              phoneValidator: function(input) {
+                if (input.is("[name='Phone']") && input.val() != "") {
+                  input.attr("data-phoneValidator-msg", "Введите телефон в правильном формате");
+                  return /^(?:\+?\d{2}[ -]?\d{3}[ -]?\d{5,8}|\d{4})$/.test(input.val());
+                }
+                return true;
+              }
+            }},
+            Email: { validation: {
+              required: true,
+              emailValidator: function(input) {
+                if (input.is("[name='Email']") && input.val() != "") {
+                  input.attr("data-emailValidator-msg", "Введите email в формате name@smth.de");
+                  return /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i
+                    .test(input.val());
+                }
+                return true;
+              }
+            }},
+            Status: {},
+            Role: {defaultValue: { RoleId: 1, RoleName: "Менеджер"}},
+            password: {validation: {required: true}}
           }
         }
       },
