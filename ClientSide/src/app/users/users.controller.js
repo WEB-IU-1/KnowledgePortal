@@ -61,7 +61,7 @@
         filterable: {
           ui: "datetimepicker"
         },
-        template:'#= kendo.toString(RegistrationDate, "HH:MM dd/MM/yyyy") #'
+        template:'#= kendo.toString(RegistrationDate, "HH:mm dd/MM/yyyy") #'
 
       },{
         command: [{name:"edit", text:"Редактировать"}, {name: "destroy", text: "Удалить"}],

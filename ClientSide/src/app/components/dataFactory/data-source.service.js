@@ -20,8 +20,12 @@
           parentId: "parent_id",
           fields: {
             _id: {type: "string", nullable: false, editable: false},
+            name: {type: "string", nullable: false, validation: {required: true}},
             parent_id: {type: "string", nullable: true},
-            name: {type: "string", validation: {required: true}}
+            active: {type: "boolean", defaultValue: true},
+            updated_date: {type: "date",editable: false},
+            created_date: {type: "date",editable: false},
+            description: {type: "string"}
           },
           expanded: true
         }
@@ -159,7 +163,7 @@
     return service;
 
     function getDataSource(url) {
-      return new kendo.data.DataSource({
+      return {
         batch: false,
         type: "json",
         transport: {
@@ -196,7 +200,7 @@
             )}
         },
         schema: models[url]
-      });
+      }
     }
     function isAdult(dateString) {
       var today = new Date();

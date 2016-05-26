@@ -1,24 +1,19 @@
-/**
- * Created by Andre on 19.05.2016.
- */
-/* The customer API controller
+/* The category API controller
  Exports 4 methods:
- * read - Returns a list of Customers
- * update - Edits by id
- * destroy - Delete by id
- * create - Creates a new Customer entity
- * i love to copypaste, yeah
+ * read - Returns a list of Categories
+ * update - Edits one by id
+ * destroy - Delete one by id
+ * create - Creates a new Category
+ *
  * additional methods:
  * readById
  * readByName
- */
+*/
 var log         = require('lib/log')(module);//add module for server login
-var Customer    = require('models/customer');//add model
-
-
+var Product    = require('models/product');//add model
 
 exports.read = function(req, res) {
-    Customer.find(function(err, threads) {
+    Product.find(function(err, threads) {
         if(!err){
             res.send(threads);
         }
@@ -31,29 +26,29 @@ exports.read = function(req, res) {
 };
 
 exports.update = function(req,res){
-    return Customer.findById(req.body._id, function (err, customer) {
-        if(!customer) {
+    return Product.findById(req.body._id, function (err, product) {
+        if(!product) {
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
         }
 
-        customer.LastName = req.body.LastName;
-        customer.FirstName = req.body.FirstName;
-        customer.Gender = req.body.Gender;
-        customer.Address = req.body.Address;
-        customer.Phone = req.body.Phone;
-        customer.BirthDate = req.body.BirthDate;
-        customer.Email = req.body.Email;
-        customer.RegistrationDate = req.body.RegistrationDate;
-        customer.UpdatedDate = new Date()
-        customer.UserToken = req.body.UserToken;
-
-
-
-        return customer.save(function (err) {
+        product.name = req.body.name;
+        product.description = req.body.description;
+        product.updated_date = req.body.updated_date; //some how need stay it default
+        product.active = req.body.active;
+        product.product_types = req.body.product_types;
+        product.start=req.body.start;
+        product.end=req.body.end;
+        product.parent_id = req.body.parent_id;
+        product.teacher = req.body.teacher;
+        product.seats_count = req.body.seats_count;
+        product.assigned_user_id = req.body.assigned_user_id;
+        product.location = req.body.location;
+        
+        return product.save(function (err) {
             if (!err) {
-                log.info("customer updated");
-                return res.send({ status: 'OK', article:customer });
+                log.info("product updated");
+                return res.send({ status: 'OK', article:product });
             } else {
                 if(err.name == 'ValidationError') {
                     res.statusCode = 400;
@@ -69,24 +64,26 @@ exports.update = function(req,res){
 };
 
 exports.create = function(req,res){
-    var customer = new Customer({
-        id: req.body.id,
-        LastName :req.body.LastName,
-        FirstName : req.body.FirstName,
-        Gender : req.body.Gender,
-        Address : req.body.Address,
-        Phone : req.body.Phone,
-        BirthDate : req.body.BirthDate,
-        Email : req.body.Email,
-
-        UserToken : req.body.UserToken
-    });
-    customer.save(function(err){
+  var product = new Product({
+      name: req.body.name,
+      description: req.body.description,
+      updated_date: req.body.updated_date,
+      active: req.body.active,
+      start:req.body.start,
+      end:req.body.end,
+      types: req.body.types,
+      parent_id: req.body.parent_id,
+      teacher: req.body.teacher,
+      seats_count: req.body.seats_count,
+      assigned_user_id: req.body.assigned_user_id,
+      location: req.body.location
+  });
+    product.save(function(err){
         if(!err){
-            log.info("entity created");
-            return res.send({ status: 'OK', article:customer });
+            log.info("product created");
+            return res.send({ status: 'OK', article:product });
         }
-        else {
+          else{
             log.error(err);
             if(err.name == 'ValidationError') {
                 res.statusCode = 400;
@@ -102,14 +99,14 @@ exports.create = function(req,res){
 };
 
 exports.destroy = function(req,res){
-    return Customer.findById(req.params.id, function (err, customer) {
-        if(!customer) {
+    return Product.findById(req.params.id, function (err, product) {
+        if(!product) {
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
         }
-        return customer.remove(function (err) {
+        return product.remove(function (err) {
             if (!err) {
-                log.info("customer removed");
+                log.info("product removed");
                 return res.send({ status: 'OK' });
             } else {
                 res.statusCode = 500;
@@ -121,13 +118,13 @@ exports.destroy = function(req,res){
 };
 
 exports.readById = function(req,res){
-    return Customer.findById(req.params.id, function(err,customer){
-            if(!customer) {
+    return Product.findById(req.params.id, function(err,product){
+            if(!product) {
                 res.statusCode = 404;
                 return res.send({ error: 'Not found' });
             }
             if (!err) {
-                return res.send({ status: 'OK', article:customer });
+                return res.send({ status: 'OK', article:product });
             } else {
                 res.statusCode = 500;
                 log.error('Internal error(%d): %s',res.statusCode,err.message);

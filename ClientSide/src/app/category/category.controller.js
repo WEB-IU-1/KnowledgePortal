@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -11,23 +11,64 @@
 
     var crudServiceBaseUrl = "//localhost:1337/api/category/";
 
+    function onDragEnd(e) {
+      this.dataSource.sync();
+    }
+
     vm.treelistOptions = {
       dataSource: DataSource.getDataSource(crudServiceBaseUrl),
-      toolbar:["create"],
-      editable: true,
+      dragAndDrop: true,
+      editable: {move: true, mode: "popup"},
+      dragend: onDragEnd,
+      toolbar: [
+        {
+          name: "create",
+          text:"Добавить категорию"
+        }
+      ],
       sortable: true,
-      height:540,
+      height: 540,
       columns: [
-        { field: "name",expandable: true, title: "Category name", width: "150px" },
-        { title: "Edit", command: [
-          {
-            name: "destroy",
-            text: " ",
-            template:
-              '<button data-command="destroy" class="k-button k-button-icontext k-grid-delete">' +
-              '<span class="k-icon k-delete"></span>Delete</button>'
+        {field: "name", expandable: true, title: "Название категории", width: "150px"},
+        {field: "description", title: "Описание"},
+        {
+          field: "created_date",
+          title: "Создано",
+          format: "{0:d MMM yyyy}",
+          width: 100,
+          attributes: {
+            style: "text-align: center;"
           }
-          ]
+        },
+        {
+          field: "updated_date",
+          title: "Обновлено",
+          format: "{0:d MMMM yyyy, H:mm}",
+          width: 150,
+          attributes: {
+            style: "text-align: center;"
+          }
+        },
+        {
+          field: "active",
+          title: "Активно",
+
+
+          width: 60,
+          attributes: {
+            style: "text-align: center;"
+          }
+        },
+        {
+          title: "Редактирование",
+          command: [
+            {name: "edit",text: "Править"},
+            {name: "destroy",text:"Удалить"}
+          ],
+          width: 190,
+          attributes: {
+            style: "text-align: center;"
+          }
         }
       ]
     };
