@@ -26,19 +26,12 @@
         controller: 'UsersController',
         controllerAs: 'users'
 
-      });
+      })
       .state('managers', {
         url: '/managers',
         templateUrl: 'app/managers/managers.html',
         controller: 'ManagersController',
-        controllerAs: 'managers',
-        resolve: {
-          rolesData: function($http) {
-            return $http({url: "./app/managers/roles.json", type: "GET"}).then(function (data) {
-              return (angular.fromJson(data));
-            })
-          }
-        }
+        controllerAs: 'managers'
         });
 
     $urlRouterProvider.otherwise('/');

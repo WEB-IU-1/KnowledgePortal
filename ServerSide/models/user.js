@@ -4,7 +4,7 @@ var path        = require('path'),
 var mongoose    = require('../lib/mongoose'),
     Schema = mongoose.Schema;
 
-var schema = new Schema({
+var userSchema = new Schema({
     username:{
         type: String,
         unique: true,
@@ -21,14 +21,52 @@ var schema = new Schema({
     created:{
         type: Date,
         default: Date.now
+    },
+    LastName: {
+        type: String,
+        required: true
+    },
+    FirstName: {
+        type: String,
+        required: true
+    },
+    Phone: {
+        type: String,
+        default: '+7'
+    },
+    Email: {
+        type: String,
+        required: true
+    },
+    Status: {
+        type: Number,
+        default: 1
+    },
+    Role: {
+        RoleId: {
+            type: Number,
+            default: 1
+        },
+        RoleName: {
+            type: String,
+            default: "Менеджер"
+        }
+    },
+    PartnerLink: {
+        type:String,
+        default: "/"
     }
 });
 
-schema.methods.encryptPassword=function(password){
-  return crypto.createHmac('shal',this.salt).update(password).digedt('hex');
+userSchema.set("toJSON", { getters: true , virtuals: true });
+
+userSchema.set("toObject", { getters: true , virtuals: true });
+
+userSchema.methods.encryptPassword=function(password){
+  return crypto.createHmac('sha1',this.salt).update(password).digest('hex');
 };
 
-schema.virtual('password')
+userSchema.virtual('password')
 .set(function(password){
     this._plainPassword=password;
     this.salt=Math.random()+'';
@@ -38,8 +76,8 @@ schema.virtual('password')
     return this._plainPassword;
 });
 
-schema.methods.checkPassword=function(password){
+userSchema.methods.checkPassword=function(password){
   return this.encryptPassword(password)===this.hashedPassword;
 };
 
-exports.User = mongoose.model('User',schema);
+module.exports = mongoose.model('User',userSchema);

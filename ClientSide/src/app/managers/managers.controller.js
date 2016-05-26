@@ -5,12 +5,9 @@
     .controller('ManagersController', ManagersController);
 
   /** @ngInject */
-  function ManagersController(rolesData, DataSource) {
+  function ManagersController(DataSource) {
     var vm = this;
-    if (!localStorage.getItem("roles")){
-      localStorage.setItem("roles", angular.toJson(rolesData.data));
-    }
-    var crudServiceBaseUrl = "//localhost:1337/api/manager/";
+    var crudServiceBaseUrl = "//localhost:1337/api/user/";
     vm.gridColumns = [
       { field: "LastName", title: "Фамилия" },
       { field: "FirstName", title: "Имя" },
@@ -18,6 +15,7 @@
         template:"<a href=${PartnerLink}>Партнер</a>"},
       { field: "Phone", title: "Мобильный телефон" },
       { field: "Email", title: "Почта" },
+      { field: "password", title: "Пароль", hidden: true, editor: passwordEditor,},
       { command: [
         { name: "edit", text: "Редактировать" },
         { name: "destroy", text: "Удалить" }],
@@ -35,18 +33,33 @@
     };
 
     function roleDropDownEditor(container, options){
-      $('<input data-text-field="RoleName" data-value-field="RoleId" required data-bind="value:' + options.field + '"/>')
+      $('<input required data-bind="value:' + options.field + '"/>')
         .appendTo(container)
         .kendoDropDownList({
+          dataTextField: "RoleName",
+          dataValueField: "RoleId",
           autoBind: false,
           dataSource:{
-            type: "json",
-            transport: {
-              read: function(e){
-                e.success(angular.fromJson(localStorage["roles"]));
+            data: [
+              {
+                "RoleId": 0,
+                "RoleName": "Пользователь"
+              },
+              {
+                "RoleId": 1,
+                "RoleName": "Менеджер"
+              },
+              {
+                "RoleId": 1,
+                "RoleName": "Администратор"
               }
-            }
-          }}
+            ]
+          }
+        }
         )}
       }
+  function passwordEditor(container, options)
+  {
+    $('<input type="password" required data-bind="value:' + options.field + '"/>').appendTo(container);
+  };
 })();

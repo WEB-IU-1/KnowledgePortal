@@ -1,18 +1,10 @@
-/* The category API controller
- Exports 4 methods:
- * read - Returns a list of Categories
- * update - Edits one by id
- * destroy - Delete one by id
- * create - Creates a new Category
- *
- */
-
 var log         = require('lib/log')(module);//add module for server login
-var Manager    = require('models/user');//add model
+var User    = require('models/user');//add model
 
 exports.read = function(req, res) {
-    Manager.find(function(err, threads) {
+    User.find(function(err, threads) {
         if(!err){
+            console.log(threads);
             res.send(threads);
         }
         else {
@@ -24,26 +16,25 @@ exports.read = function(req, res) {
 };
 
 exports.update = function(req,res){
-    return Manager.findById(req.body._id, function (err, manager) {
-        if(!manager) {
+    return User.findById(req.body._id, function (err, user) {
+        if(!user) {
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
         }
+        user.FirstName = req.body.FirstName;
+        user.LastName = req.body.LastName;
+        user.Phone = req.body.Phone;
+        user.Email = req.body.Email;
+        user.Status = req.body.Status;
+        user.Role.RoleId = req.body.Role.RoleId;
+        user.Role.RoleName = req.body.Role.RoleName;
+        user.PartnerLink = req.body.PartnerLink;
+        user.password = req.body.password;
 
-        manager.FirstName = req.body.FirstName;
-        manager.LastName = req.body.LastName;
-        manager.Phone = req.body.Phone;
-        manager.Email = req.body.Email;
-        manager.Status = req.body.Status;
-        manager.Role.RoleId = req.body.Role.RoleId;
-        manager.Role.RoleName = req.body.Role.RoleName;
-        manager.PartnerLink = req.body.PartnerLink;
-        manager.hashedPassword = req.body.hashedPassword;
-
-        return manager.save(function (err) {
+        return user.save(function (err) {
             if (!err) {
-                log.info("manager is updated");
-                return res.send({ status: 'OK', article:manager });
+                log.info("user is updated");
+                return res.send({ status: 'OK', article:user });
             } else {
                 if(err.name == 'ValidationError') {
                     res.statusCode = 400;
@@ -58,8 +49,7 @@ exports.update = function(req,res){
     });
 };
 exports.create = function(req,res){
-    console.log(req.body.FirstName);
-    var manager = new Manager({
+    var user = new User({
         FirstName: req.body.FirstName,
         LastName: req.body.LastName,
         Phone: req.body.Phone,
@@ -71,12 +61,12 @@ exports.create = function(req,res){
             RoleName: req.body.Role.RoleName
         },
         PartnerLink: req.body.PartnerLink,
-        hashedPassword: req.body.hashedPassword
+        password: req.body.password
     });
-    manager.save(function(err){
+    user.save(function(err){
         if(!err){
-            log.info("manager created");
-            return res.send({ status: 'OK', article:manager });
+            log.info("user created");
+            return res.send({ status: 'OK', article:user });
         }
         else{
             log.error(err);
@@ -93,14 +83,14 @@ exports.create = function(req,res){
     });
 };
 exports.destroy = function(req,res){
-    return Manager.findById(req.params.id, function (err, manager) {
-        if(!manager) {
+    return User.findById(req.params.id, function (err, user) {
+        if(!user) {
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
         }
-        return manager.remove(function (err) {
+        return user.remove(function (err) {
             if (!err) {
-                log.info("manager removed");
+                log.info("user removed");
                 return res.send({ status: 'OK' });
             } else {
                 res.statusCode = 500;
