@@ -1,6 +1,6 @@
 /node_modules/
 /bower_components/
-.idea/*
+.idea/
 /ClientSide/bower_components/
 /ClientSide/node_modules/
 /ClientSide/.tmp/
