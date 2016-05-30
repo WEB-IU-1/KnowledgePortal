@@ -28,12 +28,11 @@ var productSchema = new Schema({
             default: Date.now
         },
         active:{
-            type:Boolean,
-            default: true
+            type:Boolean
         },
         type:{
-            type: Number,
-            default: 1
+            type: String,
+            default: ""
         },
         recurrenceId:{
             type: String
@@ -45,7 +44,7 @@ var productSchema = new Schema({
             type: String
         },
         teacher:{
-            type: Number
+            type: String
         },
         seats_count:{
             type: Number,
