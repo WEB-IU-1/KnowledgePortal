@@ -29,6 +29,7 @@
       '//localhost:1337/api/product/':{
         model: {
           id: "taskId",
+          location:"location",
           fields: {
             taskId: {from: "_id", type: "string"},
             title: {from: "name", defaultValue: "No title", validation: {required: true}},
@@ -40,7 +41,9 @@
             recurrenceException: { from: "recurrenceException" },
             active: {from: "active", defaultValue: true},
             type: {from: "type", defaultValue: 1},
-            teacher: {from: "teacher", defaultValue: true},
+            teacher: {from: "teacher",type: "string", defaultValue: ""},
+            location: {from: "location", type:"string"},
+            seats_count: {from: "seats_count", type:"number",defaultValue: 10},
           }
         }
       },
