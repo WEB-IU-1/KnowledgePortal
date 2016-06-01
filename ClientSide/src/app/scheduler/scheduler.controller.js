@@ -11,7 +11,6 @@
   function SchedulerCourseController(DataSource) {
     var vm = this;
     var crudServiceBaseUrl = "//localhost:1337/api/product/";
-    var eventTemplate = "<div><img src= #: image #/> #: title #</div>";
 
     vm.schedulerOptions = {
       messages:{
@@ -118,7 +117,7 @@
         {type: "timelineMonth", title:"График на месяц"},
       ],
       dataSource: DataSource.getDataSource(crudServiceBaseUrl),
-      //eventTemplate: eventTemplate,
+      eventTemplate: $("#template").html(),
 
 
     };
