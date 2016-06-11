@@ -35,7 +35,7 @@ exports.update = function(req,res){
         product.name = req.body.name;
         product.description = req.body.description;
         product.created_date= req.body.created_date;
-        product.updated_date = Date.now;
+        product.updated_date = Date.now();
         product.active = req.body.active;
         product.type = req.body.type;
         product.start=req.body.start;
@@ -70,8 +70,8 @@ exports.create = function(req,res){
   var product = new Product({
       name: req.body.name,
       description: req.body.description,
-      created_date: req.body.created_date,
-      updated_date: req.body.updated_date,
+      created_date: Date.now(),
+      updated_date: Date.now(),
       active: req.body.active,
       start:req.body.start,
       end:req.body.end,
