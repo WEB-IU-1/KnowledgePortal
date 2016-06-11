@@ -1,6 +1,5 @@
 /node_modules/
 /bower_components/
-.idea/
 /ClientSide/bower_components/
 /ClientSide/node_modules/
 /ClientSide/.tmp/
@@ -9,3 +8,4 @@ ClientSide/coverage/
 ClientSide/.sass-cache/
 
 /ServerSide/node_modules/
+.idea/

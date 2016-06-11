@@ -4,6 +4,106 @@
   </div>
   <h1>Расписание</h1>
   <div kendo-scheduler k-options="scheduler.schedulerOptions">
-    <div ></div>
+
   </div>
+  <script id="template" type="text/x-kendo-template">
+    #if(active==false){ #
+    <div style="background-color: gray; height: 100%;">
+      #}#
+     <h7> #: title #
+       #:teacher#
+      </h7>
+    </div>
+
+  </script>
+  <script id="customEditorTemplate" type="text/x-kendo-template">
+    <div class="k-edit-label">
+      <label for="title">Название</label>
+    </div>
+    <div data-container-for="title" class="k-edit-field">
+      <input type="text" class="k-input k-textbox" name="title" required="required" data-bind="value:title">
+    </div>
+
+    <div class="k-edit-label">
+      <label for="seats_count">Количество мест</label>
+    </div>
+    <div data-container-for="seats_count" class="k-edit-field">
+      <input type="number" value="10" class="k-input k-textbox" name="seats_count" required="required" data-bind="value:seats_count">
+    </div>
+    <div class="k-edit-label">
+      <label for="start">Начало</label>
+    </div>
+    <div data-container-for="start" class="k-edit-field">
+      <input type="text"
+             data-role="datetimepicker"
+             data-interval="15"
+             data-type="date"
+             data-bind="value:start, invisible:isAllDay"
+             name="start"/>
+      <input type="text" data-type="date" data-role="datepicker" data-bind="value:start, visible:isAllDay" name="start" />
+
+      <span data-for="start" class="k-invalid-msg" ></span>
+    </div>
+    <div class="k-edit-label">
+      <label for="end">Конец</label>
+    </div>
+    <div data-container-for="end" class="k-edit-field">
+      <input type="text" data-type="date" data-role="datetimepicker" data-bind="value:end, invisible:isAllDay" name="end" data-datecompare-msg="End date should be greater than or equal to the start date" />
+      <input type="text" data-type="date" data-role="datepicker" data-bind="value:end, visible:isAllDay" name="end" data-datecompare-msg="End date should be greater than or equal to the start date" />
+      <span data-bind="text: endTimezone"></span>
+      <span data-bind="text: startTimezone, invisible: endTimezone"></span>
+      <span data-for="end" class="k-invalid-msg" ></span>
+    </div>
+    <div class="k-edit-label">
+      <label for="isAllDay">Весь день</label>
+    </div>
+    <div data-container-for="isAllDay" class="k-edit-field">
+      <input type="checkbox" name="isAllDay" data-type="boolean" data-bind="checked:isAllDay">
+    </div>
+    <div class="k-edit-label">
+      <label for="recurrenceRule">Повтор</label>
+    </div>
+    <div data-container-for="recurrenceRule" class="k-edit-field">
+      <div data-bind="value:recurrenceRule" name="recurrenceRule" data-role="recurrenceeditor"></div>
+    </div>
+    <div class="k-edit-label">
+      <label for="description">Описание</label>
+    </div>
+    <div data-container-for="description" class="k-edit-field">
+      <textarea name="description" class="k-textbox" data-bind="value:description"></textarea>
+    </div>
+    <div class="k-edit-label">
+      <label for="active">Активность</label>
+    </div>
+    <div data-container-for="active" class="k-edit-field">
+      <select id="active" data-bind="value:active" data-role="dropdownlist"
+              data-value-field="value" data-text-field="text">
+        <option value=true>Активен</option>
+        <option value=false>Неактивность</option>
+      </select>
+      </div>
+
+      <div class="k-edit-label">
+        <label for="type">Тип мероприятия</label>
+      </div>
+      <div data-container-for="type" class="k-edit-field">
+        <select id="type" data-bind="value:type" data-role="dropdownlist"
+                data-value-field="value" data-text-field="text">
+          <option value="Курс" selected>Курс</option>
+          <option value="Лекция">Лекция</option>
+        </select>
+      </div>
+      <div class="k-edit-label">
+        <label for="location">Место проведения</label>
+      </div>
+      <div data-container-for="location" class="k-edit-field">
+        <textarea name="location" class="k-textbox" data-bind="value:location"></textarea>
+      </div>
+    <div class="k-edit-label">
+      <label for="teacher">Преподователь</label>
+    </div>
+    <div data-container-for="teacher" class="k-edit-field">
+      <input type="text" class="k-input k-textbox" name="teacher"  data-bind="value:teacher">
+    </div>
+  </script>
 </div>

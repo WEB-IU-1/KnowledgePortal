@@ -30,6 +30,27 @@
           expanded: true
         }
       },
+      '//localhost:1337/api/product/':{
+        model: {
+          id: "taskId",
+          location:"location",
+          fields: {
+            taskId: {from: "_id", type: "string"},
+            title: {from: "name", defaultValue: "No title", validation: {required: true}},
+            start: {type: "date", from: "start"},
+            end: {type: "date", from: "end"},
+            isAllDay: {type: "boolean", from: "isAllDay"},
+            recurrenceId: { from: "recurrenceId" },
+            recurrenceRule: { from: "recurrenceRule" },
+            recurrenceException: { from: "recurrenceException" },
+            active: {from: "active",type: "boolean", defaultValue: true},
+            type: {from: "type", type:"string", defaultValue: "Курс"},
+            teacher: {from: "teacher",type: "string", defaultValue: ""},
+            location: {from: "location", type:"string"},
+            seats_count: {from: "seats_count", type:"number",defaultValue: 10},
+          }
+        }
+      },
       '//localhost:1337/api/customer':{
         model : {
           id: "_id",
@@ -39,28 +60,28 @@
               type: "string" ,
               validation: {
                 required: true,
-              lastNameValidator: function(input) {
-                if (input.is("[name='LastName']") && input.val() != "") {
-                  input.attr("data-lastNameValidator-msg", "Фамилия состоит только из букв");
-                  return /^([A-Za-zА-Яа-я]+)$/.test(input.val())
-                }
-                return true;
+                lastNameValidator: function(input) {
+                  if (input.is("[name='LastName']") && input.val() != "") {
+                    input.attr("data-lastNameValidator-msg", "Фамилия состоит только из букв");
+                    return /^([A-Za-zА-Яа-я]+)$/.test(input.val())
+                  }
+                  return true;
                 }
               }
             },
             FirstName: {
               type: "string" ,
               validation:
-               {
+              {
                 required: true,
-                 firstNameValidator: function(input) {
-                   if (input.is("[name='FirstName']") && input.val() != "") {
-                     input.attr("data-firstNameValidator-msg", "Имя состоит только из букв");
-                     return /^([A-Za-zА-Яа-я]+)$/.test(input.val())
-                   }
-                   return true;
-                 }
-               }
+                firstNameValidator: function(input) {
+                  if (input.is("[name='FirstName']") && input.val() != "") {
+                    input.attr("data-firstNameValidator-msg", "Имя состоит только из букв");
+                    return /^([A-Za-zА-Яа-я]+)$/.test(input.val())
+                  }
+                  return true;
+                }
+              }
             },
             Gender: {type: "string" , validation: {required: true}},
             Address: {type: "string" , validation: {required: true}},
@@ -210,7 +231,7 @@
       if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
       }
-		  return age >= 18;
-	}
+      return age >= 18;
+    }
   }
 })();

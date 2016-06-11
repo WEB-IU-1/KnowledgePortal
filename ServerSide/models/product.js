@@ -4,21 +4,23 @@ var mongoose    = require('../lib/mongoose'),
 var productSchema = new Schema({
         name:{
             type: String,
-            required: true
         },
         start:{
             type: Date,
-            required: true,
             default: Date.now
         },
         end:{
             type: Date,
-            required: true,
             default: Date.now
         },
+        startTimezone:{
+            type: String
+        },
+        endTimezone:{
+            type: String
+        },
         description:{
-            type: String,
-            default: ''
+            type: String
         },
         created_date:{
             type: Date,
@@ -29,32 +31,31 @@ var productSchema = new Schema({
             default: Date.now
         },
         active:{
-            type:Boolean,
-            default: true
+            type:Boolean
         },
-        product_types:{
-            type: mongoose.Schema.Types.Mixed,
-            default: {}
+        type:{
+            type: String
         },
-        parent_id:{
-            type: String,
-            default:''
+        recurrenceId:{
+            type: String
+        },
+        recurrenceRule:{
+            type: String
+        },
+        recurrenceException:{
+            type: String
         },
         teacher:{
-            type: String,
-            default:''
+            type: String
         },
         seats_count:{
-            type: Number,
-            default:0
+            type: Number
         },
         assigned_user_id:{
-            type: String,
-            default:''
+            type: String
         },
         location:{
-            type: String,
-            default:''
+            type: String
         }
 }, {
     versionKey: false   //If you don't need version_key
