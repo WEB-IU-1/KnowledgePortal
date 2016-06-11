@@ -4,17 +4,20 @@ var mongoose    = require('../lib/mongoose'),
 var productSchema = new Schema({
         name:{
             type: String,
-            required: true
         },
         start:{
             type: Date,
-            required: true,
             default: Date.now
         },
         end:{
             type: Date,
-            required: true,
             default: Date.now
+        },
+        startTimezone:{
+            type: String
+        },
+        endTimezone:{
+            type: String
         },
         description:{
             type: String
@@ -31,8 +34,7 @@ var productSchema = new Schema({
             type:Boolean
         },
         type:{
-            type: String,
-            default: ""
+            type: String
         },
         recurrenceId:{
             type: String
@@ -47,8 +49,7 @@ var productSchema = new Schema({
             type: String
         },
         seats_count:{
-            type: Number,
-            default:0
+            type: Number
         },
         assigned_user_id:{
             type: String
