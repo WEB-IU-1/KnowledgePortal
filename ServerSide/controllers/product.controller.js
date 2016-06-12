@@ -82,7 +82,8 @@ exports.create = function(req,res){
       teacher: req.body.teacher,
       seats_count: req.body.seats_count,
       assigned_user_id: req.body.assigned_user_id,
-      location: req.body.location
+      location: req.body.location,
+      views: req.body.views,
   });
     product.save(function(err){
         if(!err){

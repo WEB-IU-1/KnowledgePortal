@@ -13,13 +13,6 @@
     var crudServiceBaseUrl = "//localhost:1337/api/product/";
 
     vm.schedulerOptions = {
-      editable: {
-        window: {
-          title: "Событие"
-        },
-        template: $("#customEditorTemplate").html(),
-      },
-
       date: new Date(),
       views: [
         {type: "day", title: "День"},
@@ -34,6 +27,38 @@
       ],
       dataSource: DataSource.getDataSource(crudServiceBaseUrl),
       eventTemplate: $("#template").html(),
+      resources: [
+        {
+          field: "active",
+          dataSource: [
+            { text: "Активный", value: true, color: "#51a0ed" },
+            { text: "Неактивный", value: false, color: "#afafaf" },
+          ]
+        },
+        {
+          field: "assigned_user_id",
+          dataSource: [
+            { text: "Иванов Иван Иванович", value: "asd" },
+            { text: "Сергей Сергей Сергеевич", value: "asаd" },
+          ]
+        }
+      ],
+      messages: {
+        cancel: "Отмена",
+        save: "Сохранить",
+        destroy: "Удалить",
+        recurrenceEditor: {
+          daily: {
+            interval: " дней"
+          }
+        }
+      },
+      editable: {
+        window: {
+          title: "Событие"
+        },
+        template: $("#customEditorTemplate").html(),
+      },
 
     };
   }
