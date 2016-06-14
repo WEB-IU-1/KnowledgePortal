@@ -5,6 +5,9 @@ var productSchema = new Schema({
         name:{
             type: String,
         },
+        image:{
+            type: String
+        },
         start:{
             type: Date,
             default: Date.now
@@ -50,6 +53,13 @@ var productSchema = new Schema({
         },
         seats_count:{
             type: Number
+        },
+        busy_seats_count:{
+            type: Number
+        },
+        views:{
+            type: Number,
+            default: 0
         },
         assigned_user_id:{
             type: String

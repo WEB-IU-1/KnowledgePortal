@@ -33,21 +33,26 @@
       '//localhost:1337/api/product/':{
         model: {
           id: "taskId",
-          location:"location",
           fields: {
             taskId: {from: "_id", type: "string"},
             title: {from: "name", defaultValue: "No title", validation: {required: true}},
-            start: {type: "date", from: "start"},
-            end: {type: "date", from: "end"},
+            start: {type: "date", from: "start",validation: {required: true}},
+            end: {type: "date", from: "end",validation: {required: true}},
             isAllDay: {type: "boolean", from: "isAllDay"},
             recurrenceId: { from: "recurrenceId" },
             recurrenceRule: { from: "recurrenceRule" },
             recurrenceException: { from: "recurrenceException" },
+            image: {from:"image", type:"string"},
             active: {from: "active",type: "boolean", defaultValue: true},
             type: {from: "type", type:"string", defaultValue: "Курс"},
             teacher: {from: "teacher",type: "string", defaultValue: ""},
             location: {from: "location", type:"string"},
-            seats_count: {from: "seats_count", type:"number",defaultValue: 10},
+            seats_count: {from: "seats_count", type:"number", defaultValue: 10},
+            busy_seats_count: {from:"busy_seats_count", type:"number", defaultValue: 0},
+            views: {from:"views", type:"number"},
+            created_date: {type: "date", from: "created_date"},
+            updated_date: {type: "date", from: "updated_date"},
+            assigned_user_id: {from: "assigned_user_id", type:"string"},
           }
         }
       },
