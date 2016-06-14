@@ -38,7 +38,18 @@
         templateUrl: 'app/managers/managers.html',
         controller: 'ManagersController',
         controllerAs: 'managers'
-        });
+        })
+      .state('product', {
+        url: 'product/:id',
+        templateUrl: 'app/product/product.html',
+        controller: 'ProductController',
+        controllerAs: 'product',
+        resolve: {
+          product: function ($stateParams, ProductController) {
+            return ProductController.get($stateParams.id);
+          }
+        }
+      });
 
     $urlRouterProvider.otherwise('/');
   }

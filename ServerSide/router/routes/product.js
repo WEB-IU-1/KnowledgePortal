@@ -14,6 +14,4 @@ router.delete('/:id', api.destroy );         //delete one by id
 
 router.get('/:id', api.readById);             //gets one by id
 
-router.get('/:name', api.readByName);     //gets one by name
-
 module.exports = router;
