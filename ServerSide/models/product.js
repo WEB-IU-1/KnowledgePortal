@@ -5,6 +5,9 @@ var productSchema = new Schema({
         name:{
             type: String,
         },
+        image:{
+            type: String
+        },
         start:{
             type: Date,
             default: Date.now

@@ -42,6 +42,7 @@
             recurrenceId: { from: "recurrenceId" },
             recurrenceRule: { from: "recurrenceRule" },
             recurrenceException: { from: "recurrenceException" },
+            image: {from:"image", type:"string"},
             active: {from: "active",type: "boolean", defaultValue: true},
             type: {from: "type", type:"string", defaultValue: "Курс"},
             teacher: {from: "teacher",type: "string", defaultValue: ""},
