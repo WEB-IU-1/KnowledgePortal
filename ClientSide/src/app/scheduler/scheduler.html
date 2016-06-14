@@ -112,6 +112,13 @@
   </div>
 
   <div class="k-edit-label">
+    <label for="cost">Стоимость</label>
+  </div>
+  <div data-container-for="cost" class="k-edit-field">
+    <input type="number" value="10" class="k-input k-textbox" name="cost" required="required" data-bind="value:cost">
+  </div>
+
+  <div class="k-edit-label">
     <label for="seats_count">Количество мест</label>
   </div>
   <div data-container-for="seats_count" class="k-edit-field">
@@ -123,6 +130,26 @@
   </div>
   <div  class="k-edit-field">
     <input type="number" readonly="false" value="10" class="k-input k-textbox" name="busy_seats_count" required="required" data-bind="value:busy_seats_count">
+  </div>
+
+  <div class="k-edit-label">
+    <label for="professional_level">Профессиональный уровень подготовки</label>
+  </div>
+  <div data-container-for="professional_level" class="k-edit-field">
+    <select id="professional_level" data-bind="value:professional_level" data-role="dropdownlist"
+            data-value-field="value" data-text-field="text">
+      <option value=1>Начальный</option>
+      <option value=2>Средний</option>
+      <option value=3>Професиональный</option>
+    </select>
+  </div>
+
+  <div class="k-edit-label">
+    <label for="age_category">Возрастная категория</label>
+  </div>
+  <div data-container-for="age_category_from" class="k-edit-field">
+    <input type="number" value="10" class="k-input k-textbox" name="age_category_from" required="required" data-bind="value:age_category_from">
+    <input type="number" value="10" class="k-input k-textbox" name="age_category_up" required="required" data-bind="value:age_category_up">
   </div>
 
   <div class="k-edit-label">

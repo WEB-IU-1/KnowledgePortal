@@ -41,6 +41,14 @@
             { text: "Иванов Иван Иванович", value: "asd" },
             { text: "Сергей Сергей Сергеевич", value: "asаd" },
           ]
+        },
+        {
+          field: "professional_level",
+          dataSource: [
+            { text: "Начальный", value: 1 },
+            { text: "Средний", value: 2 },
+            { text: "Професиональный", value: 3 },
+          ]
         }
       ],
       messages: {

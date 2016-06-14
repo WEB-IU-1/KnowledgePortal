@@ -31,8 +31,8 @@ exports.update = function(req,res){
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
         }
-
         product.name = req.body.name;
+        product.image = req.body.image;
         product.description = req.body.description;
         product.created_date= req.body.created_date;
         product.updated_date = Date.now();
@@ -47,7 +47,10 @@ exports.update = function(req,res){
         product.seats_count = req.body.seats_count;
         product.assigned_user_id = req.body.assigned_user_id;
         product.location = req.body.location;
-        
+        product.cost = req.body.cost;
+        product.professional_level = req.body.professional_level;
+        product.age_category_from = req.body.age_category_from;
+        product.age_category_up = req.body.age_category_up;
         return product.save(function (err) {
             if (!err) {
                 log.info("product updated");
@@ -69,6 +72,7 @@ exports.update = function(req,res){
 exports.create = function(req,res){
   var product = new Product({
       name: req.body.name,
+      image: req.body.image,
       description: req.body.description,
       created_date: Date.now(),
       updated_date: Date.now(),
@@ -84,6 +88,10 @@ exports.create = function(req,res){
       assigned_user_id: req.body.assigned_user_id,
       location: req.body.location,
       views: req.body.views,
+      cost: req.body.cost,
+      professional_level: req.body.professional_level,
+      age_category_from: req.body.age_category_from,
+      age_category_up: req.body.age_category_up,
   });
     product.save(function(err){
         if(!err){
