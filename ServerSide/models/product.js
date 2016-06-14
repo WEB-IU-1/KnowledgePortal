@@ -51,6 +51,18 @@ var productSchema = new Schema({
         teacher:{
             type: String
         },
+        cost:{
+            type: Number
+        },
+        professional_level:{
+            type: Number
+        },
+        age_category_from:{
+            type: Number
+        },
+        age_category_up:{
+            type: Number
+        },
         seats_count:{
             type: Number
         },
