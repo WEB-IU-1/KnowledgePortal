@@ -11,9 +11,6 @@
   function ProductController() {
     var vm = this;
     var crudServiceBaseUrl = "//localhost:1337/api/product/";
-    vm.get = function (id)
-    {
-      return $http({method: 'GET', url: crudServiceBaseUrl+id});
-    }
+
   }
 })();
