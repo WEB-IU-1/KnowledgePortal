@@ -14,6 +14,12 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
+      .state('managers', {
+        url: '/managers',
+        templateUrl: 'app/managers/managers.html',
+        controller: 'ManagersController',
+        controllerAs: 'managers'
+      })
       .state('partners', {
         url: '/partners',
         templateUrl: 'app/partners/partners.html',

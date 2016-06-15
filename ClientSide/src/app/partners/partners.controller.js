@@ -12,29 +12,7 @@
 
     vm.mainGridOptions = {
       dataSource: DataSource.getDataSource(crudServiceBaseUrl),
-      //dataSource: {
-        //schema: {
-        //  model: {
-        //    id: "_id",
-        //    fields: {
-        //      _id: { editable: true, nullable: false, hidden: true },
-        //      name: { validation: { required: true } },
-        //      full_name: { validation: { required: true, min: 1}, hidden: true },
-        //      logo: {},
-        //      credentials: { hidden: true, validation: { required: true }},
-        //      address: { hidden: true, validation: { required: true }},
-        //      phone: { validation: { required: true }},
-        //      email: { validation: { required: true }},
-        //      contact_people: { hidden: true },
-        //      categories: { hidden: true },
-        //      teachers: { hidden: true },
-        //      offices_addresses: { hidden: true },
-        //      comment: { }
-        //    }
-        //  }
-        //}
-      //},
-      toolbar: ["create"],
+      toolbar: [{name: "create", text: "Добавить партнёра"}],
       sortable: true,
       pageable: true,
       dataBound: function() {
@@ -42,43 +20,54 @@
       },
       columns: [
         {
-        field: "name",
-        title: "Название компании"
+          field: "name",
+          title: "Название компании"
       },{
-        field: "full_name",
-        title: "Полное название компании"
+          field: "full_name",
+          title: "Полное название компании",
+          hidden: true
+        },{
+          field: "logo",
+          title: "Лого",
+          hidden: true
       },{
-        field: "logo",
-        title: "Лого"
+          field: "credentials",
+          title: "Реквизиты",
+          hidden: true
       },{
-        field: "credentials",
-        title: "Реквизиты"
+          field: "address",
+          title: "Адрес"
       },{
-        field: "address",
-        title: "Адрес"
+          field: "phone",
+          title: "Телефон"
       },{
-        field: "phone",
-        title: "Телефон"
+          field: "email",
+          title: "Email"
       },{
-        field: "email",
-        title: "Email"
+          field: "contact_people",
+          title: "Контактные лица"
       },{
-        field: "contact_people",
-        title: "Контактные лица"
+          field: "categories",
+          title: "Направления",
+          hidden: true
       },{
-        field: "categories",
-        title: "Направления"
+          field: "teachers",
+          title: "Преподаватели",
+          hidden: true
       },{
-        field: "teachers",
-        title: "Преподаватели"
+          field: "offices_addresses",
+          title: "Список адресов филиалов",
+          hidden: true
       },{
-        field: "offices_addresses",
-        title: "Список адресов филиалов"
+          field: "active",
+          title: "Активный?",
+          template: "<input type='checkbox' data-type='number' data-bind='checked: active' #= (active !=0) ? checked='checked' : '' # class='chkbx' />"
       },{
-        field: "comment",
-        title: "Комментарий"
+          field: "comment",
+          title: "Комментарий",
+          hidden: true
       },{
-        command: ["edit", "destroy"],
+        command: [{name: "edit", text: "Редактировать"}, {name: "destroy", text: "Удалить"}],
         title: "Действия"
       }],
       editable: "popup"

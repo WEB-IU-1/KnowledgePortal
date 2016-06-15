@@ -204,6 +204,7 @@
             categories: { },
             teachers: { },
             offices_addresses: { },
+            active: {},
             comment: { }
           },
           expanded: true
