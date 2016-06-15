@@ -42,6 +42,7 @@ exports.update = function(req,res){
         partner.categories = req.body.categories;
         partner.teachers = req.body.teachers;
         partner.offices_addresses = req.body.offices_addresses;
+        partner.active = req.body.active;
         partner.comment = req.body.comment;
 
         return partner.save(function (err) {
@@ -76,6 +77,7 @@ exports.create = function(req,res){
       categories: req.body.categories,
       teachers: req.body.teachers,
       offices_addresses: req.body.offices_addresses,
+      active: req.body.active,
       comment: req.body.comment
   });
     partner.save(function(err){

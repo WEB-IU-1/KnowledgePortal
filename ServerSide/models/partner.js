@@ -5,56 +5,66 @@ var partnerSchema = new Schema({
     name: {
         type: String,
         unique: true,
-        required: false, default: ''
+        required: true,
+        default: ''
     },
     full_name: {
         type: String,
         unique: true,
-        required: false, default: ''
+        required: true,
+        default: ''
     },
     logo: {
         type: String
     },
     credentials:{
         type: String,
-        required: false, default: ''
+        required: true,
+        default: ''
     },
     address:{
         type: String,
-        required: false, default: ''
+        required: true,
+        default: ''
     },
     phone:{
         type: String,
         unique: true,
-        required: false, default: ''
+        required: true,
+        default: ''
     },
     email:{
         type: String,
         unique: true,
-        required: false, default: ''
+        required: true,
+        default: ''
     },
     contact_people:{
         type: String,
-        required: false, default: ''
+        required: false,
+        default: ''
     },
     categories:{
         type: String,
-        required: false, default: ''
+        required: true,
+        default: ''
     },
     teachers:{
         type: String,
-        required: false, default: ''
+        required: false,
+        default: ''
     },
     offices_addresses:{
         type: String,
-        required: false, default: ''
+        required: false,
+        default: ''
     },
     comment:{
         type: String
     },
     active:{
-        type:Boolean,
-        default: true
+        type: Number,
+        default: 1
     }
 },{
     versionKey: false   //If you don't need version_key
