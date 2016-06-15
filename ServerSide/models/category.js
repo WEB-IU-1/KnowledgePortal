@@ -27,8 +27,6 @@ var categorySchema = new Schema({
         type: String,
         default:null
     }
-},{
-    versionKey: false   //If you don't need version_key
 });
 
 module.exports = mongoose.model('Category',categorySchema);

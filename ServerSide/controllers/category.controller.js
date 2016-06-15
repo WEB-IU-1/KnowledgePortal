@@ -31,10 +31,9 @@ exports.update = function(req,res){
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
         }
-
         category.name = req.body.name;
         category.description = req.body.description;
-        category.updated_date = req.body.updated_date; //some how need stay it deafault
+        category.updated_date = Date.now();
         category.active = req.body.active;
         category.parent_id = req.body.parent_id;
 
