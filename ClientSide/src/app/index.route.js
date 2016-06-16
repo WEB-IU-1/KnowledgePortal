@@ -44,7 +44,11 @@
         templateUrl: 'app/product/product.html',
         controller: 'ProductController',
         controllerAs: 'product',
-
+        resolve: {
+          product: function ($stateParams,$http) {
+            return $http({method: 'GET', url: "//localhost:1337/api/product/"+$stateParams.id})
+          }
+        }
       });
 
     $urlRouterProvider.otherwise('/');
