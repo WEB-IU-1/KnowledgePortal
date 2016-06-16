@@ -2,6 +2,7 @@
 <html ng-app="KnowledgePortal">
   <head>
     <meta charset="utf-8">
+    <base href="/">
     <title>KnowledgePortal</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
@@ -23,8 +24,50 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <header>
+      <div>
+        <ul kendo-menu>
+          <li>
+            <img class="site-logo" src="assets/images/angular.png">
+          </li>
+          <li ui-sref-active="k-state-active">
+            <a ui-sref="home">Направления</a>
+          </li>
+          <li ui-sref-active="k-state-active">
+            <a ui-sref="schedulerCourse">Мероприятия</a>
+          </li>
+          <li ui-sref-active="k-state-active">
+            <a ui-sref="products">Продукты</a>
+          </li>
+          <li ui-sref-active="k-state-active">
+            <a ui-sref="partners">Партнеры</a>
+          </li>
+          <li ui-sref-active="k-state-active">
+            <a ui-sref="users">Пользователи</a>
+          </li>
+          <li ui-sref-active="k-state-active">
+            <a ui-sref="managers">Менеджеры</a>
+          </li>
+          <li>
+            <a href="#">Выйти</a>
+            <ul>
+              <li>
+                Опция 1
+              </li>
+              <li>
+                Опция 2
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
 
     <div ui-view></div>
+
+    <footer>
+
+    </footer>
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
