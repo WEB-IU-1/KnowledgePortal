@@ -6,7 +6,8 @@
     .config(routerConfig);
 
   /** @ngInject */
-  function routerConfig($stateProvider, $urlRouterProvider) {
+  function routerConfig($stateProvider, $locationProvider, $urlRouterProvider) {
+    $locationProvider.html5Mode(true);
     $stateProvider
       .state('home', {
         url: '/',
