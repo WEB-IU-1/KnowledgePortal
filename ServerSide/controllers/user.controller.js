@@ -100,3 +100,32 @@ exports.destroy = function(req,res){
         });
     });
 };
+exports.logIn = function(req,res){
+    var username = req.body.username || '';
+    var password = req.body.password || '';
+
+    User.findOne({username: username}, function (err, user) {
+        if (!user) {
+            res.statusCode = 401;
+            return res.send({error: "User not found"});
+        } else {if (!user.checkPassword(password)) {
+            res.statusCode=401;
+            return res.send({error: 'Incorrect password'});}
+            var jwt = nJwt.create(user, "hello");
+            var token = jwt.compact();
+            res.statusCode = 200;
+            return res.json({token: token});}
+    });
+}
+exports.userInfo = function(req, res){
+    var username = req.body.username || '';
+    User.findOne({username: username}), function (err, user) {
+        if (err){
+            res.statusCode = 401;
+            return res.send({error: 'User not found'});
+        } else {
+            res.statusCode = 200;
+            return res.json({user: user});
+        }
+    }
+}

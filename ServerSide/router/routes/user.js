@@ -11,4 +11,8 @@ router.post('/', api.create);                //create new one
 
 router.delete('/:id', api.destroy );         //delete one by id
 
+router.post('/auth', api.logIn);
+
+router.post('/userInfo', api.userInfo);
+
 module.exports = router;
