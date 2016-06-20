@@ -1,1 +1,30 @@
-<div>Продукт</div>
+<div class="container">
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+  <ol class="breadcrumb">
+    <li><a href="#">Продукт</a></li>
+    <li class="active">Йога</li>
+  </ol>
+  <div class="col-md-4 pull-right">
+    <div  class="thumbnail">
+      <img  src="{{product.resolveResult.image}}" alt="{{product.resolveResult.name}}">
+    </div>
+        <ul class="list-group list-group-unbordered">
+          <li class="list-group-item">
+            <b>Тип</b> <a class="pull-right">{{product.resolveResult.type}}</a>
+          </li>
+          <li class="list-group-item">
+            <b>Преподователь</b> <a class="pull-right">{{product.resolveResult.teacher}}</a>
+          </li>
+        </ul>
+  </div>
+  <div class="col-md-8">
+    <div class="page-header">
+    <h1>{{product.resolveResult.name}} <small></small></h1>
+  </div>
+<p>{{product.resolveResult.description}}</p>
+  </div>
+</div>
+
+
