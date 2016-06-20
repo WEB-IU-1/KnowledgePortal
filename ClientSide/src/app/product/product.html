@@ -12,7 +12,7 @@
         <div class="widget-user-header bg-yellow">
           <h1 class="widget-user-username text-center" ng-bind="product.resolveResult.name"></h1>
           <h5 class="widget-user-desc text-center" ng-bind="product.resolveResult.type"></h5>
-          <h6 class="widget-user-desc" ng-bind-template="Преподователь: {{product.resolveResult.teacher}} в "></h6>
+          <h6 class="widget-user-desc">Преподователь: <a src="{{product.resolveResult.teacher_id}}"></a> в <a src="{{product.resolveResult.school_id}}"></a></h6>
         </div>
 
         <div class="box-body">
