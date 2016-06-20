@@ -43,7 +43,8 @@ exports.update = function(req,res){
         product.recurrenceId = req.body.recurrenceId;
         product.recurrenceRule = req.body.recurrenceRule;
         product.recurrenceException = req.body.recurrenceException;
-        product.teacher = req.body.teacher;
+        product.teacher_id = req.body.teacher_id;
+        product.school_id = req.body.school_id;
         product.seats_count = req.body.seats_count;
         product.assigned_user_id = req.body.assigned_user_id;
         product.location = req.body.location;
@@ -83,7 +84,8 @@ exports.create = function(req,res){
       recurrenceId: req.body.recurrenceId,
       recurrenceRule: req.body.recurrenceRule,
       recurrenceException: req.body.recurrenceException,
-      teacher: req.body.teacher,
+      teacher_id: req.body.teacher_id,
+      school_id: req.body.school_id,
       seats_count: req.body.seats_count,
       assigned_user_id: req.body.assigned_user_id,
       location: req.body.location,

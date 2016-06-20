@@ -37,12 +37,21 @@
   </div>
 
   <div class="k-edit-label">
-    <label for="teacher">Преподователь</label>
+    <label for="teacher_id">Преподователь</label>
   </div>
-  <div data-container-for="teacher" class="k-edit-field">
-    <input type="text" class="k-input k-textbox" name="title"  data-bind="value:teacher">
+  <div data-container-for="teacher_id" class="k-edit-field">
+    <select id="teacher_id" data-bind="value:teacher_id" data-role="dropdownlist"
+            data-value-field="value" data-text-field="text">
+    </select>
   </div>
-
+  <div class="k-edit-label">
+    <label for="school_id">Образовательный центр</label>
+  </div>
+  <div data-container-for="teacher_id" class="k-edit-field">
+    <select id="school_id" data-bind="value:school_id" data-role="dropdownlist"
+            data-value-field="value" data-text-field="text">
+    </select>
+  </div>
   <div class="k-edit-label">
     <label for="type">Тип мероприятия</label>
   </div>

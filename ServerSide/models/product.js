@@ -48,7 +48,10 @@ var productSchema = new Schema({
         recurrenceException:{
             type: String
         },
-        teacher:{
+        teacher_id:{
+            type: String
+        },
+        school_id:{
             type: String
         },
         cost:{
