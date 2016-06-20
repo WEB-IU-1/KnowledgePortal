@@ -1,78 +1,92 @@
 <div class="container">
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
+
   <ol class="breadcrumb">
     <li><a href="#">Продукт</a></li>
     <li class="active">Йога</li>
   </ol>
   <div class="row">
+
     <div class="col-md-9">
-      <div class="box box-primary">
-        <div class="box-body no-padding">
-          <div class="row">
-            <div class="col-md-2">
-              <div class="pad box-pane-right bg-green" style="min-height: 280px">
-                <div class="description-block margin-bottom">
-                  <div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
-                  <h5 class="description-header" ng-bind="product.resolveResult.views"></h5>
-                  <span class="description-text">посещений</span>
-                </div>
-                <!-- /.description-block -->
-                <div class="description-block margin-bottom">
-                  <div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
-                  <h5 class="description-header" ng-bind="product.resolveResult.busy_seats_count"></h5>
-                  <span class="description-text">занято мест</span>
-                </div>
-                <!-- /.description-block -->
-                <div class="description-block">
-                  <div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
-                  <h5 class="description-header" ng-bind="product.resolveResult.seats_count"></h5>
-                  <span class="description-text">возможных мест</span>
-                </div>
-                <!-- /.description-block -->
-              </div>
-            </div>
-            <div class="col-md-10">
-                <div class="col-md-12">
-                <h1 class="text-center" ng-bind="product.resolveResult.name"><small></small></h1>
-                  </div>
-                <div class="col-md-4 row">
+      <div class="box box-widget widget-user">
+        <div class="widget-user-header bg-yellow">
+          <h1 class="widget-user-username text-center" ng-bind="product.resolveResult.name"></h1>
+          <h5 class="widget-user-desc text-center" ng-bind="product.resolveResult.type"></h5>
+          <h6 class="widget-user-desc" ng-bind-template="Преподователь: {{product.resolveResult.teacher}} в "></h6>
+        </div>
+
+        <div class="box-body">
+
+                <div class="col-xs-4">
                   <div  class="thumbnail">
                     <img  src="{{product.resolveResult.image}}" alt="{{product.resolveResult.name}}">
+
                   </div>
-                </div>
-                <div class="col-md-8">
                   <div class="col-md-6"><b>Тип</b></div>
                   <div class="col-md-6" ng-bind="product.resolveResult.type"></div>
 
                   <div class="col-md-6"><b>Преподователь</b></div>
                   <div class="col-md-6" ng-bind="product.resolveResult.teacher"></div>
+                </div>
+                <div class="col-xs-8">
+                  <p ng-bind="product.resolveResult.description"></p>
+
 
                 </div>
-                <div class="col-md-12 row">
-                  <p ng-bind="product.resolveResult.description"></p>
-                  <div class="">
-                    <script type="text/javascript">(function() {
-                      if (window.pluso)if (typeof window.pluso.start == "function") return;
-                      if (window.ifpluso==undefined) { window.ifpluso = 1;
-                        var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
-                        s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
-                        s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
-                        var h=d[g]('body')[0];
-                        h.appendChild(s);
-                      }})();</script>
-                    <div class="pluso" data-background="transparent" data-options="medium,round,line,horizontal,counter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print"></div>
-                  </div>
-                </div>
+
+        </div>
+        <div class="box-footer">
+          <div class="row">
+            <div class="col-sm-4 border-right">
+              <div class="description-block">
+                <h5 class="description-header" ng-bind="product.resolveResult.views"></h5>
+                <span class="description-text">просмотров</span>
+              </div>
+              <!-- /.description-block -->
             </div>
+            <!-- /.col -->
+            <div class="col-sm-4 border-right">
+              <div class="description-block">
+                <h5 class="description-header" ng-bind="product.resolveResult.busy_seats_count"></h5>
+                <span class="description-text">занято мест</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4">
+              <div class="description-block">
+                <h5 class="description-header" ng-bind="product.resolveResult.seats_count"></h5>
+                <span class="description-text">общее количество мест</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <div class="pull-right">
+            <small>Создано: </small><small ng-bind="product.resolveResult.created_date"></small>
+
+            <small>Обновлено: </small><small ng-bind="product.resolveResult.updated_date"></small>
+          </div>
+          <div class="pull-right">
+            <script type="text/javascript">(function() {
+              if (window.pluso)if (typeof window.pluso.start == "function") return;
+              if (window.ifpluso==undefined) { window.ifpluso = 1;
+                var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                var h=d[g]('body')[0];
+                h.appendChild(s);
+              }})();</script>
+            <div class="pluso" data-background="transparent" data-options="medium,round,line,horizontal,counter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print"></div>
+          </div>
+          <!-- /.row -->
         </div>
       </div>
-      </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 pull-left">
 
     </div>
   </div>
-
 </div>
 
 
