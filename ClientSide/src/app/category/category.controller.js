@@ -11,8 +11,8 @@
 
     var crudServiceBaseUrl = "//localhost:1337/api/category/";
 
-    function onDragEnd(e) {
-      this.dataSource.sync();
+    function onDragEnd() {
+      vm.dataSource.sync();
     }
 
     vm.treelistOptions = {
