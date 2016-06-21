@@ -45,6 +45,12 @@
         controller: 'ProductController',
         controllerAs: 'product',
 
+      })
+      .state('test', {
+        url: '/test',
+        templateUrl: 'app/testpurchase/test.html',
+        controller: 'TestController',
+        controllerAs: 'test'
       });
 
     $urlRouterProvider.otherwise('/');
