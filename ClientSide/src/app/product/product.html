@@ -5,6 +5,8 @@
     <li><a href="#">Продукт</a></li>
     <li class="active">Йога</li>
   </ol>
+
+
   <div class="row">
 
     <div class="col-md-12">
@@ -24,11 +26,22 @@
                   <table class="table">
                     <tr>
                       <th >Начало</th>
-                      <td  ng-bind="product.resolveResult.start"></td>
+                      <td >
+                        <div ng-bind="product.resolveResult.start | date"></div>
+                        <div ng-hide="product.resolveResult.isAllDay" ng-bind="product.resolveResult.start | date : 'shortTime'"></div>
+                      </td>
                     </tr>
                     <tr>
                       <th >Конец</th>
-                      <td  ng-bind="product.resolveResult.end"></td>
+                      <td>
+                        <div ng-bind="product.resolveResult.end | date"></div>
+                        <div ng-hide="product.resolveResult.isAllDay" ng-bind="product.resolveResult.end | date : 'shortTime'"></div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th >Длительность</th>
+                      <td ng-hide="product.resolveResult.isAllDay" ng-bind="product.duration()"></td>
+                      <td ng-show="product.resolveResult.isAllDay">Весь день</td>
                     </tr>
                     <tr>
                       <th >Стоимость</th>
@@ -81,8 +94,8 @@
             <!-- /.col -->
           </div>
           <div class="pull-right">
-            <small>Создано: </small><small ng-bind="product.resolveResult.created_date"></small>
-            <small>Обновлено: </small><small ng-bind="product.resolveResult.updated_date"></small>
+            <small>Создано: </small><small ng-bind="product.resolveResult.created_date | date : 'medium'"></small>
+            <small>Обновлено: </small><small ng-bind="product.resolveResult.updated_date | date : 'medium'"></small>
           </div>
           <br>
           <div class="pull-right">
