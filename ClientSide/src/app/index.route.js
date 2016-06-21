@@ -67,6 +67,13 @@
             return $http({method: 'GET', url: "//localhost:1337/api/product/"+$stateParams.id});
           }
         }
+
+      })
+      .state('test', {
+        url: '/test',
+        templateUrl: 'app/testpurchase/test.html',
+        controller: 'TestController',
+        controllerAs: 'test'
       });
 
     $urlRouterProvider.otherwise('/');
