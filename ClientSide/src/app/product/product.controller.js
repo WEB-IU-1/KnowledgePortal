@@ -8,9 +8,9 @@
     .module('KnowledgePortal')
     .controller('ProductController', ProductController);
 
-  function ProductController() {
-    var vm = this;
-    var crudServiceBaseUrl = "//localhost:1337/api/product/";
+  function ProductController($stateParams,$http,productRes) {
+    var vm=this;
+    vm.resolveResult=productRes.data.article;
 
   }
 })();
