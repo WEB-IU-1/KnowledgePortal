@@ -55,7 +55,7 @@
             updated_date: {type: "date", from: "updated_date"},
             assigned_user_id: {from: "assigned_user_id", type:"string"},
             cost: {from:"cost", type:"number", defaultValue: 0},
-            professional_level: {type: "number", from: "professional_level", defaultValue: "Начальный"},
+            professional_level: {type: "string", from: "professional_level", defaultValue: "Начальный"},
             age_category_from: {type: "number", from: "age_category_from", defaultValue: 14},
             age_category_up: {type:"number", from: "age_category_up", defaultValue: 70},
           }

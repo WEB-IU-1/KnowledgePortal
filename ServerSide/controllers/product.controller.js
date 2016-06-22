@@ -113,6 +113,7 @@ exports.create = function(req,res){
       teacher_id: req.body.teacher_id,
       school_id: req.body.school_id,
       seats_count: req.body.seats_count,
+      busy_seats_count:req.body.busy_seats_count,
       assigned_user_id: req.body.assigned_user_id,
       location: req.body.location,
       views: req.body.views,
