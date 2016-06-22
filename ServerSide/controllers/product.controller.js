@@ -70,6 +70,32 @@ exports.update = function(req,res){
     });
 };
 
+exports.view = function(req,res){
+    return Product.findById(req.params.id, function (err, product) {
+        if(!product) {
+            res.statusCode = 404;
+            return res.send({ error: 'Not found' });
+        }
+        product.views++;
+
+        return product.save(function (err) {
+            if (!err) {
+                log.info("product updated");
+                return res.send({ status: 'OK', article:product });
+            } else {
+                if(err.name == 'ValidationError') {
+                    res.statusCode = 400;
+                    res.send({ error: 'Validation error' });
+                } else {
+                    res.statusCode = 500;
+                    res.send({ error: 'Server error' });
+                }
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+            }
+        });
+    });
+};
+
 exports.create = function(req,res){
   var product = new Product({
       name: req.body.name,

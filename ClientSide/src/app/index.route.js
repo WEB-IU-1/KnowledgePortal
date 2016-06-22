@@ -46,6 +46,7 @@
         controllerAs: 'product',
         resolve: {
           productRes: function ($stateParams,$http) {
+            $http({method: 'PUT', url: "//localhost:1337/api/product/"+$stateParams.id});
             return $http({method: 'GET', url: "//localhost:1337/api/product/"+$stateParams.id});
           }
         }

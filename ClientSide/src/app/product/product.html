@@ -44,10 +44,6 @@
                       <td ng-show="product.resolveResult.isAllDay">Весь день</td>
                     </tr>
                     <tr>
-                      <th >Стоимость</th>
-                      <td  ng-bind="product.resolveResult.cost"></td>
-                    </tr>
-                    <tr>
                       <th >Требуемый уровень подготовки</th>
                       <td  ng-bind="product.resolveResult.professional_level"></td>
                     </tr>
@@ -60,8 +56,10 @@
                 </div>
                 <div class="col-xs-7">
                   <p ng-bind="product.resolveResult.description"></p>
-
+                  <p ng-bind="product.resolveResult.recurrenceRule"></p>
+                  <p ng-bind="product.resolveResult.recurrenceException"></p>
                   <p >Местоположение: <a href="" ng-bind="product.resolveResult.location"></a></p>
+                  <p class="pull-left" ng-bind-template="Стоимость: {{product.resolveResult.cost}}"> </p>
                   <a class="btn btn-success pull-right">Записатся</a>
                 </div>
 
