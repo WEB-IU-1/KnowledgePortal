@@ -70,7 +70,8 @@ var productSchema = new Schema({
             type: Number
         },
         busy_seats_count:{
-            type: Number
+            type: Number,
+            default: 0
         },
         views:{
             type: Number,

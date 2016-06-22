@@ -59,7 +59,8 @@
                   <p ng-bind="product.resolveResult.recurrenceRule"></p>
                   <p ng-bind="product.resolveResult.recurrenceException"></p>
                   <p >Местоположение: <a href="" ng-bind="product.resolveResult.location"></a></p>
-                  <p class="pull-left" ng-bind-template="Стоимость: {{product.resolveResult.cost}}"> </p>
+                  <p  ng-bind-template="Осталось свободных мест: {{product.resolveResult.seats_count-product.resolveResult.busy_seats_count}}"> </p>
+                  <p class="pull-left" ng-bind-template="Стоимость: {{product.resolveResult.cost}} руб."> </p>
                   <a class="btn btn-success pull-right">Записатся</a>
                 </div>
 
