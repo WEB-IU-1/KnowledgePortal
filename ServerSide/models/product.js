@@ -58,7 +58,7 @@ var productSchema = new Schema({
             type: Number
         },
         professional_level:{
-            type: Number
+            type: String
         },
         age_category_from:{
             type: Number
