@@ -1,24 +1,56 @@
 <aside class="main-sidebar">
+  <div id="wrapper">
+    <div class="overlay"></div>
 
-  <h1>Категории</h1>
+    <!-- Sidebar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+      <ul class="nav sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="#">
+            Категории
+          </a>
+        </li>
 
-      <ul ng-repeat="category in categoryMenu" ng-include="'treeview.html'"></ul>
+        <div ng-repeat="category in categoryMenu" ng-include="'treeview.html'"></div>
 
-  <script type="text/ng-template" id="treeview.html">
+        <script type="text/ng-template" id="treeview.html">
 
-    <li>
-      <a ng-show="{{!category.childes.length}}" href="/#/category/{{category.id}}">
-        <span ng-bind="::category.name"></span>
-      </a>
+          <li ng-hide="{{category.childes.length}}">
+            <a href="/#/category/{{category.id}}">
+              <i class="fa fa-fw"></i>{{category.name}}
+            </a>
+          </li>
 
-      <a ng-hide="{{!category.childes.length}}" href="#">
-        <span ng-bind="::category.name"></span>
-      </a>
-    </li>
 
-    <ul ng-if="::category.childes.length">
-      <div ng-repeat="category in category.childes" ng-include="'treeview.html'"></div>
-    </ul>
-  </script>
+          <li class="dropdown" ng-show="{{category.childes.length}}" >
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+              <i class="fa fa-fw fa-plus"></i>
+              {{category.name}} <span class="caret"></span>
+            </a>
+
+            <ul class="list-unstyled dropdown-menu" role="menu" ng-if="::category.childes.length">
+              <li class="dropdown-header">Dropdown heading</li>
+              <div ng-repeat="category in category.childes" ng-include="'treeview.html'"></div>
+            </ul>
+
+          </li>
+        </script>
+
+      </ul>
+    </nav>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+        <span class="hamb-top"></span>
+        <span class="hamb-middle"></span>
+        <span class="hamb-bottom"></span>
+      </button>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
 
 </aside><!-- /.main-sidebar -->
