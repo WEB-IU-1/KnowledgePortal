@@ -2,18 +2,18 @@
 
   <h1>Категории</h1>
 
-  <ul ng-repeat="category in categoryMenu" ng-include="'treeview1.html'"></ul>
+  <ul ng-repeat="category in categoryMenu" ng-include="'treeview.html'"></ul>
 
-  <script type="text/ng-template" id="treeview1.html">
+  <script type="text/ng-template" id="treeview.html">
 
     <li>
-      <a style="width: 100%;" href="" layout="row" layout-align="space-between" ng-click="detail.toggleItems(group)">
-        <span ng-bind="::category.name || 'No Label'"></span>
+      <a href="/#/category/{{category.id}}">
+        <span ng-bind="::category.name"></span>
       </a>
     </li>
 
     <ul ng-if="::category.childes.length">
-      <div ng-repeat="category in category.childes" ng-include="'treeview1.html'"></div>
+      <div ng-repeat="category in category.childes" ng-include="'treeview.html'"></div>
     </ul>
   </script>
 
