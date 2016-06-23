@@ -18,52 +18,71 @@
         </div>
 
         <div class="box-body">
+          <div class="col-xs-5">
+            <div  class="thumbnail">
+              <img  src="{{product.resolveResult.image}}" alt="{{product.resolveResult.name}}">
+            </div>
+            <table class="table">
+              <tr>
+                <th >Начало</th>
+                <td >
+                  <div ng-bind="product.resolveResult.start | date"></div>
+                  <div ng-hide="product.resolveResult.isAllDay" ng-bind="product.resolveResult.start | date : 'shortTime'"></div>
+                </td>
+              </tr>
+              <tr>
+                <th >Конец</th>
+                <td>
+                  <div ng-bind="product.resolveResult.end | date"></div>
+                  <div ng-hide="product.resolveResult.isAllDay" ng-bind="product.resolveResult.end | date : 'shortTime'"></div>
+                </td>
+              </tr>
+              <tr>
+                <th >Длительность</th>
+                <td ng-hide="product.resolveResult.isAllDay" ng-bind="product.duration()"></td>
+                <td ng-show="product.resolveResult.isAllDay">Весь день</td>
+              </tr>
+              <tr ng-show="product.freq()">
+                <th >Повтор</th>
+                <td ng-bind="product.freq()"></td>
+              </tr>
+              <tr ng-show="product.count()">
+                <th >Количество повторов</th>
+                <td ng-bind="product.count()"></td>
+              </tr>
+              <tr ng-show="product.interval()">
+                <th >Интервал между занятиями</th>
+                <td ng-bind-template="{{product.interval()}} дня(-ей)"></td>
+              </tr>
+              <tr ng-show="product.byday()">
+                <th >Дни недели</th>
+                <td ng-bind-template="{{product.byday()}} {{product.weekStart()}}"></td>
+              </tr>
+              <tr ng-show="product.until()">
+                <th >Заканчивается повторы</th>
+                <td ng-bind="product.until() | date "></td>
+              </tr>
+              <tr ng-show="product.bymonthday()">
+                <th >День повтора в месяце</th>
+                <td ng-bind="product.bymonthday() "></td>
+              </tr>
+              <tr ng-show="product.bymonth()">
+                <th >Месяц</th>
+                <td ng-bind="product.bymonth() | date :'MMM' "></td>
+              </tr>
+            </table>
 
-                <div class="col-xs-5">
-                  <div  class="thumbnail">
-                    <img  src="{{product.resolveResult.image}}" alt="{{product.resolveResult.name}}">
-                  </div>
-                  <table class="table">
-                    <tr>
-                      <th >Начало</th>
-                      <td >
-                        <div ng-bind="product.resolveResult.start | date"></div>
-                        <div ng-hide="product.resolveResult.isAllDay" ng-bind="product.resolveResult.start | date : 'shortTime'"></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th >Конец</th>
-                      <td>
-                        <div ng-bind="product.resolveResult.end | date"></div>
-                        <div ng-hide="product.resolveResult.isAllDay" ng-bind="product.resolveResult.end | date : 'shortTime'"></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th >Длительность</th>
-                      <td ng-hide="product.resolveResult.isAllDay" ng-bind="product.duration()"></td>
-                      <td ng-show="product.resolveResult.isAllDay">Весь день</td>
-                    </tr>
-                    <tr>
-                      <th >Требуемый уровень подготовки</th>
-                      <td  ng-bind="product.resolveResult.professional_level"></td>
-                    </tr>
-                    <tr>
-                      <th >Возрастная категория</th>
-                      <td  ng-bind-template="от {{product.resolveResult.age_category_from}} до {{product.resolveResult.age_category_up}}"></td>
-                    </tr>
-                  </table>
-
-                </div>
-                <div class="col-xs-7">
-                  <p ng-bind="product.resolveResult.description"></p>
-                  <p ng-bind="product.resolveResult.recurrenceRule"></p>
-                  <p ng-bind="product.resolveResult.recurrenceException"></p>
-                  <p >Местоположение: <a href="" ng-bind="product.resolveResult.location"></a></p>
-                  <p  ng-bind-template="Осталось свободных мест: {{product.resolveResult.seats_count-product.resolveResult.busy_seats_count}}"> </p>
-                  <p class="pull-left" ng-bind-template="Стоимость: {{product.resolveResult.cost}} руб."> </p>
-                  <a class="btn btn-success pull-right">Записатся</a>
-                </div>
-
+          </div>
+          <div class="col-xs-7">
+            <p ng-bind="product.resolveResult.description"></p>
+            <p ng-bind-template="Требуемый уровень подготовки: {{product.resolveResult.professional_level}}"></p>
+            <p ng-bind-template="Возрастная категория: от {{product.resolveResult.age_category_from}} до {{product.resolveResult.age_category_up}}"></p>
+            <p ng-bind="product.resolveResult.recurrenceException"></p>
+            <p>Местоположение: <a href="" ng-bind="product.resolveResult.location"></a></p>
+            <p ng-bind-template="Осталось свободных мест: {{product.resolveResult.seats_count-product.resolveResult.busy_seats_count}}"> </p>
+            <p class="pull-left" ng-bind-template="Стоимость: {{product.resolveResult.cost}} руб."> </p>
+            <a class="btn btn-success pull-right">Записатся</a>
+          </div>
         </div>
         <div class="box-footer">
           <div class="row">
@@ -115,7 +134,5 @@
     </div>
   </div>
 </div>
-
-
 
 
