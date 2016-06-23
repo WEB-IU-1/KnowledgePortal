@@ -2,12 +2,16 @@
 
   <h1>Категории</h1>
 
-  <ul ng-repeat="category in categoryMenu" ng-include="'treeview.html'"></ul>
+      <ul ng-repeat="category in categoryMenu" ng-include="'treeview.html'"></ul>
 
   <script type="text/ng-template" id="treeview.html">
 
     <li>
-      <a href="/#/category/{{category.id}}">
+      <a ng-show="{{!category.childes.length}}" href="/#/category/{{category.id}}">
+        <span ng-bind="::category.name"></span>
+      </a>
+
+      <a ng-hide="{{!category.childes.length}}" href="#">
         <span ng-bind="::category.name"></span>
       </a>
     </li>
