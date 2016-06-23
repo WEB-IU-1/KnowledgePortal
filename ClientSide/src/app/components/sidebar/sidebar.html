@@ -1,28 +1,20 @@
 <aside class="main-sidebar">
-  <!-- Inner sidebar -->
-  <div class="sidebar">
 
-    <!-- Sidebar Menu -->
-    <ul class="sidebar-menu">
-      <li class="header">Категории</li>
-      <!-- Optionally, you can add icons to the links -->
-      <li class="active">
-        <a href="#">
-          <span>{{categories[0].name}}</span>
-        </a><
-      </li>
-      <li ng-repeat="category in categories">
-        <a href="#"><span>{{category.name}}</span></a>
-      </li>
+  <h1>Категории</h1>
 
-      <li class="treeview">
-        <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="treeview-menu">
-          <li><a href="#">Link in level 2</a></li>
-          <li><a href="#">Link in level 2</a></li>
-        </ul>
-      </li>
-    </ul><!-- /.sidebar-menu -->
+  <ul ng-repeat="category in categoryMenu" ng-include="'treeview1.html'"></ul>
 
-  </div><!-- /.sidebar -->
+  <script type="text/ng-template" id="treeview1.html">
+
+    <li>
+      <a style="width: 100%;" href="" layout="row" layout-align="space-between" ng-click="detail.toggleItems(group)">
+        <span ng-bind="::category.name || 'No Label'"></span>
+      </a>
+    </li>
+
+    <ul ng-if="::category.childes.length">
+      <div ng-repeat="category in category.childes" ng-include="'treeview1.html'"></div>
+    </ul>
+  </script>
+
 </aside><!-- /.main-sidebar -->
