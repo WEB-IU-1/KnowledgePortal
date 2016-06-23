@@ -1,56 +1,49 @@
 <aside class="main-sidebar">
-  <div id="wrapper">
-    <div class="overlay"></div>
+  <!-- Inner sidebar -->
+  <div class="sidebar">
+    <!-- user panel (Optional) -->
+    <div class="user-panel">
+      <div class="pull-left image">
+        <img src="../../../../assets/images/yeoman.png" class="img-circle" alt="User Image">
+      </div>
+      <div class="pull-left info">
+        <p>Пользователь</p>
 
-    <!-- Sidebar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-      <ul class="nav sidebar-nav">
-        <li class="sidebar-brand">
-          <a href="#">
-            Категории
-          </a>
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      </div>
+    </div><!-- /.user-panel -->
+
+
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu">
+      <li class="header">Направления</li>
+      <!-- Optionally, you can add icons to the links -->
+      <li class="active"><a href="#"><span>Link</span></a><</li>
+
+      <div ng-repeat="category in categoryMenu" ng-include="'treeview.html'"></div>
+    </ul><!-- /.sidebar-menu -->
+
+
+    <script  type="text/ng-template" id="treeview.html">
+      <li ng-hide="{{category.childes.length}}">
+        <a href="/#/category/{{category.id}}">
+        <span> {{category.name}} </span>
+      </a>
+      </li>
+
+      <li class="treeview" ng-show="{{category.childes.length}}" >
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+        <i class="fa fa-fw fa-plus"></i>
+        {{category.name}} <span class="caret"></span>
+        </a>
+
+        <ul class="ltreeview-menu" ng-if="::category.childes.length">
+        <li class="dropdown-header">Dropdown heading</li>
+      <div ng-repeat="category in category.childes" ng-include="'treeview.html'"></div>
+        </ul>
         </li>
-
-        <div ng-repeat="category in categoryMenu" ng-include="'treeview.html'"></div>
-
-        <script type="text/ng-template" id="treeview.html">
-
-          <li ng-hide="{{category.childes.length}}">
-            <a href="/#/category/{{category.id}}">
-              <i class="fa fa-fw"></i>{{category.name}}
-            </a>
-          </li>
+    </script>
 
 
-          <li class="dropdown" ng-show="{{category.childes.length}}" >
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-              <i class="fa fa-fw fa-plus"></i>
-              {{category.name}} <span class="caret"></span>
-            </a>
-
-            <ul class="list-unstyled dropdown-menu" role="menu" ng-if="::category.childes.length">
-              <li class="dropdown-header">Dropdown heading</li>
-              <div ng-repeat="category in category.childes" ng-include="'treeview.html'"></div>
-            </ul>
-
-          </li>
-        </script>
-
-      </ul>
-    </nav>
-    <!-- /#sidebar-wrapper -->
-
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-      <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
-        <span class="hamb-top"></span>
-        <span class="hamb-middle"></span>
-        <span class="hamb-bottom"></span>
-      </button>
-    </div>
-    <!-- /#page-content-wrapper -->
-
-  </div>
-  <!-- /#wrapper -->
-
+  </div><!-- /.sidebar -->
 </aside><!-- /.main-sidebar -->
