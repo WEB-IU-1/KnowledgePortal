@@ -70,6 +70,32 @@ exports.update = function(req,res){
     });
 };
 
+exports.view = function(req,res){
+    return Product.findById(req.params.id, function (err, product) {
+        if(!product) {
+            res.statusCode = 404;
+            return res.send({ error: 'Not found' });
+        }
+        product.views++;
+
+        return product.save(function (err) {
+            if (!err) {
+                log.info("product updated");
+                return res.send({ status: 'OK', article:product });
+            } else {
+                if(err.name == 'ValidationError') {
+                    res.statusCode = 400;
+                    res.send({ error: 'Validation error' });
+                } else {
+                    res.statusCode = 500;
+                    res.send({ error: 'Server error' });
+                }
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+            }
+        });
+    });
+};
+
 exports.create = function(req,res){
   var product = new Product({
       name: req.body.name,
@@ -87,6 +113,7 @@ exports.create = function(req,res){
       teacher_id: req.body.teacher_id,
       school_id: req.body.school_id,
       seats_count: req.body.seats_count,
+      busy_seats_count:req.body.busy_seats_count,
       assigned_user_id: req.body.assigned_user_id,
       location: req.body.location,
       views: req.body.views,

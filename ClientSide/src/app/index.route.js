@@ -38,7 +38,19 @@
         templateUrl: 'app/managers/managers.html',
         controller: 'ManagersController',
         controllerAs: 'managers'
-        });
+        })
+      .state('product', {
+        url: '/product/:id',
+        templateUrl: 'app/product/product.html',
+        controller: 'ProductController',
+        controllerAs: 'product',
+        resolve: {
+          productRes: function ($stateParams,$http) {
+            $http({method: 'PUT', url: "//localhost:1337/api/product/"+$stateParams.id});
+            return $http({method: 'GET', url: "//localhost:1337/api/product/"+$stateParams.id});
+          }
+        }
+      });
 
     $urlRouterProvider.otherwise('/');
   }

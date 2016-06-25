@@ -8,9 +8,7 @@
 </div>
 <script id="template" type="text/x-kendo-template">
   <p>#:type#:
-    <b>
-      #: title #
-    </b>
+   <a href="/\#/product/#:id#"> <b> #: title #</b></a>
   </p>
   <p>Просмотров: #:views#</p>
   <p>Создано:#:created_date# </p>
@@ -133,7 +131,7 @@
     <label for="busy_seats_count">Количество занятых мест</label>
   </div>
   <div  class="k-edit-field">
-    <input type="number" readonly="false" value="10" class="k-input k-textbox" name="busy_seats_count" required="required" data-bind="value:busy_seats_count">
+    <input type="number" readonly="false" value="0" class="k-input k-textbox" name="busy_seats_count" required="required" data-bind="value:busy_seats_count">
   </div>
 
   <div class="k-edit-label">

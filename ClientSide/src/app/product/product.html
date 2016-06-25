@@ -1,0 +1,138 @@
+<div class="container">
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+
+  <ol class="breadcrumb">
+    <li><a href="#">Продукт</a></li>
+    <li class="active">Йога</li>
+  </ol>
+
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="box box-widget widget-user">
+        <div class="widget-user-header bg-yellow">
+          <h1 class="widget-user-username text-center" ng-bind="product.resolveResult.name"></h1>
+          <h5 class="widget-user-desc text-center" ng-bind="product.resolveResult.type"></h5>
+          <h4 class="widget-user-desc">Преподователь: <a src="{{product.resolveResult.teacher_id}}">Иванов Иван Иванович</a> в <a src="{{product.resolveResult.school_id}}">ООО Пятница</a></h4>
+        </div>
+
+        <div class="box-body">
+          <div class="col-xs-5">
+            <div  class="thumbnail">
+              <img  src="{{product.resolveResult.image}}" alt="{{product.resolveResult.name}}">
+            </div>
+            <table class="table">
+              <tr>
+                <th >Начало</th>
+                <td >
+                  <div ng-bind="product.resolveResult.start | date"></div>
+                  <div ng-hide="product.resolveResult.isAllDay" ng-bind="product.resolveResult.start | date : 'shortTime'"></div>
+                </td>
+              </tr>
+              <tr>
+                <th >Конец</th>
+                <td>
+                  <div ng-bind="product.resolveResult.end | date"></div>
+                  <div ng-hide="product.resolveResult.isAllDay" ng-bind="product.resolveResult.end | date : 'shortTime'"></div>
+                </td>
+              </tr>
+              <tr>
+                <th >Длительность</th>
+                <td ng-hide="product.resolveResult.isAllDay" ng-bind="product.duration()"></td>
+                <td ng-show="product.resolveResult.isAllDay">Весь день</td>
+              </tr>
+              <tr ng-show="product.freq()">
+                <th >Повтор</th>
+                <td ng-bind="product.freq()"></td>
+              </tr>
+              <tr ng-show="product.count()">
+                <th >Количество повторов</th>
+                <td ng-bind="product.count()"></td>
+              </tr>
+              <tr ng-show="product.interval()">
+                <th >Интервал между занятиями</th>
+                <td ng-bind-template="{{product.interval()}} дня(-ей)"></td>
+              </tr>
+              <tr ng-show="product.byday()">
+                <th >Дни недели</th>
+                <td ng-bind-template="{{product.byday()}} {{product.weekStart()}}"></td>
+              </tr>
+              <tr ng-show="product.until()">
+                <th >Заканчивается повторы</th>
+                <td ng-bind="product.until() | date "></td>
+              </tr>
+              <tr ng-show="product.bymonthday()">
+                <th >День повтора в месяце</th>
+                <td ng-bind="product.bymonthday() "></td>
+              </tr>
+              <tr ng-show="product.bymonth()">
+                <th >Месяц</th>
+                <td ng-bind="product.bymonth() | date :'MMM' "></td>
+              </tr>
+            </table>
+
+          </div>
+          <div class="col-xs-7">
+            <p ng-bind="product.resolveResult.description"></p>
+            <p ng-bind-template="Требуемый уровень подготовки: {{product.resolveResult.professional_level}}"></p>
+            <p ng-bind-template="Возрастная категория: от {{product.resolveResult.age_category_from}} до {{product.resolveResult.age_category_up}}"></p>
+            <p ng-bind="product.resolveResult.recurrenceException"></p>
+            <p>Местоположение: <a href="" ng-bind="product.resolveResult.location"></a></p>
+            <p ng-bind-template="Осталось свободных мест: {{product.resolveResult.seats_count-product.resolveResult.busy_seats_count}}"> </p>
+            <p class="pull-left" ng-bind-template="Стоимость: {{product.resolveResult.cost}} руб."> </p>
+            <a class="btn btn-success pull-right">Записатся</a>
+          </div>
+        </div>
+        <div class="box-footer">
+          <div class="row">
+            <div class="col-sm-4 border-right">
+              <div class="description-block">
+                <h5 class="description-header" ng-bind="product.resolveResult.views"></h5>
+                <span class="description-text">просмотров</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 border-right">
+              <div class="description-block">
+                <h5 class="description-header" ng-bind="product.resolveResult.busy_seats_count"></h5>
+                <span class="description-text">занято мест</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4">
+              <div class="description-block">
+                <h5 class="description-header" ng-bind="product.resolveResult.seats_count"></h5>
+                <span class="description-text">общее количество мест</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <div class="pull-right">
+            <small>Создано: </small><small ng-bind="product.resolveResult.created_date | date : 'medium'"></small>
+            <small>Обновлено: </small><small ng-bind="product.resolveResult.updated_date | date : 'medium'"></small>
+          </div>
+          <br>
+          <div class="pull-right">
+            <script type="text/javascript">(function() {
+              if (window.pluso)if (typeof window.pluso.start == "function") return;
+              if (window.ifpluso==undefined) { window.ifpluso = 1;
+                var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                var h=d[g]('body')[0];
+                h.appendChild(s);
+              }})();</script>
+            <div class="pluso" data-background="transparent" data-options="medium,round,line,horizontal,counter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print"></div>
+          </div>
+          <!-- /.row -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
