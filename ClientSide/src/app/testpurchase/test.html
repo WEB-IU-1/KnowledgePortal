@@ -1,1 +1,5 @@
-<button type="button" ng-click="purchase.openWindow()">Open Kendo UI Window</button>
+<button class="k-button" ng-show="!test.winvisible" ng-click="win.open()">Open Calendar</button>
+
+<purchase-window modal-window="win" product="test.product"></purchase-window>
+
+</div>
