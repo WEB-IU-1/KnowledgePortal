@@ -1,0 +1,34 @@
+<div kendo-window="purchase.modalWindow" k-title="'Покупка'" k-width="650" k-height="400" k-visible="false">
+  <div class="k-text">
+    Мероприятие {{purchase.product.name}} начинается в {{purchase.product.start}}, заканчивается в  {{purchase.product.end}}. Место проведения - {{purchase.product.location}}.
+  </div>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="quantity" class="required col-sm-2 control-label">Количество</label>
+      <input type="number" id="quantity" class="k-textbox" ng-model="purchase.quantity" required/>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Стоимость </label> {{purchase.quantity * purchase.product.cost}}
+    </div>
+    <div class="form-group">
+      <label for="phone" class="required col-sm-2 control-label">Ваш номер телефона</label>
+      <input type="text" id="phone" class="k-textbox" kendo-masked-text-box k-mask="'+7(999)000-00-00'" ng-model="purchase.phone" required validationMessage="Введите телефон"/>
+    </div>
+    <div class="form-group">
+      <label for="email" class="required col-sm-2 control-label">Ваша почта</label>
+      <input type="email" id="email" class="k-textbox" ng-model="purchase.mail.buyer" required validationMessage="Введите почту"/>
+    </div>
+    <div class="form-group">
+      <label for="certificate" class="col-sm-2 control-label">Подарочный сертификат</label>
+      <input id="certificate" type="checkbox" ng-model="purchase.certificate">
+    </div>
+    <div class="form-group">
+      <label for="giftedemail" ng-show="purchase.certificate" class="required col-sm-2 control-label">Почта получателя сертификата</label>
+      <input type="email" ng-show="purchase.certificate" id="giftedemail" class="k-textbox" placeholder="Почта" ng-model="purchase.mail.gifted" required validationMessage="Введите почту"/>
+    </div>
+    <div class="form-group col-sm-offset-2 col-sm-10">
+      <button class="k-button k-primary" ng-click="purchase.modalWindow.close()">Отмена</button><button class="k-button k-primary" type="submit">Оплатить</button>
+    </div>
+  </form>
+
+</div>
