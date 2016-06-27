@@ -38,6 +38,12 @@
         templateUrl: 'app/managers/managers.html',
         controller: 'ManagersController',
         controllerAs: 'managers'
+      })
+      .state('partners', {
+        url: '/partners',
+        templateUrl: 'app/partners/partners.html',
+        controller: 'PartnersController',
+        controllerAs: 'partners'
         })
       .state('product', {
         url: '/product/:id',
