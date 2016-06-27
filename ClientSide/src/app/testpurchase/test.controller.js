@@ -5,7 +5,7 @@
     .module('KnowledgePortal')
     .controller('TestController', TestController);
 
-  function TestController(DataSource) {
+  function TestController() {
     var vm = this;
     vm.winvisible = false;
     vm.product = {
