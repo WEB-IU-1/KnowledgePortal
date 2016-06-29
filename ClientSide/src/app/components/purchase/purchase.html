@@ -1,34 +1,36 @@
-<div kendo-window="purchase.modalWindow" k-title="'Покупка'" k-width="650" k-height="400" k-visible="false">
-  <div class="k-text">
+<div kendo-window="purchase.modalWindow" k-title="'Покупка'" k-width="650" k-visible="false">
+  <div class="k-text purchase-text">
     Мероприятие {{purchase.product.name}} начинается в {{purchase.product.start}}, заканчивается в  {{purchase.product.end}}. Место проведения - {{purchase.product.location}}.
   </div>
-  <form class="form-horizontal">
+  <form class="form-horizontal purchase-form" ng-submit="purchase.pay()" kendo-validator="purchase.validator">
     <div class="form-group">
       <label for="quantity" class="required col-sm-2 control-label">Количество</label>
-      <input type="number" id="quantity" class="k-textbox" ng-model="purchase.quantity" required/>
+      <input id="quantity" kendo-numerictextbox type="text" k-min="1" k-max="purchase.maxQuantity"  ng-model="purchase.quantity" validationMessage="Bведите количество" required/>
     </div>
     <div class="form-group">
-      <label class="col-sm-2 control-label">Стоимость </label> {{purchase.quantity * purchase.product.cost}}
+      <label class="col-sm-2 control-label">Стоимость </label> <button disabled type="button" class="btn btn-link">{{purchase.quantity * purchase.product.cost}}</button>
     </div>
     <div class="form-group">
       <label for="phone" class="required col-sm-2 control-label">Ваш номер телефона</label>
-      <input type="text" id="phone" class="k-textbox" kendo-masked-text-box k-mask="'+7(999)000-00-00'" ng-model="purchase.phone" required validationMessage="Введите телефон"/>
+      <input type="text" id="phone" name="phone" class="k-textbox" kendo-masked-text-box k-mask="'+7(999)000-00-00'" ng-model="purchase.phone" required validationMessage="Введите телефон"/>
+      <span class="k-invalid-msg" data-for="phone"></span>
     </div>
     <div class="form-group">
       <label for="email" class="required col-sm-2 control-label">Ваша почта</label>
-      <input type="email" id="email" class="k-textbox" ng-model="purchase.mail.buyer" required validationMessage="Введите почту"/>
+      <input type="email" id="email" name="email" class="k-textbox" ng-model="purchase.mail.buyer"  required validationMessage="Введите почту"/>
+      <span class="k-invalid-msg" data-for="email"></span>
     </div>
     <div class="form-group">
-      <label for="certificate" class="col-sm-2 control-label">Подарочный сертификат</label>
-      <input id="certificate" type="checkbox" ng-model="purchase.certificate">
+      <label for="certificate" class="required col-sm-2 control-label">Подарочный сертификат</label>
+      <input id="certificate" type="checkbox" class="checkbox"  ng-model="purchase.certificate">
     </div>
-    <div class="form-group">
-      <label for="giftedemail" ng-show="purchase.certificate" class="required col-sm-2 control-label">Почта получателя сертификата</label>
-      <input type="email" ng-show="purchase.certificate" id="giftedemail" class="k-textbox" placeholder="Почта" ng-model="purchase.mail.gifted" required validationMessage="Введите почту"/>
+    <div class="form-group" ng-show="purchase.certificate">
+      <label for="giftedemail" class="required col-sm-2 control-label">Почта получателя сертификата</label>
+      <input type="email" id="giftedemail" name="giftedemail" class="k-textbox" placeholder="Почта" ng-model="purchase.mail.gifted" ng-required="purchase.certificate" validationMessage="Введите почту получателя сертификата"/>
+      <span class="k-invalid-msg" data-for="giftedemail"></span>
     </div>
-    <div class="form-group col-sm-offset-2 col-sm-10">
-      <button class="k-button k-primary" ng-click="purchase.modalWindow.close()">Отмена</button><button class="k-button k-primary" type="submit">Оплатить</button>
+    <div class="form-group col-sm-12">
+      <kendo-button class="purchase-button" ng-click="purchase.cancel()" sprite-css-class="'k-icon k-i-close'">Отмена</kendo-button> <kendo-button class="purchase-button" sprite-css-class="'k-icon k-i-tick'" type="submit">Оплатить</kendo-button>
     </div>
   </form>
-
 </div>

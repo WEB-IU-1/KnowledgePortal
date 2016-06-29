@@ -1,4 +1,36 @@
-.purchase-info-block {
-  padding: 2px;
-  text-decoration: solid;
+@purchase-invalid-color: red;
+.purchase-text {
+  padding-top: 2px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.purchase-text-invalid {
+  color: @purchase-invalid-color;
+  text-align: center;
+}
+
+.purchase-form {
+  overflow: hidden;
+}
+.purchase-button {
+  width: 48%;
+}
+.purchase-checkbox {
+  margin: 0;
+}
+.k-invalid
+{
+  border: 1px solid @purchase-invalid-color;
+}
+span.k-tooltip {
+  margin-left: 6px;
+}
+span.k-widget.k-tooltip-validation {
+  text-align: center;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  box-shadow: none;
+  color: @purchase-invalid-color;
 }
