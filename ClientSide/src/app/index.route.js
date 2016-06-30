@@ -52,6 +52,12 @@
         controllerAs: 'product',
 
       })
+      .state('profile', {
+        url:'/profile',
+        templateUrl: 'app/profile/profile.html',
+        controller: 'ProfileController',
+        controllerAs: 'profile'
+      })
       .state('test', {
         url: '/test',
         templateUrl: 'app/testpurchase/test.html',

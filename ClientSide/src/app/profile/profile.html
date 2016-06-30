@@ -1,0 +1,45 @@
+<div class="profile-card">
+  <form kendo-validator="validator" ng-submit="profile.save()">
+    <ul class="fieldlist">
+      <li class="profile-headline">
+        Ваши личные данные, {{profile.user.FirstName+' '+profile.user.LastName}}
+      </li>
+      <li>
+        <label for="FirstName" class="required">Имя</label>
+        <input type="search" id="FirstName" class="k-textbox" ng-model="profile.user.FirstName" required/>
+      </li>
+      <li>
+        <label for="LastName" class="required">Фамилия</label>
+        <input type="text" id="LastName" class="k-textbox" ng-model="profile.user.LastName" required/>
+      </li>
+      <li>
+        <label for="Email" class="required">Почта</label>
+        <input id="Email" type="email" class="k-textbox"  ng-model="profile.user.Email" required/>
+      </li>
+      <li>
+        <label for="Gender" class="required">Пол</label>
+        <select kendo-dropdownlist id="Gender"
+                data-auto-bind="false"
+                data-bind="value:profile.user.Gender"
+                k-data-text-field="'Gender'"
+                k-data-value-field="'Gender'"
+                k-data-source="profile.Gender"> </select>
+      </li>
+      <li>
+        <label for="Address" class="required">Адрес</label>
+        <textarea rows="2" id="Address" class="k-textbox" ng-model="profile.user.Address" required></textarea>
+      </li>
+      <li>
+        <label for="Phone" class="required">Адрес</label>
+        <input id="Phone" class="k-textbox" ng-model="profile.user.Phone" kendo-masked-text-box k-mask="'+7(999)000-00-00'" required />
+      </li>
+      <li>
+        <label for="BirthDate" class="required">Дата рождения</label>
+        <input kendo-date-picker id="BirthDate" ng-model="profile.user.BirthDate"/>
+      </li>
+      <li class="confirm">
+        <button class="k-button profile-button-save" type="submit">Сохранить</button>
+      </li>
+    </ul>
+  </form>
+</div>
