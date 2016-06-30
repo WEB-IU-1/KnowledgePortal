@@ -31,20 +31,36 @@
         templateUrl: 'app/users/users.html',
         controller: 'UsersController',
         controllerAs: 'users'
-
       })
       .state('managers', {
         url: '/managers',
         templateUrl: 'app/managers/managers.html',
         controller: 'ManagersController',
         controllerAs: 'managers'
-        })
-      .state('product', {
-        url: '/product/:id',
-        templateUrl: 'app/product/product.html',
-        controller: 'ProductController',
-        controllerAs: 'product',
-
+      })
+      .state('partners', {
+        url: '/partners',
+        templateUrl: 'app/partners/partners.html',
+        controller: 'PartnersController',
+        controllerAs: 'partners'
+      })
+      .state('profile', {
+        url:'/profile',
+        templateUrl: 'app/profile/profile.html',
+        controller: 'ProfileController',
+        controllerAs: 'profile'
+      })
+      .state('profile.edit', {
+        url:'/edit',
+        templateUrl: 'app/profile/edit/edit.html',
+        controller: 'EditController',
+        controllerAs: 'edit'
+      })
+      .state('profile.timetable', {
+        url:'/timetable',
+        templateUrl: 'app/profile/timetable/timetable.html',
+        controller: 'TimeTableController',
+        controllerAs: 'timetable'
       });
 
     $urlRouterProvider.otherwise('/');

@@ -10,7 +10,10 @@
     "angular-toastr": "~1.5.0",
     "moment": "~2.10.6",
     "animate.css": "~3.4.0",
-    "angular": "~1.5.3"
+    "angular": "~1.5.3",
+    "font-awesome":"*",
+    "kendo-ui":"*"
+
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"
