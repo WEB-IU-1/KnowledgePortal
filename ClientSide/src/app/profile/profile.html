@@ -1,5 +1,5 @@
 <div class="profile-card">
-  <form kendo-validator="validator" ng-submit="profile.save()">
+  <form kendo-validator="purchase.validator" ng-submit="profile.save()">
     <ul class="fieldlist">
       <li class="profile-headline">
         Ваши личные данные, {{profile.user.FirstName+' '+profile.user.LastName}}
@@ -20,9 +20,10 @@
         <label for="Gender" class="required">Пол</label>
         <select kendo-dropdownlist id="Gender"
                 data-auto-bind="false"
-                data-bind="value:profile.user.Gender"
-                k-data-text-field="'Gender'"
-                k-data-value-field="'Gender'"
+                k-ng-model="profile.user.Gender"
+                k-data-text-field="'Name'"
+                k-value-primitive="true"
+                k-data-value-field="'Name'"
                 k-data-source="profile.Gender"> </select>
       </li>
       <li>
@@ -38,7 +39,7 @@
         <input kendo-date-picker id="BirthDate" ng-model="profile.user.BirthDate"/>
       </li>
       <li class="confirm">
-        <button class="k-button profile-button-save" type="submit">Сохранить</button>
+        <kendo-button class="k-button profile-button-save" type="submit">Сохранить</kendo-button>
       </li>
     </ul>
   </form>
