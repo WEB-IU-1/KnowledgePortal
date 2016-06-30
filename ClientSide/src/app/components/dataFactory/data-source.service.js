@@ -187,6 +187,28 @@
           },
           expanded: true
         }
+      },
+      '//localhost:1337/api/partner/':{
+        model: {
+          id: "_id",
+          fields: {
+            _id: {type: "string", nullable: false, editable: false},
+            name: { validation: { required: true } },
+            full_name: { validation: { required: true, min: 1} },
+            logo: {},
+            credentials: { validation: { required: true }},
+            address: { validation: { required: true }},
+            phone: { validation: { required: true }},
+            email: { validation: { required: true }},
+            contact_people: { },
+            categories: { },
+            teachers: { },
+            offices_addresses: { },
+            active: {},
+            comment: { }
+          },
+          expanded: true
+        }
       }
     };
 
