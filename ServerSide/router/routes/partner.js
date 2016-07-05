@@ -3,7 +3,6 @@ var router = express.Router();
 
 var api = require('controllers/partner.controller');
 
-
 router.get('/', api.read);                   //gets all
 
 router.put('/', api.update);              //edit one by id
@@ -11,10 +10,5 @@ router.put('/', api.update);              //edit one by id
 router.post('/', api.create);                //create new one
 
 router.delete('/:id', api.destroy );         //delete one by id
-
-router.get('/:id', api.readById);             //gets one by id
-
-router.get('/:name', api.readByName);     //gets one by name
-
 
 module.exports = router;

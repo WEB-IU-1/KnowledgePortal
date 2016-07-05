@@ -59,7 +59,6 @@
           title: "Список адресов филиалов",
           hidden: true
       },{
-          field: "active",
           title: "Активный?",
           template: "<input type='checkbox' data-type='number' data-bind='checked: active' #= (active !=0) ? checked='checked' : '' # class='chkbx' />"
       },{
