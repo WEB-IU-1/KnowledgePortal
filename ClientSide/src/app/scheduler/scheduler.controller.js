@@ -65,7 +65,7 @@
         window: {
           title: "Событие"
         },
-        template: $("#customEditorTemplate").html(),
+        template: "preview.html",
       },
 
     };
