@@ -45,7 +45,8 @@
             image: {from:"image", type:"string"},
             active: {from: "active",type: "boolean", defaultValue: true},
             type: {from: "type", type:"string", defaultValue: "Курс"},
-            teacher: {from: "teacher",type: "string", defaultValue: ""},
+            teacher_id: {from: "teacher_id",type: "string"},
+            school_id: {from: "school_id",type: "string"},
             location: {from: "location", type:"string"},
             seats_count: {from: "seats_count", type:"number", defaultValue: 10},
             busy_seats_count: {from:"busy_seats_count", type:"number", defaultValue: 0},
@@ -54,7 +55,7 @@
             updated_date: {type: "date", from: "updated_date"},
             assigned_user_id: {from: "assigned_user_id", type:"string"},
             cost: {from:"cost", type:"number", defaultValue: 0},
-            professional_level: {type: "number", from: "professional_level", defaultValue: 1},
+            professional_level: {type: "string", from: "professional_level", defaultValue: "Начальный"},
             age_category_from: {type: "number", from: "age_category_from", defaultValue: 14},
             age_category_up: {type:"number", from: "age_category_up", defaultValue: 70},
           }

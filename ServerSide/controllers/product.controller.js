@@ -43,7 +43,8 @@ exports.update = function(req,res){
         product.recurrenceId = req.body.recurrenceId;
         product.recurrenceRule = req.body.recurrenceRule;
         product.recurrenceException = req.body.recurrenceException;
-        product.teacher = req.body.teacher;
+        product.teacher_id = req.body.teacher_id;
+        product.school_id = req.body.school_id;
         product.seats_count = req.body.seats_count;
         product.assigned_user_id = req.body.assigned_user_id;
         product.location = req.body.location;
@@ -51,6 +52,32 @@ exports.update = function(req,res){
         product.professional_level = req.body.professional_level;
         product.age_category_from = req.body.age_category_from;
         product.age_category_up = req.body.age_category_up;
+        return product.save(function (err) {
+            if (!err) {
+                log.info("product updated");
+                return res.send({ status: 'OK', article:product });
+            } else {
+                if(err.name == 'ValidationError') {
+                    res.statusCode = 400;
+                    res.send({ error: 'Validation error' });
+                } else {
+                    res.statusCode = 500;
+                    res.send({ error: 'Server error' });
+                }
+                log.error('Internal error(%d): %s',res.statusCode,err.message);
+            }
+        });
+    });
+};
+
+exports.view = function(req,res){
+    return Product.findById(req.params.id, function (err, product) {
+        if(!product) {
+            res.statusCode = 404;
+            return res.send({ error: 'Not found' });
+        }
+        product.views++;
+
         return product.save(function (err) {
             if (!err) {
                 log.info("product updated");
@@ -83,8 +110,10 @@ exports.create = function(req,res){
       recurrenceId: req.body.recurrenceId,
       recurrenceRule: req.body.recurrenceRule,
       recurrenceException: req.body.recurrenceException,
-      teacher: req.body.teacher,
+      teacher_id: req.body.teacher_id,
+      school_id: req.body.school_id,
       seats_count: req.body.seats_count,
+      busy_seats_count:req.body.busy_seats_count,
       assigned_user_id: req.body.assigned_user_id,
       location: req.body.location,
       views: req.body.views,
