@@ -48,14 +48,17 @@ var productSchema = new Schema({
         recurrenceException:{
             type: String
         },
-        teacher:{
+        teacher_id:{
+            type: String
+        },
+        school_id:{
             type: String
         },
         cost:{
             type: Number
         },
         professional_level:{
-            type: Number
+            type: String
         },
         age_category_from:{
             type: Number
@@ -67,7 +70,8 @@ var productSchema = new Schema({
             type: Number
         },
         busy_seats_count:{
-            type: Number
+            type: Number,
+            default: 0
         },
         views:{
             type: Number,
