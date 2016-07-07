@@ -18,7 +18,6 @@
     <ul class="sidebar-menu">
       <li class="header">Направления</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="active"><a href="#"><span>Link</span></a><</li>
 
       <div ng-repeat="category in categoryMenu" ng-include="'treeview.html'"></div>
     </ul><!-- /.sidebar-menu -->
@@ -26,12 +25,12 @@
 
     <script  type="text/ng-template" id="treeview.html">
       <li ng-hide="{{category.childes.length}}">
-        <a href="/#/category/{{category.id}}">
-        <span> {{category.name}} </span>
-      </a>
+        <a class="" href="/#/category/{{category.id}}">
+         <span> {{category.name}} </span>
+        </a>
       </li>
 
-      <li class="treeview" ng-show="{{category.childes.length}}" >
+      <li class="ltreeview" ng-show="{{category.childes.length}}" >
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
         <i class="fa fa-fw fa-plus"></i>
         {{category.name}} <span class="caret"></span>
