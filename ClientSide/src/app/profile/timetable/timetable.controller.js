@@ -26,7 +26,7 @@
         {type: "timelineMonth", title: "График на месяц"}
       ],
       dataSource: DataSource.getDataSource(crudServiceBaseUrl),
-      
+      eventTemplate: $("#template").html(),
       resources: [
         {
           field: "active",
@@ -51,6 +51,7 @@
           ]
         }
       ],
+
       messages: {
         cancel: "Отмена",
         save: "Сохранить",

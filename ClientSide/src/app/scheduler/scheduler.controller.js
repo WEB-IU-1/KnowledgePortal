@@ -23,7 +23,7 @@
         {type: "timeline", title: "График"},
         {type: "timelineWeek", title: "График на неделю"},
         {type: "timelineWorkWeek", title: "График на рабочию неделю"},
-        {type: "timelineMonth", title: "График на месяц"},
+        {type: "timelineMonth", title: "График на месяц"}
       ],
       dataSource: DataSource.getDataSource(crudServiceBaseUrl),
       eventTemplate: $("#template").html(),
@@ -32,14 +32,14 @@
           field: "active",
           dataSource: [
             { text: "Активный", value: true, color: "#51a0ed" },
-            { text: "Неактивный", value: false, color: "#afafaf" },
+            { text: "Неактивный", value: false, color: "#afafaf" }
           ]
         },
         {
           field: "assigned_user_id",
           dataSource: [
             { text: "Иванов Иван Иванович", value: "asd" },
-            { text: "Сергей Сергей Сергеевич", value: "asаd" },
+            { text: "Сергей Сергей Сергеевич", value: "asаd" }
           ]
         },
         {
@@ -47,7 +47,7 @@
           dataSource: [
             { text: "Начальный", value: 1 },
             { text: "Средний", value: 2 },
-            { text: "Професиональный", value: 3 },
+            { text: "Професиональный", value: 3 }
           ]
         }
       ],
@@ -65,8 +65,8 @@
         window: {
           title: "Событие"
         },
-        template: $("#customEditorTemplate").html(),
-      },
+        template: $("#customEditorTemplate").html()
+      }
 
     };
   }
