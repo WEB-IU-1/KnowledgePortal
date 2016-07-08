@@ -4,9 +4,9 @@ var router = express.Router();
 var api = require('controllers/category.controller');
 
 
-router.get('/all', api.read);                   //gets all
+router.get('/', api.read);                   //gets all
 
-router.put('/:id', api.update);              //edit one by id
+router.put('/', api.update);              //edit one by id
 
 router.post('', api.create);                //create new one
 

@@ -26,6 +26,17 @@
         controller: 'CategoryController',
         controllerAs: 'category'
       })
+      .state('categoryId', {
+        url: '/category/:id',
+        templateUrl: 'app/category/category.html',
+        controller: 'sidebarController',
+        controllerAs: 'categoryId',
+        resolve: {
+          categoryRes: function ($stateParams, $http) {
+            return $http({method: 'GET', url: "//localhost:1337/api/category/" + $stateParams.id});
+          }
+        }
+      })
       .state('users', {
         url: '/users',
         templateUrl: 'app/users/users.html',
@@ -44,7 +55,7 @@
         templateUrl: 'app/partners/partners.html',
         controller: 'PartnersController',
         controllerAs: 'partners'
-        })
+      })
       .state('product', {
         url: '/product/:id',
         templateUrl: 'app/product/product.html',
