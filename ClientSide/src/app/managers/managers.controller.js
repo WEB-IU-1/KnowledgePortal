@@ -60,6 +60,7 @@
       }
   function passwordEditor(container, options)
   {
-    $('<input type="password" required data-bind="value:' + options.field + '"/>').appendTo(container);
+    $('<input type="password" required class="k-textbox" ' +
+      'data-bind="value:' + options.field + '"/>').appendTo(container);
   };
 })();

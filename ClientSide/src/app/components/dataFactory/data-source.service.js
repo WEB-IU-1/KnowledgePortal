@@ -220,7 +220,7 @@
         type: "json",
         transport: {
           create: function (e) {
-            return $http.post(url,e.data).then(function (response) {
+            return $http.post(url, e.data).then(function (response) {
                 e.success(response.data.article);
               },
               function () {
